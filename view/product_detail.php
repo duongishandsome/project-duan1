@@ -6,14 +6,14 @@
             <div class="col-12">
                 <div class="row breadcrumb_box  align-items-center">
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
-                        <h2 class="breadcrumb-title">Shop</h2>
+                        <h2 class="breadcrumb-title">Sản phẩm</h2>
                     </div>
                     <div class="col-lg-6  col-md-6 col-sm-12">
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list text-center text-md-end">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                            <li class="breadcrumb-item"><a href="index.php?act=store">Shop</a></li>
-                            <li class="breadcrumb-item active">Product Details</li>
+                            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="index.php?act=store">sản phẩm</a></li>
+                            <li class="breadcrumb-item active">Sản phẩm chi tiết</li>
                         </ul>
                         <!-- breadcrumb-list end -->
                     </div>
@@ -31,7 +31,6 @@
         <div class="row">
             <?php extract($onesp);
             $hinh = $img_path . $p_featured_photo;
-
             ?>
             <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                 <!-- Swiper -->
@@ -85,7 +84,7 @@
                     </div>
                     <div class="pricing-meta">
                         <ul>
-                            <li class="old-price not-cut"><?php echo $p_current_price." đ" ?></li>
+                            <li class="old-price not-cut"><?php echo $p_current_price . " đ" ?></li>
                         </ul>
                     </div>
                     <p class="quickview-para"><?php echo $p_short_description ?></p>
@@ -94,34 +93,52 @@
                             <span>Color</span>
                             <div class="pro-details-color-content">
                                 <ul>
-                                    <li class="blue"></li>
-                                    <li class="maroon active"></li>
+                                    <?php
+                                    foreach ($list_color as $row) {
+                                        extract($row);
+                                    ?>
+                                    <li style="background-color: <?php if ($color_name == "Trắng") {
+                                                                            echo "white";
+                                                                        } elseif ($color_name == "Đen") {
+                                                                            echo "black";
+                                                                        } elseif ($color_name == "Nâu") {
+                                                                            echo "saddlebrown";
+                                                                        } elseif ($color_name == "Vàng") {
+                                                                            echo "goldenrod";
+                                                                        }
+                                                                        elseif ($color_name == "Xám") {
+                                                                            echo "grey";
+                                                                        } ?>;"></li>
+                                    <?php } ?>
+
                                 </ul>
                             </div>
                         </div>
                         <div class="product-size">
                             <span>Size</span>
                             <select>
-                                <option value="1">S</option>
-                                <option value="2">M</option>
-                                <option value="3">L</option>
-                                <option value="4">XL</option>
+                                <?php
+                                foreach ($list_size as $row) {
+                                    extract($row);
+                                ?>
+                                <option value="<?php echo $size_id ?>"><?php echo $size_name ?></option>
+                                <?php } ?>
+
                             </select>
                         </div>
                     </div>
-                    <div class="pro-details-quality">
+                    <div class=" pro-details-quality">
                         <div class="cart-plus-minus">
                             <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                         </div>
                         <div class="pro-details-cart">
-                            <button class="add-cart btn btn-primary btn-hover-primary ml-4" href="#"> Add To
-                                Cart</button>
+                            <button class="add-cart btn btn-primary btn-hover-primary ml-4" href="#"> Mua
+                                Ngay </button>
                         </div>
                     </div>
                     <div class="pro-details-wish-com">
                         <div class="pro-details-cart">
-                            <a href="cart.php"><i class="ion-android-favorite-outline"></i>Add to
-                                cart</a>
+                            <a href="cart.php"><i class="icon-handbag"></i>Thêm vào giỏ hàng</a>
                         </div>
                         <div class="pro-details-compare">
                             <a href="compare.php"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
@@ -148,11 +165,14 @@
                     </div>
                     <div class="pro-details-policy">
                         <ul>
-                            <li><img src="assets/images/icons/policy.png" alt="" /><span>Chính sách bảo mật (Chỉnh sửa
+                            <li><img src="assets/images/icons/policy.png" alt="" /><span>Chính sách bảo mật (Chỉnh
+                                    sửa
                                     với mô-đun trấn an khách hàng)</span></li>
-                            <li><img src="assets/images/icons/policy-2.png" alt="" /><span>Chính sách giao hàng (Chỉnh
+                            <li><img src="assets/images/icons/policy-2.png" alt="" /><span>Chính sách giao hàng
+                                    (Chỉnh
                                     sửa với mô-đun trấn an khách hàng)</span></li>
-                            <li><img src="assets/images/icons/policy-3.png" alt="" /><span>Chính sách hoàn trả (Chỉnh
+                            <li><img src="assets/images/icons/policy-3.png" alt="" /><span>Chính sách hoàn trả
+                                    (Chỉnh
                                     sửa với mô-đun trấn an khách hàng)
                                 </span></li>
                         </ul>
@@ -175,12 +195,7 @@
             <div class="tab-content description-review-bottom">
                 <div id="des-details2" class="tab-pane active">
                     <div class="product-anotherinfo-wrapper">
-                        <ul>
-                            <li><span>Weight</span> 400 g</li>
-                            <li><span>Dimensions</span>10 x 10 x 15 cm</li>
-                            <li><span>Materials</span> 60% cotton, 40% polyester</li>
-                            <li><span>Other Info</span> American heirloom jean shorts pug seitan letterpress</li>
-                        </ul>
+                        <p><?php echo $p_description ?></p>
                     </div>
                 </div>
 
@@ -303,7 +318,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-start mb-11">
-                    <h2 class="title">12 Sản Phẩm Khác Cùng Danh Mục :</h2>
+                    <h2 class="title">Sản Phẩm Khác Cùng Loại :</h2>
                 </div>
             </div>
         </div>
@@ -311,173 +326,49 @@
         <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
             <div class="new-product-wrapper swiper-wrapper">
                 <!-- Single Prodect -->
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct" class="image">
-                                <img src="assets/images/product-image/1.jpg" alt="Product" />
-                                <img class="hover-image" src="assets/images/product-image/2.jpg" alt="Product" />
-                            </a>
-                            <span class="badges">
-                                <span class="sale">-10%</span>
-                                <span class="new">New</span>
-                            </span>
-                            <div class="actions">
-                                <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                        class="icon-heart"></i></a>
-                                <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                        class="icon-size-fullscreen"></i></a>
-                                <a href="compare.html" class="action compare" title="Compare"><i
-                                        class="icon-refresh"></i></a>
+                <?php
+                            foreach($sp_cung_loai as $sp){
+                                extract($sp);
+                                $linksp="index.php?act=sanphamct&idsp=".$p_id;
+                                $hinh = $img_path . $p_featured_photo;
+                                echo '
+                                <div class="new-product-item swiper-slide">
+                                <div class="product">
+                                <div class="thumb">
+                                <a href="'.$linksp.'" class="image">
+                                    <img src="'.$hinh.'" alt="Product" />
+                                    <img class="hover-image" src="'.$hinh.'" alt="Product" />
+                                </a>
+                                <span class="badges">
+                                    <span class="sale">-10%</span>
+                                    <span class="new">New</span>
+                                </span>
+                                <div class="actions">
+                                    <a href="index.php?act=cart" class="action cart" title="cart"><i class="icon-heart"></i></a>
+                                    <a href="#" class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
+                                    <a href="compare.php" class="action compare" title="Compare"><i class="icon-refresh"></i></a>
+                                </div>
+                                <button title="Add To Cart" class=" add-to-cart">Add
+                                    To Cart</button>
                             </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add
-                                To Cart</button>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a href="index.php?act=sanphamct">Simple minimal Chair </a></h5>
-                            <span class="price">
-                                <span class="new">$18.50</span>
-                                <span class="old">$28.50</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Prodect -->
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct" class="image">
-                                <img src="assets/images/product-image/3.jpg" alt="Product" />
-                                <img class="hover-image" src="assets/images/product-image/4.jpg" alt="Product" />
-                            </a>
-                            <span class="badges">
-                                <span class="sale">-7%</span>
-                            </span>
-                            <div class="actions">
-                                <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                        class="icon-heart"></i></a>
-                                <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                        class="icon-size-fullscreen"></i></a>
-                                <a href="compare.html" class="action compare" title="Compare"><i
-                                        class="icon-refresh"></i></a>
-                            </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add
-                                To Cart</button>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a href="index.php?act=sanphamct">Wooden decorations</a></h5>
-                            <span class="price">
-                                <span class="new">$38.50</span>
-                                <span class="old">$43.50</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Prodect -->
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct" class="image">
-                                <img src="assets/images/product-image/5.jpg" alt="Product" />
-                                <img class="hover-image" src="assets/images/product-image/6.jpg" alt="Product" />
-                            </a>
-                            <span class="badges d-none">
-                                <span class="new">New</span>
-                            </span>
-                            <div class="actions">
-                                <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                        class="icon-heart"></i></a>
-                                <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                        class="icon-size-fullscreen"></i></a>
-                                <a href="compare.html" class="action compare" title="Compare"><i
-                                        class="icon-refresh"></i></a>
-                            </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add
-                                To Cart</button>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a href="index.php?act=sanphamct">High quality vase bottle</a></h5>
-                            <span class="price">
-                                <span class="new">$38.50</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Prodect -->
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct" class="image">
-                                <img src="assets/images/product-image/7.jpg" alt="Product" />
-                                <img class="hover-image" src="assets/images/product-image/8.jpg" alt="Product" />
-                            </a>
-                            <span class="badges">
-                                <span class="new">New</span>
-                            </span>
-                            <div class="actions">
-                                <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                        class="icon-heart"></i></a>
-                                <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                        class="icon-size-fullscreen"></i></a>
-                                <a href="compare.html" class="action compare" title="Compare"><i
-                                        class="icon-refresh"></i></a>
-                            </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add
-                                To Cart</button>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a href="index.php?act=sanphamct">Living & Bedroom Chair</a></h5>
-                            <span class="price">
-                                <span class="new">$38.50</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Prodect -->
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct" class="image">
-                                <img src="assets/images/product-image/9.jpg" alt="Product" />
-                                <img class="hover-image" src="assets/images/product-image/10.jpg" alt="Product" />
-                            </a>
-                            <span class="badges">
-                                <span class="sale">-5%</span>
-                            </span>
-                            <div class="actions">
-                                <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                        class="icon-heart"></i></a>
-                                <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                        class="icon-size-fullscreen"></i></a>
-                                <a href="compare.html" class="action compare" title="Compare"><i
-                                        class="icon-refresh"></i></a>
-                            </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add
-                                To Cart</button>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a href="index.php?act=sanphamct">Living & Bedroom Table</a></h5>
-                            <span class="price">
-                                <span class="new">$38.50</span>
-                                <span class="old">$40.50</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Prodect -->
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                            <div class="content">
+                                <h5 class="title"><a href="'.$linksp.' ?>">'.$p_name.'</a></h5>
+                <span class="price">
+                    <span class="new">'.$p_current_price.'</span>
+                </span>
             </div>
         </div>
-    </div>
+    </div>';
+    }
+    ?>
+</div>
+<!-- Add Arrows -->
+<div class="swiper-buttons">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- New Product End -->

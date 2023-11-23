@@ -58,10 +58,39 @@
     <link rel="stylesheet" href="assets/css/style.min.css">
     <link rel="stylesheet" href="assets/css/css.css">
 
-
     <!-- Main Style -->
     <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
+    <style>
+    addtocart-wrapper input[type="submit"] {
+        display: block;
+        width: 80%;
+        height: 45px;
+        line-height: 45px;
+        background-color: #fff;
+        text-align: center;
+        border: 0;
+        border-radius: 3px;
+        font-size: 14px;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        margin: auto;
+        font-weight: 600;
+        visibility: hidden;
+        transition: all .3s ease 0s;
+        transform: translateY(20px);
+        color: #3f3f3f;
+        opacity: 0;
+        font-family: Raleway, sans-serif;
+    }
 
+    .addtocart-wrapper input[type="submit"]:hover {
+        display: block;
+        color: #ff7004;
+    }
+    </style>
 </head>
 
 <body>
@@ -86,8 +115,9 @@
                                 <a href="javascript:void(0)" class="header-action-btn search-btn"><i
                                         class="icon-magnifier"></i></a>
                                 <div class="dropdown_search">
-                                    <form class="action-form" action="#">
-                                        <input class="form-control" placeholder="Enter your search key" type="text">
+                                    <form class="action-form" action="index.php?act=sanpham" method="POST">
+                                        <input class="form-control" placeholder="Enter your search key" type="text"
+                                            name="kyw">
                                         <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
                                     </form>
                                 </div>
@@ -133,6 +163,8 @@
                                     } else {
                                     ?>
                                     <li><a class="dropdown-item" href="index.php?act=login">Đăng nhập</a></li>
+                                    <li><a class="dropdown-item" href="index.php?act=dangky">Đăng ký</a></li>
+
                                     <?php } ?>
 
                                 </ul>
@@ -165,7 +197,7 @@
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="index.php?act=about">Giới thiệu</a></li>
-                                <li><a href="index.php?act=store">Sản phẩm</a></li>
+                                <li><a href="index.php?act=sanpham">Sản phẩm</a></li>
                                 <li><a href="index.php?act=blog">Tin tức</a></li>
                                 <li><a href="index.php?act=contact">Liên hệ</a></li>
                             </ul>

@@ -8,28 +8,25 @@
             <div class="body customScroll">
                 <ul class="minicart-product-list">
                     <li>
-                        <a href="index.php?act=sanphamct" class="image"><img src="assets/images/product-image/1.jpg"
-                                alt="Cart product Image"></a>
+                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image"><img src="assets/images/product-image/1.jpg" alt="Cart product Image"></a>
                         <div class="content">
-                            <a href="index.php?act=sanphamct" class="title">Walnut Cutting Board</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="title">Walnut Cutting Board</a>
                             <span class="quantity-price">1 x <span class="amount">$91.86</span></span>
                             <a href="#" class="remove">×</a>
                         </div>
                     </li>
                     <li>
-                        <a href="index.php?act=sanphamct" class="image"><img src="assets/images/product-image/2.jpg"
-                                alt="Cart product Image"></a>
+                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image"><img src="assets/images/product-image/2.jpg" alt="Cart product Image"></a>
                         <div class="content">
-                            <a href="index.php?act=sanphamct" class="title">Lucky Wooden Elephant</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="title">Lucky Wooden Elephant</a>
                             <span class="quantity-price">1 x <span class="amount">$453.28</span></span>
                             <a href="#" class="remove">×</a>
                         </div>
                     </li>
                     <li>
-                        <a href="index.php?act=sanphamct" class="image"><img src="assets/images/product-image/3.jpg"
-                                alt="Cart product Image"></a>
+                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image"><img src="assets/images/product-image/3.jpg" alt="Cart product Image"></a>
                         <div class="content">
-                            <a href="index.php?act=sanphamct" class="title">Fish Cut Out Set</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="title">Fish Cut Out Set</a>
                             <span class="quantity-price">1 x <span class="amount">$87.34</span></span>
                             <a href="#" class="remove">×</a>
                         </div>
@@ -97,8 +94,8 @@
                             <li>
                                 <a href="#"><span class="menu-text">product Details Page</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.php?act=sanphamct">Product Single</a></li>
-                                    <li><a href="index.php?act=sanphamct">Product Variable</a></li>
+                                    <li><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>">Product Single</a></li>
+                                    <li><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>">Product Variable</a></li>
                                     <li><a href="single-product-affiliate.php">Product Affiliate</a></li>
                                     <li><a href="single-product-group.php">Product Group</a></li>
                                     <li><a href="single-product-tabstyle-2.php">Product Tab 2</a></li>

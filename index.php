@@ -13,33 +13,19 @@
 
     $spnew = loadall_sanpham_home();
     $sp_moi = loadall_sanpham_new();
-    $sp_store = loadall_sanpham_store();
-
-
     $dsdm = loadall_danhmuc();
     $ds_size = loadall_size();
     $ds_color = loadall_color();
+    $ds_sp_store = loadall_sanpham_store();
+
+    if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 
     if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         $act = $_GET['act'];
         switch ($act) {
-            case "sanphamct":
-                if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
-                    $onesp = loadone_sanpham($_GET['idsp']);
-                    $list_img = get_img_by_pid($_GET['idsp']);
-
-                    // extract($onesp);
-                    // $sp_cung_loai = loadone_sanpham_cungloai($_GET['idsp'], $iddm);
-
-                    include_once "view/product_detail.php";
-                }
-                break;
-
-
             case 'login':
                 include_once "view/acount/login.php";
-
                 // Đăng nhập
                 if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
                     $user = $_POST['user-name'];
@@ -50,27 +36,29 @@
                         $_SESSION['user-name'] = $checkuser;
                         // header('location:index.php');
     ?>
-                        <meta http-equiv="refresh" content="0;url=index.php">
-                <?php
+    <meta http-equiv="refresh" content="0;url=index.php">
+    <?php
                         exit; // Kết thúc kịch bản sau khi chuyển hướng
                     } else {
-                        echo '<script>document.querySelector(".thongbao").innerText = "Mật khẩu sai rồi !";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
+                        echo '<script>document.querySelector(".thongbao").innerText = "Mật khẩu sai rồi !";</script>';
+                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
                     }
                 }
+                break;
 
+            case 'dangky':
                 // Đăng ký  
                 if (isset($_POST['dangky']) && $_POST['dangky']) {
                     $email = $_POST['user-email'];
                     $user = $_POST['user-name'];
                     $pass = $_POST['user-password'];
-
                     insert_taikhoan($email, $user, $pass);
-                    echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
-
+                    // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
 
                 }
+                include "view/acount/dangky.php";
+                echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';
                 break;
-
             case 'quenmk':
                 if (isset($_POST['guiemail']) && $_POST['guiemail']) {
                     $email = $_POST['email'];
@@ -85,12 +73,9 @@
                 // header('location:index.php');
                 //    include_once "view/gioithieu.php";
                 ?>
-                <meta http-equiv="refresh" content="0;url=index.php?act=login">
+    <meta http-equiv="refresh" content="0;url=index.php?act=login">
     <?php
                 break;
-
-
-
             case "account":
                 if (isset($_POST['update_user']) && $_POST['update_user']) {
                     $email = $_POST['user-email'];
@@ -136,9 +121,47 @@
                 include "view/acount/my-account.php";
                 break;
 
-            case 'cart':
+            case 'addtocart':
+                // $list_size = get_size_by_pid($_POST['id']);
+                // $list_color  = get_color_by_pid($_POST['id']);
+                
+                $list_bienthe=loadall_sanpham_bienthe($_POST['id']);
+                
+                if (isset($_POST['addtocart']) && $_POST['addtocart']) {
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $size=$_POST['size'];
+                    $color=$_POST['color'];
+                    $soluong = 1;
+                    $ttien = $soluong * $price;
+                    $spadd = [$id, $name, $img, $price, $soluong, $ttien,$color,$size];
+                    array_push($_SESSION['cart'], $spadd);
+                }
                 include_once "view/cart/cart.php";
                 break;
+
+                case 'delcart':
+                    if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
+                        $id = $_GET['idcart'];
+                        array_splice($_SESSION['cart'], $id - 1, 1);
+                    } else {
+                        $_SESSION['cart'] = [];
+                    }
+                    ?>
+    <script>
+setTimeout(function() {
+    window.location.href = 'index.php?act=viewcart';
+}, 0);
+    </script>
+    <?php
+                    break;
+                
+                case 'viewcart':
+                    include_once "view/cart/cart.php";
+                    break;
+
             case 'thanhtoan':
                 include_once "view/cart/thanhtoan.php";
                 break;
@@ -152,19 +175,39 @@
             case 'trangthai_chitiet':
                 include_once "view/cart/trangthai_chitiet.php";
                 break;
-
-
             case 'error':
                 include_once "view/404.php";
                 break;
 
-
             case 'about':
                 include_once "view/gioithieu/about.php";
                 break;
-            case 'store':
-                include_once "view/sanpham/store.php";
+            case 'sanpham':
+                if (isset($_GET['cate_id']) && $_GET['cate_id'] > 0) {
+                    $cate_id = $_GET['cate_id'];
+                    $listsanpham = loadall_sanpham($cate_id);
+                }
+                // if (isset($_POST['kyw']) && $_POST['kyw'] > 0) {
+                //     $kyw=$_POST['kyw'];
+                //     $listsanpham=loadall_sanpham($kyw);
+                // }
+                else {
+                    $listsanpham = loadall_sanpham();
+                }
+                include_once "view/sanpham/sanpham.php";
                 break;
+            case "sanphamct":
+                if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+                    $onesp = loadone_sanpham($_GET['idsp']);
+                    extract($onesp);
+                    $list_img = get_img_by_pid($_GET['idsp']);
+                    $list_color  = get_color_by_pid($_GET['idsp']);
+                    $list_size = get_size_by_pid($_GET['idsp']);
+                    $sp_cung_loai = load_sanpham_cungloai($_GET['idsp'], $cate_id);
+                    include_once "view/product_detail.php";
+                }
+                break;
+
             case 'blog':
                 include_once "view/tintuc/blog.php";
                 break;
