@@ -119,8 +119,8 @@
             <div class="col-md-12 text-center" data-aos="fade-up">
                 <div class="section-title mb-0">
                     <h2 class="title">Sản phẩm của chúng tôi</h2>
-                    <p class="sub-title mb-30px">Bản thân cơn đau là rất quan trọng, và sau đó nó sẽ là hiện tượng béo
-                        phì, đồng thời nó sẽ xảy ra như một cơn chuyển dạ.</p>
+                    <p class="sub-title mb-30px">Bản thân chúng tôi biết rằng nội thất là rất quan trọng, và sau đó nó
+                        sẽ giúp mang lại vẻ đẹp và tiện ích cho con người .</p>
                 </div>
             </div>
 
@@ -395,7 +395,6 @@
                 <div class="section-title text-center mb-11">
                     <h2 class="title">Sản phẩm mới</h2>
                     <p class="sub-title">Những sản phẩm nội thất sang trọng , quý phái mà giá phù hợp với mọi gia đình .
-                        đình
                     </p>
                 </div>
             </div>

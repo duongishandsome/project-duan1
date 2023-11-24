@@ -170,7 +170,12 @@ setTimeout(function() {
                 break;
 
             case 'viewcart':
-                include_once "view/cart/cart.php";
+                if(count($_SESSION['cart'])==0){
+                    include "view/cart/empty-cart.php";
+                }
+                else{
+                    include_once "view/cart/cart.php";
+                }
                 break;
             case 'thanhtoan':
                 $voucher = loadall_voucher();
