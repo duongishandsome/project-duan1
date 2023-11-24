@@ -48,14 +48,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?act=listoders" class="nav-link">
-                        <i class="nav-icon fa-solid fa-note-sticky"></i>
-                        <p>
-                            Quản lý đặt hàng
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-gears"></i>
                         <p>
@@ -78,6 +70,15 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="index.php?act=listoders" class="nav-link">
+                        <i class="nav-icon fa-solid fa-note-sticky"></i>
+                        <p>
+                            Quản lý đặt hàng
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>

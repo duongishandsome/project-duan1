@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="product-details-content quickview-content">
-                            <h2>Originals Kaval Windbr</h2>
+                            <h2>Ghế sofa xịn</h2>
                             <p class="reference">Reference:<span> demo_17</span></p>
                             <div class="pro-details-rating-wrap">
                                 <div class="rating-product">
@@ -199,7 +199,7 @@
                             </div>
                             <div class="pricing-meta">
                                 <ul>
-                                    <li class="old-price not-cut">$18.90</li>
+                                    <li class="old-price not-cut">$100TR</li>
                                 </ul>
                             </div>
                             <p class="quickview-para">Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm
@@ -221,8 +221,7 @@
                                     <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                                 </div>
                                 <div class="pro-details-cart btn-hover">
-                                    <button class="add-cart btn btn-primary btn-hover-primary ml-4"> Add To
-                                        Cart</button>
+                                    <button class="add-cart btn btn-primary btn-hover-primary ml-4"> Mua ngay</button>
                                 </div>
                             </div>
                             <div class="pro-details-wish-com">
