@@ -88,26 +88,16 @@ if (isset($_SESSION['user-name'])) {
                                     </td>
 
                                     <td>
-                                        <select>
-                                            <?php
-                                             foreach ($list_bienthe as $row) {
-                                            extract($row);
-                                            ?>
-                                            <option value="<?php echo $color_id ?>"><?php echo $color_name ?></option>
-                                        </select>
+                                        <?php echo $cart[6] ?>
                                     </td>
 
-
                                     <td>
-                                        <select>
-                                            <option value="<?php echo $size_id ?>"><?php echo $size_color ?></option>
-                                            <?php } ?>
-
-                                        </select>
+                                        <?php echo $cart[7] ?>
                                     </td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                                value="<?php echo $cart[4] ?>" />
                                         </div>
                                     </td>
                                     <td class="product-subtotal"><?php echo $cart[5] ?></td>
@@ -130,7 +120,7 @@ if (isset($_SESSION['user-name'])) {
                                 </div>
                                 <div class="cart-shiping-update">
                                     <a href="#">Cập nhật giỏ hàng</a>
-                                    <a href="#">Xóa giỏ hàng</a>
+                                    <a href="index.php?act=xoahet_cart">Xóa giỏ hàng</a>
                                 </div>
                             </div>
 

@@ -15,8 +15,6 @@
 <script src="assets/js/dataTables.buttons.min.js"></script>
 <script src="assets/js/buttons.bootstrap4.min.js"></script>
 
-<script src="assets/js/jquery.validate.min.js"></script>
-
 <script type="text/javascript" src="assets/js/adminlte.js"></script>
 
 <script src="./assets/lib/ckeditor/ckeditor.js"></script>
@@ -69,6 +67,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+
     $("#btnAddNew").click(function() {
 
       var rowNumber = $("#ProductTable tbody tr").length;
@@ -91,136 +90,12 @@
     });
 
     $('#ProductTable').delegate('a.Delete', 'click', function() {
-      if (value == '') {
-        return true; 
-      }
       $(this).parent().parent().fadeOut('slow').remove();
       return false;
     });
 
-    $.validator.addMethod("imageFormat", function(value, element) {
-      if (value == '') {
-        return true; 
-      }
-      return this.optional(element) || /\.(jpe?g|png|gif)$/i.test(value);
-    }, "Vui lòng chọn ảnh có định dạng JPEG, PNG, hoặc GIF.");
-
-    $.validator.addMethod("positiveNumber", function(value, element) {
-      if (value == '') {
-        return true; 
-      }
-      return Number(value) > 0;
-    }, "Vui lòng nhập số dương");
-
-    $('#addPdForm').validate({
-      rules: {
-        cate_id: 'required',
-        p_name: 'required',
-        p_old_price: {
-          number: true,
-          positiveNumber: true
-        },
-        'photo[]' : {
-          imageFormat: true,
-        },
-        p_current_price: {
-          required: true,
-          number: true,
-          positiveNumber: true
-        },
-        p_quantity: {
-          required: true,
-          number: true,
-          positiveNumber: true
-        },
-        p_featured_photo: {
-          required: true,
-          imageFormat: true
-        }
-      },
-      messages: {
-        cate_id: 'Trường này không được để trống',
-        p_name: 'Trường này không được để trống',
-        p_old_price: {
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_current_price: {
-          required: 'Trường này không được để trống',
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_quantity: {
-          required: 'Trường này không được để trống',
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_featured_photo: {
-          required: 'Vui lòng chọn ảnh đại diện',
-          imageFormat: 'Vui lòng chọn ảnh có định dạng JPEG, JPG, PNG, hoặc GIF'
-        } 
-      },
-      submitHandler: function(form) {
-        form.submit();
-      }
-    });
-
-    $('#updatePdForm').validate({
-      rules: {
-        cate_id: 'required',
-        p_name: 'required',
-        p_old_price: {
-          number: true,
-          positiveNumber: true
-        },
-        'photo[]' : {
-          imageFormat: true,
-        },
-        p_current_price: {
-          required: true,
-          number: true,
-          positiveNumber: true
-        },
-        p_quantity: {
-          required: true,
-          number: true,
-          positiveNumber: true
-        },
-        p_featured_photo: {
-          imageFormat: true
-        }
-      },
-      messages: {
-        cate_id: 'Trường này không được để trống',
-        p_name: 'Trường này không được để trống',
-        p_old_price: {
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_current_price: {
-          required: 'Trường này không được để trống',
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_quantity: {
-          required: 'Trường này không được để trống',
-          number: 'Vui lòng nhập kiểu số',
-          positiveNumber: 'Vui lòng nhâp số dương',
-        },
-        p_featured_photo: {
-          imageFormat: 'Vui lòng chọn ảnh có định dạng JPEG, JPG, PNG, hoặc GIF'
-        } 
-      },
-      submitHandler: function(form) {
-        form.submit();
-      }
-    });
-    
-
   })
 </script>
-
-
 
 </body>
 

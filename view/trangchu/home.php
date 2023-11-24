@@ -16,7 +16,7 @@
                                 <h2 class="title-1">Bộ Sofa Linh Hoạt</h2>
                                 <p class="w-100">Bản thân cơn đau là rất quan trọng và sau đó sẽ là tình trạng béo phì,
                                     nhưng đồng thời nó sẽ xảy ra do phải lao động và đau đớn nhiều.</p>
-                                <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Shop Now</a>
+                                <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Mua ngay</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 <h2 class="title-1">Bộ Sofa Linh Hoạt</h2>
                                 <p class="w-100">Bản thân cơn đau là rất quan trọng và sau đó sẽ là tình trạng béo phì,
                                     nhưng đồng thời nó sẽ xảy ra do phải lao động và đau đớn nhiều.</p>
-                                <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Shop Now</a>
+                                <a href="#" class="btn btn-lg btn-primary btn-hover-dark mt-5">Mua ngay</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             <h3 class="title">
                                 Bộ sưu tập ghế <br /> văn phòng mới
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Shop Now</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             <h3 class="title">
                                 Bộ sưu tập <br /> phòng khách
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Shop Now</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                             <h3 class="title">
                                 Bộ sưu tập phòng<br /> trẻ em
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Shop Now</a>
+                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -175,19 +175,7 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
                                         </div>
-                                        <form action="index.php?act=addtocart" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                            <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                            <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                            <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                            <input type="hidden" name="color" value="<?php echo $color_name ?>">
-                                            <input type="hidden" name="size" value="<?php echo $size_name ?>">
-
-
-                                            <div class="addtocart-wrapper">
-                                                <input type="submit" name="addtocart" value="Mua ngay">
-                                            </div>
-                                        </form>
+                                        <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
                                     </div>
                                     <div class="content">
                                         <h5 class="title"><a
@@ -211,8 +199,8 @@
                                 <?php
                                 $i = 0;
                                 foreach ($spnew as $sp) {
-                                        extract($sp);
-                                        $hinh = $img_path . $p_featured_photo;
+                                    extract($sp);
+                                    $hinh = $img_path . $p_featured_photo;
                                 ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
                                     data-aos-delay="200">
@@ -236,7 +224,7 @@
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
                                             </div>
-                                            <button title="Add To Cart" class=" add-to-cart">Mua ngay</button>
+                                            <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
                                         </div>
                                         <div class="content">
                                             <h5 class="title"><a
@@ -286,7 +274,7 @@
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
                                             </div>
-                                            <button title="Add To Cart" class=" add-to-cart">Mua ngay</button>
+                                            <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
                                         </div>
                                         <div class="content">
                                             <h5 class="title"><a
@@ -334,7 +322,7 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
                                         </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Mua ngay</button>
+                                        <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
                                     </div>
                                     <div class="content">
                                         <h5 class="title"><a
@@ -370,9 +358,9 @@
                     <div class="info justify-content-end">
                         <div class="content align-self-center">
                             <h3 class="title">
-                                Sale Furniture <br /> For Summer
+                                Nội thất <br /> gia đình
                             </h3>
-                            <p>Great Discounts Here</p>
+                            <p>Tiêu tiền đúng cách</p>
                         </div>
                     </div>
                 </a>
@@ -386,8 +374,8 @@
                     <div class="info justify-content-start">
                         <div class="content align-self-center">
                             <h3 class="title">
-                                Office Chair <br /> For Best Offer</h3>
-                            <p>Great Discounts Here</p>
+                                Chính sách ưu đãi <br /> ngập tràn</h3>
+                            <p>Tiêu tiền đúng cách</p>
                         </div>
                     </div>
                 </a>
@@ -406,8 +394,8 @@
             <div class="col-md-12" data-aos="fade-up">
                 <div class="section-title text-center mb-11">
                     <h2 class="title">Sản phẩm mới</h2>
-                    <p class="sub-title">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo
-                        tempor incididunt ut labore
+                    <p class="sub-title">Những sản phẩm nội thất sang trọng , quý phái mà giá phù hợp với mọi gia đình .
+                        đình
                     </p>
                 </div>
             </div>
@@ -466,101 +454,3 @@
 </div>
 
 <!-- New Product End -->
-
-
-<!--  Blog area Start -->
-<div class="main-blog-area pb-100px">
-    <div class="container">
-        <!-- section title start -->
-        <div class="row">
-            <div class="col-md-12" data-aos="fade-up">
-                <div class="section-title text-center mb-11">
-                    <h2 class="title">Tin mới nhất</h2>
-                    <p class="sub-title">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo
-                        tempor incididunt ut labore
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- section title start -->
-        <div class="blog-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
-            <!-- Start single blog -->
-            <div class="swiper-wrapper">
-                <div class="single-blog swiper-slide">
-                    <div class="blog-image">
-                        <a href="#"><img src="assets/images/blog-image/1.jpg" class="img-responsive w-100" alt=""></a>
-                    </div>
-                    <div class="blog-text">
-                        <div class="blog-athor-date">
-                            <a class="blog-date" href="#">14 November</a>
-                        </div>
-                        <h5 class="blog-heading"><a class="blog-heading-link" href="#">Interior design is the art.</a>
-                        </h5>
-                        <p class="blog-detail-text">Lorem ipsum dolor sit amet, consectetur adipi elit, sed do
-                            eiusmod tempor incididu ut labore et dolore magna aliqua.</p>
-
-                        <a href="#" class="btn btn-lg btn-hover-color-primary btn-color-dark mt-25px">Read More</a>
-                    </div>
-                </div>
-                <!-- End single blog -->
-                <div class="single-blog swiper-slide">
-                    <div class="blog-image">
-                        <a href="#"><img src="assets/images/blog-image/2.jpg" class="img-responsive w-100" alt=""></a>
-                    </div>
-                    <div class="blog-text">
-                        <div class="blog-athor-date">
-                            <a class="blog-date" href="#">14 November</a>
-                        </div>
-                        <h5 class="blog-heading"><a class="blog-heading-link" href="#">Decorate your home with
-                                furns.</a></h5>
-                        <p class="blog-detail-text">Lorem ipsum dolor sit amet, consectetur adipi elit, sed do
-                            eiusmod tempor incididu ut labore et dolore magna aliqua.</p>
-
-                        <a href="#" class="btn btn-lg btn-hover-color-primary btn-color-dark mt-25px">Read More</a>
-                    </div>
-                </div>
-                <!-- End single blog -->
-                <div class="single-blog swiper-slide">
-                    <div class="blog-image">
-                        <a href="#"><img src="assets/images/blog-image/3.jpg" class="img-responsive w-100" alt=""></a>
-                    </div>
-                    <div class="blog-text">
-                        <div class="blog-athor-date">
-                            <a class="blog-date" href="#">14 November</a>
-                        </div>
-                        <h5 class="blog-heading"><a class="blog-heading-link" href="#">Spatialize with that the
-                                furns.</a></h5>
-                        <p class="blog-detail-text">Lorem ipsum dolor sit amet, consectetur adipi elit, sed do
-                            eiusmod tempor incididu ut labore et dolore magna aliqua.</p>
-
-                        <a href="#" class="btn btn-lg btn-hover-color-primary btn-color-dark mt-25px">Read More</a>
-                    </div>
-                </div>
-                <!-- End single blog -->
-                <div class="single-blog swiper-slide">
-                    <div class="blog-image">
-                        <a href="#"><img src="assets/images/blog-image/4.jpg" class="img-responsive w-100" alt=""></a>
-                    </div>
-                    <div class="blog-text">
-                        <div class="blog-athor-date">
-                            <a class="blog-date" href="#">14 November</a>
-                        </div>
-                        <h5 class="blog-heading"><a class="blog-heading-link" href="#">Unique products will impress.</a>
-                        </h5>
-                        <p class="blog-detail-text">Lorem ipsum dolor sit amet, consectetur adipi elit, sed do
-                            eiusmod tempor incididu ut labore et dolore magna aliqua.</p>
-
-                        <a href="#" class="btn btn-lg btn-hover-color-primary btn-color-dark mt-25px">Read More</a>
-                    </div>
-                </div>
-                <!-- End single blog -->
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--  Blog area End -->

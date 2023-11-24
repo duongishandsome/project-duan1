@@ -186,53 +186,38 @@ function delete_product_colors($id)
 }
 
 // In ra người dùng 
-function loadall_sanpham_bienthe()
-{
-    $sql = "
-    SELECT
-    product.p_id,
-    color.color_id AS color_id,
-    color.color_name AS color_name,
-    size.size_id AS size_id,
-    size.size_name AS size_name
-FROM
-    product
-    INNER JOIN product_color ON product.p_id = product_color.p_id
-    INNER JOIN color ON product_color.color_id = color.id
-    INNER JOIN product_size ON product.p_id = product_size.p_id
-    INNER JOIN size ON product_size.size_id = size.id;
-  ";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
-
-
-
-
-
-function loadall_sanpham($cate_id = 0)
-{
-    $sql = "select * from product where 1";
-    if ($cate_id > 0) {
-        $sql .= " and cate_id ='" . $cate_id . "'";
-    }
-    // if ($kyw != "") {
-    //     $sql .= " and p_name like '%" . $kyw . "%'";
-    //     }
-    $sql .= " order by p_id desc";
-    $listsanpham = pdo_query($sql);
+function loadall_sanpham($kyw=""){
+    $sql="select * from product where 1";
+    // if($cate_id>0){
+    //     $sql.=" and cate_id ='".$cate_id."'";
+    // }
+    if ($kyw != "") {
+        $sql .= " and p_name like '%" . $kyw . "%'";
+        }
+    $sql.=" order by p_id desc";
+    $listsanpham=pdo_query($sql);
     return  $listsanpham;
 }
+// function load_sanpham_cungsize($size_id=0)
+// {
+// /$sql = "select * from product join product_size on product.p_id = product_size.p_id" ;
 
+//     if($size_id>0){
+//         $sql.=" and size_id ='".$size_id."'";
+//     }
+//     $sql.=" order by p_id desc";
+//     $listsanpham=pdo_query($sql);
+//     return  $listsanpham;
+// }
 function loadall_sanpham_home()
 {
     $sql = "select * from product  order by RAND() limit 0,8";
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-function load_sanpham_cungloai($id, $iddm)
+function load_sanpham_cungloai($id,$iddm)
 {
-    $sql = "select * from product where cate_id=" . $iddm . " AND cate_id <> " . $id;
+    $sql = "select * from product where cate_id=".$iddm." AND p_id <> ".$id;
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }

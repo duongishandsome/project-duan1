@@ -118,6 +118,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="index.php?act=listthongke" class="nav-link">
+                    <i class="fa-solid fa-bars-staggered fa-xl"></i>
+                        <p>
+                            Thống kê
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

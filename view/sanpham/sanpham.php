@@ -63,39 +63,33 @@
                             extract($sp);
                             $hinh = $img_path . $p_featured_photo;
                         ?>
-                        <div class="col-lg-4  col-md-6 col-sm-6 col-xs-6" data-aos="fade-up" data-aos-delay="200">
-                            <!-- Single Prodect -->
-                            <div class="product mb-25px">
-                                <div class="thumb">
-                                    <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                        <img src="<?php echo $hinh ?>" alt="Product" />
-                                        <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                    </a>
-                                    <span class="badges">
-                                        <span class="new">New</span>
-                                    </span>
-                                    <div class="actions">
-                                        <a href="cart.php" class="action cart" title="cart"><i
-                                                class="icon-handbag"></i></a>
-                                        <a href="#" class="action quickview" data-link-action="quickview"
-                                            title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                class="icon-size-fullscreen"></i></a>
-                                        <a href="compare.php" class="action compare" title="Compare"><i
-                                                class="icon-refresh"></i></a>
+                            <div class="col-lg-4  col-md-6 col-sm-6 col-xs-6" data-aos="fade-up" data-aos-delay="200">
+                                <!-- Single Prodect -->
+                                <div class="product mb-25px">
+                                    <div class="thumb">
+                                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                            <img src="<?php echo $hinh ?>" alt="Product" />
+                                            <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                        </a>
+                                        <span class="badges">
+                                            <span class="new">New</span>
+                                        </span>
+                                        <div class="actions">
+                                            <a href="cart.php" class="action cart" title="cart"><i class="icon-handbag"></i></a>
+                                            <a href="#" class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
+                                            <a href="compare.php" class="action compare" title="Compare"><i class="icon-refresh"></i></a>
+                                        </div>
+                                        <button title="Add To Cart" class=" add-to-cart">Add
+                                            To Cart</button>
                                     </div>
-                                    <button title="Add To Cart" class=" add-to-cart">Add
-                                        To Cart</button>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a
-                                            href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="new"><?php echo $p_current_price . " đ" ?></span>
-                                    </span>
+                                    <div class="content">
+                                        <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a></h5>
+                                        <span class="price">
+                                            <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php } ?>
 
                     </div>
@@ -130,7 +124,7 @@
                                 foreach ($dsdm as $dm) {
                                     extract($dm);
                                     $linkdm="index.php?act=sanpham&cate_id=".$cate_id;
-                                    echo ' <li><a href="'.$linkdm.'">'.$cate_name.'<span>(4)</span> </a></li>';
+                                    echo ' <li><a href="'.$linkdm.'">'.$cate_name.'</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -143,36 +137,65 @@
                             <h4 class="pro-sidebar-title">Price</h4>
                             <div class="price-filter">
                                 <div class="price-slider-amount">
-                                    <input type="text" id="amount" class="p-0 h-auto lh-1" name="price"
-                                        placeholder="Add Your Price" />
+                                    <input type="text" id="amount" class="p-0 h-auto lh-1" name="price" placeholder="Add Your Price" />
                                 </div>
                                 <div id="slider-range"></div>
                             </div>
                         </div>
                         <!-- Sidebar single item -->
+                        <div class="sidebar-widget">
+                            <h4 class="pro-sidebar-title mt-5">Size</h4>
+                            <div class="sidebar-widget-list">
+                                <ul>
+                                    <?php
+                                    foreach ($ds_size as $size) {
+                                        extract($size);
+                                        $linksp="index.php?act=sanpham&size_id=".$size_id;
+                                        echo '
+                                        <li>
+                                            <div class="sidebar-widget-list-left">
+                                             <a href="'.$linksp.'">'.$size_name.'</a>
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        </li>';
+                                     } ?>
+
+                                </ul>
+                            </div>
+                        </div>
                         <!-- Sidebar single item -->
-                       
+                        <div class="sidebar-widget no-cba">
+                            <h4 class="pro-sidebar-title">Color</h4>
+                            <div class="sidebar-widget-list">
+                                <ul>
+                                    <?php
+                                    foreach ($ds_color as $color) {
+                                        extract($color);
+                                    ?>
+                                        <li>
+                                            <div class="sidebar-widget-list-left">
+                                                <input type="checkbox" /> <a href="#"><?php echo $color_name ?><span>(2)</span> </a>
+                                                <span class="checkmark <?php if ($color_name == "Trắng") {
+                                                                            echo "dark border";
+                                                                        } elseif ($color_name == "Đen") {
+                                                                            echo "black ";
+                                                                        } elseif ($color_name == "Nâu") {
+                                                                            echo "danger";
+                                                                        } elseif ($color_name == "Vàng") {
+                                                                            echo "yellow";
+                                                                        } ?>"></span>
+                                            </div>
+                                        </li>
+                                    <?php } ?>
+
+                                </ul>
+                            </div>
+                        </div>
                         <!-- Sidebar single item -->
 
                     </div>
                     <!-- Sidebar single item -->
-                    <div class="sidebar-widget tag">
-                        <div class="main-heading">
-                            <h3 class="sidebar-title mt-3">Tags</h3>
-                        </div>
-                        <div class="sidebar-widget-tag">
-                            <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Chair</a></li>
-                                <li><a href="#">Decoration</a></li>
-                                <li><a href="#">Furniture</a></li>
-                                <li><a href="#">Sofa</a></li>
-                                <li><a href="#">Table</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Sidebar single item -->
+                    
                 </div>
             </div>
         </div>

@@ -39,5 +39,11 @@
                 </div>
             </div>
         </div>
+        <div class="your-order-area">
+            <h1 class="text-center">ĐƠN HÀNG</h1>
+        </div>
     </div>
-    <!-- Cart Area End -->
+</div>
+
+
+<!-- Cart Area End -->

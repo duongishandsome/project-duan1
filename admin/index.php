@@ -8,6 +8,7 @@ include "../model/sanpham.php";
 include "../model/accuser.php";
 include "../model/voucher.php";
 include "../model/comment.php";
+include "../model/thongke.php";
 include 'header.php';
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -595,8 +596,13 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listvoucher = loadall_voucher();
             include "discount/list.php";
             break;
-        case "listcomment":
-            include "binhluan/list.php";
+        case "listthongke":
+            $listthongke = loadall_thongke();
+            include "thongke/list.php";
+            break;
+        case "bieudo":
+            $listthongke = loadall_thongke();
+            include "thongke/bieudo.php";
             break;
         case "listoders":
             include "cart/list.php";

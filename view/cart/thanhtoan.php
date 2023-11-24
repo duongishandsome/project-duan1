@@ -30,18 +30,31 @@
                 <div class="col-lg-7">
                     <div class="billing-info-wrap">
                         <h3>Chi tiết thanh toán </h3>
+                        <?php
+                        if (isset($_SESSION['user-name'])) {
+                            $name = $_SESSION['user-name']['user_name'];
+                            $address = $_SESSION['user-name']['user_address'];
+                            $email = $_SESSION['user-name']['user_email'];
+                            $tel = $_SESSION['user-name']['user_phone'];
+                        } else {
+                            $name = "";
+                            $address = "";
+                            $email = "";
+                            $tel = "";
+                        }
+                        ?>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="billing-info mb-20px">
                                     <label>Tên</label>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="" id="" value="<?php echo $name ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="billing-info mb-20px">
                                     <label>Địa chỉ</label>
-                                    <input class="billing-address" placeholder="Số nhà và tên đường" type="text" />
+                                    <input class="billing-address" value="<?php echo $address ?>" type="text" />
                                 </div>
                             </div>
 
@@ -49,13 +62,13 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
                                     <label>Phone</label>
-                                    <input type="text" />
+                                    <input type="text" value="<?php echo $tel ?>" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="billing-info mb-20px">
                                     <label>Email</label>
-                                    <input type="text" />
+                                    <input type="text" value="<?php echo $email ?>" />
                                 </div>
                             </div>
 
@@ -65,14 +78,14 @@
                                     <input class="form-check-input p-0" type="radio" name="flexRadioDefault"
                                         id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
-                                        Standard <span>$20.00</span>
+                                        Standard <span>20.000</span> (Thường)
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input p-0  " type="radio" name="flexRadioDefault"
                                         id="flexRadioDefault2" checked>
                                     <label class="form-check-label" for="flexRadioDefault2">
-                                        Express <span>$30.00
+                                        Express <span>30.000 (Siêu tốc)
                                     </label>
                                 </div>
                             </div>
@@ -128,25 +141,39 @@
                                 </div>
                                 <div class="your-order-middle">
                                     <ul>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$329 </span></li>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$329 </span></li>
+                                        <?php
+                                        $tien = 0;                                        
+                                        foreach ($_SESSION['cart'] as $cart) {
+                                            $tien += $cart[3];
+                                        ?>
+
+                                        <li><span class="order-middle-left"><?php echo $cart[1] ?></span> <span
+                                                class="order-price"> <?php echo $cart[3] ?></span></li>
+
+                                        <?php
+                                        } ?>
+
                                     </ul>
                                 </div>
                                 <div class="your-order-bottom">
 
                                     <ul>
                                         <li class="your-order-shipping">Phí ship</li>
-                                        <li>Free shipping</li>
+                                        <li><?php echo $phiship=20000 ?></li>
                                     </ul>
                                 </div>
                                 <div style="border-top: 1px solid #dee0e4; margin-top:30px;">
                                     <div class="discount-code py-2">
                                         <p class="fw-bold mb-2">Nhập mã phiếu giảm giá của bạn nếu bạn có.</p>
                                         <form class="d-flex align-items-center">
-                                            <input type="text" class="form-control me-2" required name="name"
-                                                placeholder="Nhập mã phiếu giảm giá">
+                                            <select class="form-select me-2" required name="voucher_id">
+                                                <option value="" selected>Mã giảm giá</option>
+                                                <?php foreach ($voucher as $row) {
+        extract($row);
+    ?>
+                                                <option value="<?php echo $id ?>"><?php echo $name ?></option>
+                                                <?php } ?>
+                                            </select>
                                             <button class="btn btn-primary" type="submit">Áp dụng</button>
                                         </form>
                                     </div>
@@ -157,24 +184,25 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-start">Tổng phụ :</td>
-                                                    <td class="text-end">$523.30</td>
+                                                    <td class="text-start">Tổng giá đơn :</td>
+                                                    <td class="text-end"><?php echo $tien; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-start">Phí ship :</td>
-                                                    <td class="text-end">$4.52</td>
+                                                    <td class="text-end"><?php echo $phiship ;?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-start">Mã giảm giá :</td>
-                                                    <td class="text-end">$104.66</td>
+                                                    <td class="text-end"><?php echo $magg=500000 ;?></td>
                                                 </tr>
 
                                             </tbody>
                                         </table>
                                     </div>
                                     <ul>
+                                        <?php $tongtien=($tien+$phiship)-$magg; ?>
                                         <li class="order-total">Tổng cộng</li>
-                                        <li>$329</li>
+                                        <li><?php echo $tongtien; ?></li>
                                     </ul>
                                 </div>
                             </div>

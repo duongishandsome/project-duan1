@@ -34,7 +34,7 @@
                 <div class="empty-text-contant text-center">
                     <i class="icon-handbag"></i>
                     <h1>Không còn mặt hàng nào trong giỏ hàng của bạn</h1>
-                    <a class="empty-cart-btn" href="shop-4-column.php">
+                    <a class="empty-cart-btn" href="index.php">
                         <i class="ion-ios-arrow-left"> </i> Tiếp tục mua sắm
                     </a>
                 </div>

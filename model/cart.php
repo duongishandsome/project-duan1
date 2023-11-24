@@ -1,10 +1,8 @@
-<?php
-function tongdonhang()
-{
-    $tong = 0;
-    foreach ($_SESSION['cart'] as $cart) {
-        $ttien = $cart[3] * $cart[4];
-        $tong += $ttien;
+ <?php
+    function insert_cart($iduser, $idpro, $img, $name, $price, $soluong, $thanhtien, $idbill)
+    {
+        $sql = "insert into cart(iduser,idpro,img,name,price,soluong,thanhtien,idbill) values ('$iduser', '$idpro',' $img','$name','$price', '$soluong','$thanhtien','$idbill')";
+        return pdo_execute($sql);
     }
-    return $tong;
-}
+
+    ?>

@@ -29,10 +29,10 @@
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a class="active" href="index.php?act=login">
+                        <a class="active" data-bs-toggle="tab" href="#lg1">
                             <h4>Đăng nhập</h4>
                         </a>
-                        <a href="index.php?act=dangky">
+                        <a data-bs-toggle="tab" href="#lg2">
                             <h4>Đăng ký</h4>
                         </a>
                     </div>
@@ -64,7 +64,7 @@
 
 
                         </div>
-                        <!-- <div id="lg2" class="tab-pane">
+                        <div id="lg2" class="tab-pane">
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form action="index.php?act=login" method="post">
@@ -78,7 +78,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

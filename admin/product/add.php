@@ -31,12 +31,13 @@
 		<?php } ?>
 		<div class="card card-cus">
 			<div class="card-body">
-				<form id="addPdForm" action="index.php?act=addproduct" method="POST" enctype="multipart/form-data">
+				<form action="index.php?act=addproduct" method="POST" enctype="multipart/form-data">
 
 					<div class="box box-info">
 						<div class="box-body">
 							<div class="form-group row">
-								<label for="" class="col-sm-3 label-custom text-right pr-4">Danh mục <span>*</span></label>
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Danh mục
+									<span>*</span></label>
 								<div class="col-sm-4">
 									<select name="cate_id" class="form-control select2 top-cat">
 										<?php
@@ -49,7 +50,8 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="" class="col-sm-3 label-custom text-right pr-4">Tên sản phẩm <span>*</span></label>
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Tên sản phẩm
+									<span>*</span></label>
 								<div class="col-sm-4">
 									<input type="text" name="p_name" class="form-control">
 								</div>
@@ -61,13 +63,15 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="" class="col-sm-3 label-custom text-right pr-4">Giá hiện tại <span>*</span><br><span style="font-size:12px;font-weight:normal;">(VND)</span></label>
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Giá hiện tại
+									<span>*</span><br><span style="font-size:12px;font-weight:normal;">(VND)</span></label>
 								<div class="col-sm-4">
 									<input type="text" name="p_current_price" class="form-control">
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="" class="col-sm-3 label-custom text-right pr-4">Số lượng <span>*</span></label>
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Số lượng
+									<span>*</span></label>
 								<div class="col-sm-4">
 									<input type="text" name="p_quantity" class="form-control">
 								</div>
@@ -99,7 +103,8 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="" class="col-sm-3 label-custom text-right pr-4">Ảnh đại diện <span>*</span></label>
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Ảnh đại diện
+									<span>*</span></label>
 								<div class="col-sm-4" style="padding-top:4px;">
 									<input type="file" name="p_featured_photo">
 								</div>
@@ -169,4 +174,3 @@
 		</div>
 	</div>
 </section>
-

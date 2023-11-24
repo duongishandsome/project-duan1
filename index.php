@@ -3,6 +3,10 @@
     include "model/pdo.php";
     include "model/taikhoanuser.php";
     include "model/danhmuc.php";
+    include "model/cart.php";
+    include "model/voucher.php";
+
+
     include "model/color.php";
     include "model/size.php";
 
@@ -18,6 +22,7 @@
     $ds_color = loadall_color();
     $ds_sp_store = loadall_sanpham_store();
 
+
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 
@@ -26,6 +31,7 @@
         switch ($act) {
             case 'login':
                 include_once "view/acount/login.php";
+
                 // Đăng nhập
                 if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
                     $user = $_POST['user-name'];
@@ -40,25 +46,23 @@
     <?php
                         exit; // Kết thúc kịch bản sau khi chuyển hướng
                     } else {
-                        echo '<script>document.querySelector(".thongbao").innerText = "Mật khẩu sai rồi !";</script>';
-                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
+                        echo '<script>document.querySelector(".thongbao").innerText = "Mật khẩu sai rồi !";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
                     }
                 }
-                break;
 
-            case 'dangky':
                 // Đăng ký  
                 if (isset($_POST['dangky']) && $_POST['dangky']) {
                     $email = $_POST['user-email'];
                     $user = $_POST['user-name'];
                     $pass = $_POST['user-password'];
+
                     insert_taikhoan($email, $user, $pass);
-                    // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
+                    echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
+
 
                 }
-                include "view/acount/dangky.php";
-                echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';
                 break;
+
             case 'quenmk':
                 if (isset($_POST['guiemail']) && $_POST['guiemail']) {
                     $email = $_POST['email'];
@@ -76,6 +80,9 @@
     <meta http-equiv="refresh" content="0;url=index.php?act=login">
     <?php
                 break;
+
+
+
             case "account":
                 if (isset($_POST['update_user']) && $_POST['update_user']) {
                     $email = $_POST['user-email'];
@@ -121,48 +128,52 @@
                 include "view/acount/my-account.php";
                 break;
 
+
             case 'addtocart':
-                // $list_size = get_size_by_pid($_POST['id']);
-                // $list_color  = get_color_by_pid($_POST['id']);
-                
-                $list_bienthe=loadall_sanpham_bienthe($_POST['id']);
-                
                 if (isset($_POST['addtocart']) && $_POST['addtocart']) {
                     $id = $_POST['id'];
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-                    $size=$_POST['size'];
-                    $color=$_POST['color'];
-                    $soluong = 1;
+
+                    $size = $_POST['size_name'];
+                    $color = $_POST['color_name'];
+
+                    $soluong = 2;
                     $ttien = $soluong * $price;
-                    $spadd = [$id, $name, $img, $price, $soluong, $ttien,$color,$size];
+                    $spadd = [$id, $name, $img, $price, $soluong, $ttien, $color, $size];
                     array_push($_SESSION['cart'], $spadd);
                 }
+
                 include_once "view/cart/cart.php";
                 break;
 
-                case 'delcart':
-                    if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
-                        $id = $_GET['idcart'];
-                        array_splice($_SESSION['cart'], $id - 1, 1);
-                    } else {
-                        $_SESSION['cart'] = [];
-                    }
-                    ?>
+            case 'delcart':
+                if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
+                    $id = $_GET['idcart'];
+                    array_splice($_SESSION['cart'], $id - 1, 1);
+                } else {
+                    $_SESSION['cart'] = [];
+                }
+            ?>
     <script>
 setTimeout(function() {
     window.location.href = 'index.php?act=viewcart';
 }, 0);
     </script>
     <?php
-                    break;
-                
-                case 'viewcart':
-                    include_once "view/cart/cart.php";
-                    break;
+                break;
 
+            case 'xoahet_cart':
+                $_SESSION['cart'] = []; // Xóa hết sản phẩm trong giỏ hàng
+                include_once "view/cart/empty-cart.php";
+                break;
+
+            case 'viewcart':
+                include_once "view/cart/cart.php";
+                break;
             case 'thanhtoan':
+                $voucher = loadall_voucher();
                 include_once "view/cart/thanhtoan.php";
                 break;
             case 'bill':
@@ -183,19 +194,45 @@ setTimeout(function() {
                 include_once "view/gioithieu/about.php";
                 break;
             case 'sanpham':
+                $conditions = array();
+
+                if (isset($_GET['size_id']) && $_GET['size_id'] > 0) {
+                    $size_id = $_GET['size_id'];
+                    $conditions[] = "ps.size_id = $size_id";
+                }
+
                 if (isset($_GET['cate_id']) && $_GET['cate_id'] > 0) {
                     $cate_id = $_GET['cate_id'];
-                    $listsanpham = loadall_sanpham($cate_id);
+                    $conditions[] = "p.cate_id = $cate_id";
                 }
-                // if (isset($_POST['kyw']) && $_POST['kyw'] > 0) {
-                //     $kyw=$_POST['kyw'];
-                //     $listsanpham=loadall_sanpham($kyw);
-                // }
-                else {
-                    $listsanpham = loadall_sanpham();
+
+                if (isset($_POST['kyw']) && !empty($_POST['kyw'])) {
+                    $kyw = $_POST['kyw'];
+                    $conditions[] = "p.p_name LIKE '%$kyw%'";
                 }
+
+                $where_clause = !empty($conditions) ? " WHERE " . implode(" AND ", $conditions) : "";
+
+                if (empty($where_clause)) {
+                    $sql = "SELECT * FROM product ORDER BY p_id DESC";
+                } elseif (isset($_GET['cate_id'])) {
+                    $sql = "SELECT * FROM product p
+                    " . $where_clause . " 
+                    ORDER BY p.p_id DESC";
+                } else {
+                    $sql = "SELECT * FROM product p
+                    LEFT JOIN product_size ps ON p.p_id = ps.p_id
+                    LEFT JOIN size s ON ps.size_id = s.size_id
+                    " . $where_clause . " 
+                    ORDER BY p.p_id DESC";
+                }
+
+                $listsanpham = pdo_query($sql);
+
                 include_once "view/sanpham/sanpham.php";
                 break;
+
+
             case "sanphamct":
                 if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
                     $onesp = loadone_sanpham($_GET['idsp']);
