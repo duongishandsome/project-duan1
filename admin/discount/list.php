@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <div class="card card-cus">
             <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped table-hover">
+            <table id="example2" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>STT</th>

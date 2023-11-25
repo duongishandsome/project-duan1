@@ -49,12 +49,26 @@
     $('#example2').DataTable({
       "paging": true,
       "pageLength": 10,
-      "lengthChange": false,
+      "lengthChange": true,
       "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,
       "responsive": true,
+      "language": {
+            "lengthMenu": "_MENU_",
+            "zeroRecords": "Không có kết quả nào được tìm thấy",
+            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ mục",
+            "infoEmpty":"Không có kết quả",
+            "infoFiltered":   "",
+            "paginate": {
+                "first":      "Đầu tiên",
+                "last":       "Cuối cùng",
+                "next":       "Tiếp",
+                "previous":   "Trước"
+            },
+            "search": "Tìm kiếm:",
+        }
     });
 
     $('#confirm-delete').on('show.bs.modal', function(e) {

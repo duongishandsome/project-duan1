@@ -127,7 +127,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $quantity = $_POST['p_quantity'];
                     $desc = $_POST['p_description'];
                     $short_desc = $_POST['p_short_description'];
-                    $is_featured = $_POST['p_is_featured'];
                     $status = $_POST['status'];
                     $cate_id = $_POST['cate_id'];
 
@@ -137,7 +136,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $featured_photo = 'product-featured-' . $product_id . '.' . $ext;
                     move_uploaded_file($path_tmp, '../upload/' . $featured_photo);
 
-                    insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $is_featured, $status, $cate_id);
+                    insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $status, $cate_id);
 
 
 
@@ -279,12 +278,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $quantity = $_POST['p_quantity'];
                     $desc = $_POST['p_description'];
                     $short_desc = $_POST['p_short_description'];
-                    $is_featured = $_POST['p_is_featured'];
                     $status = $_POST['status'];
                     $cate_id = $_POST['cate_id'];
 
                     if ($path == '') {
-                        update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $is_featured, $status, $cate_id);
+                        update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $status, $cate_id);
                     } else {
 
                         unlink('../upload/' . $_POST['current_photo']);
@@ -292,7 +290,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $final_name = 'product-featured-' . $p_id . '.' . $ext;
                         move_uploaded_file($path_tmp, '../upload/' . $final_name);
 
-                        update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $final_name, $desc, $short_desc, $is_featured, $status, $cate_id);
+                        update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $final_name, $desc, $short_desc, $status, $cate_id);
                     }
 
                     if (isset($_POST['size'])) {

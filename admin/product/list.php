@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 		<div class="card card-cus">
 			<div class="card-body">
-				<table id="example1" class="table table-bordered table-hover table-striped">
+				<table id="example2" class="table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
 							<th>STT</th>
@@ -27,10 +27,9 @@
 							<th>Giá cũ</th>
 							<th>Giá bán</th>
 							<th>Số lượng</th>
-							<th>Nổi bật?</th>
-							<th>Status</th>
+							<th>Trạng thái</th>
 							<th>Danh mục</th>
-							<th>Action</th>
+							<th>Hành động</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,21 +44,14 @@
 								<td><?php echo $i; ?></td>
 								<td style="width:82px;"><img src="../upload/<?php echo $row['p_featured_photo']; ?>" alt="<?php echo $row['p_name']; ?>" style="width:80px;"></td>
 								<td><?php echo $row['p_name']; ?></td>
-								<td><?php echo $row['p_old_price']; ?>đ</td>
-								<td><?php echo $row['p_current_price']; ?>đ</td>
+								<td><?php echo number_format($row['p_old_price'], 0, ',', '.'); ?></td>
+								<td><?php echo number_format($row['p_current_price'], 0, ',', '.');?></td>
 								<td><?php echo $row['p_quantity']; ?></td>
 								<td>
-									<?php if ($row['p_featured'] == 1) {
-										echo '<span class="badge badge-success p-2" style="font-size:14px">Yes</span>';
-									} else {
-										echo '<span class="badge badge-success p-2" style="font-size:14px">No</span>';
-									} ?>
-								</td>
-								<td>
 									<?php if ($row['p_status'] == 1) {
-										echo '<span class="badge badge-success p-2" style="font-size:14px">Yes</span>';
+										echo '<span class="badge badge-success p-2" style="font-size:14px">Hoạt động</span>';
 									} else {
-										echo '<span class="badge badge-danger p-2" style="font-size:14px">No</span>';
+										echo '<span class="badge badge-danger p-2" style="font-size:14px">Không hoạt động</span>';
 									} ?>
 								</td>
 								<td><?php echo $row['cate_name']; ?></td>
