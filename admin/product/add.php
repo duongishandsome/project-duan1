@@ -31,7 +31,7 @@
 		<?php } ?>
 		<div class="card card-cus">
 			<div class="card-body">
-				<form action="index.php?act=addproduct" method="POST" enctype="multipart/form-data">
+				<form id="addPdForm" action="index.php?act=addproduct" method="POST" enctype="multipart/form-data">
 
 					<div class="box box-info">
 						<div class="box-body">

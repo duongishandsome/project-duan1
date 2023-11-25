@@ -28,6 +28,8 @@ if(!isset($_SESSION['admin'])) {
     <link rel="stylesheet" href="assets/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/css/buttons.bootstrap4.min.css">
 
+    <link rel="stylesheet" href="assets/css/cmxform.css">
+
     <link rel="stylesheet" href="assets/css/adminlte.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 

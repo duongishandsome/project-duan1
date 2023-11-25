@@ -49,7 +49,7 @@ if (is_array($product)) {
         <?php } ?>
         <div class="card card-cus">
             <div class="card-body">
-                <form action="index.php?act=updateproduct" method="POST" enctype="multipart/form-data">
+                <form id="updatePdForm" action="index.php?act=updateproduct" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="p_id" value="<?php if (isset($p_id) && ($p_id > 0)) echo $p_id; ?>">
                     <div class="box box-info">
                         <div class="box-body">
