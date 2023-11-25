@@ -1,4 +1,4 @@
-    <?php
+<?php
     session_start();
     include "model/pdo.php";
     include "model/taikhoanuser.php";
@@ -42,8 +42,8 @@
                         $_SESSION['user-name'] = $checkuser;
                         // header('location:index.php');
     ?>
-    <meta http-equiv="refresh" content="0;url=index.php">
-    <?php
+<meta http-equiv="refresh" content="0;url=index.php">
+<?php
                         exit; // Kết thúc kịch bản sau khi chuyển hướng
                     } else {
                         echo '<script>document.querySelector(".thongbao").innerText = "Mật khẩu sai rồi !";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
@@ -77,8 +77,8 @@
                 // header('location:index.php');
                 //    include_once "view/gioithieu.php";
                 ?>
-    <meta http-equiv="refresh" content="0;url=index.php?act=login">
-    <?php
+<meta http-equiv="refresh" content="0;url=index.php?act=login">
+<?php
                 break;
 
 
@@ -135,18 +135,32 @@
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-
                     $size = $_POST['size_name'];
                     $color = $_POST['color_name'];
-
-                    $soluong = 2;
+                    $soluong = $_POST['p_quantity'];
                     $ttien = $soluong * $price;
-                    $spadd = [$id, $name, $img, $price, $soluong, $ttien, $color, $size];
-                    array_push($_SESSION['cart'], $spadd);
+                    $product_exists = false;
+                    foreach ($_SESSION['cart'] as &$item) {
+                        if ($item[0] == $id && $item[1] == $name && $item[3] == $price && $item[6] == $color && $item[7] == $size) {
+                            $item[4] += $soluong;
+                            $product_exists = true;
+                            break;
+                        }
+                    }
+                    unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
+                    if ($product_exists == false) {
+                        $spadd = [$id, $name, $img, $price, $soluong, $ttien, $color, $size];
+                        array_push($_SESSION['cart'], $spadd);
+                    }
                 }
 
-                include_once "view/cart/cart.php";
-                break;
+            ?>
+<script>
+setTimeout(function() {
+    window.location.href = 'index.php?act=viewcart';
+}, 0);
+</script>
+<?php break;
 
             case 'delcart':
                 if (isset($_GET['idcart']) && $_GET['idcart'] > 0) {
@@ -156,12 +170,12 @@
                     $_SESSION['cart'] = [];
                 }
             ?>
-    <script>
+<script>
 setTimeout(function() {
     window.location.href = 'index.php?act=viewcart';
 }, 0);
-    </script>
-    <?php
+</script>
+<?php
                 break;
 
             case 'xoahet_cart':
@@ -170,10 +184,9 @@ setTimeout(function() {
                 break;
 
             case 'viewcart':
-                if(count($_SESSION['cart'])==0){
+                if (count($_SESSION['cart']) == 0) {
                     include "view/cart/empty-cart.php";
-                }
-                else{
+                } else {
                     include_once "view/cart/cart.php";
                 }
                 break;

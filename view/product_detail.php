@@ -122,7 +122,7 @@
                         </div>
                         <div class=" pro-details-quality">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                <input class="cart-plus-minus-box" type="text" name="p_quantity" value="1" />
                             </div>
                             <div class="pro-details-cart">
                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">

@@ -21,9 +21,15 @@
         </div>
     </div>
 
+
     <!-- breadcrumb-area end -->
     <!-- account area start -->
     <div class="checkout-area pt-100px pb-100px">
+        <?php
+        if (isset($thongbao)) {
+            echo '<div class="alert alert-primary" role="alert">' . $thongbao . '</div>';
+        }
+        ?>
         <div class="container">
             <div class="row">
                 <div class="ml-auto mr-auto col-lg-9">
@@ -31,7 +37,8 @@
                         <div id="faq" class="panel-group">
                             <div class="panel panel-default single-my-account" data-aos="fade-up" data-aos-delay="200">
                                 <div class="panel-heading my-account-title">
-                                    <h3 class="panel-title"><span>1 .</span> <a data-bs-toggle="collapse" class="collapsed" aria-expanded="true" href="#my-account-1">Chỉnh sửa thông
+                                    <h3 class="panel-title"><span>1 .</span> <a data-bs-toggle="collapse"
+                                            class="collapsed" aria-expanded="true" href="#my-account-1">Chỉnh sửa thông
                                             tin tài khoản</a>
                                     </h3>
                                 </div>
@@ -63,12 +70,14 @@
 
                                                     <input type="hidden" name="id" value="<?= $user_id   ?>">
 
-                                                    <input type="hidden" name="user-password" placeholder="Mật khẩu" value="<?= $user_password ?>" />
+                                                    <input type="hidden" name="user-password" placeholder="Mật khẩu"
+                                                        value="<?= $user_password ?>" />
 
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="billing-info">
                                                             <label>Tên tài khoản</label>
-                                                            <input type="text" name="user-name" placeholder="Tên tài khoản" value="<?= $user_name ?>" />
+                                                            <input type="text" name="user-name"
+                                                                placeholder="Tên tài khoản" value="<?= $user_name ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
@@ -91,7 +100,7 @@
                                                                         $hinh = "<img src='assets/images/avata/avata_null.jpg' alt='' ' style='height: 100px; width: 100px; border-radius: 50%;'>";
                                                                     }
                                                                 ?>
-                                                                    <?php echo $hinh ?>
+                                                                <?php echo $hinh ?>
                                                                 <?php
                                                                 }
                                                                 ?>
@@ -101,31 +110,38 @@
                                                     <div class="col-lg-12 col-md-12">
                                                         <div class="billing-info">
                                                             <label>Địa chỉ</label>
-                                                            <input type="text" name="user-adress" placeholder="Địa chỉ" value="<?= $user_address     ?>" />
+                                                            <input type="text" name="user-adress" placeholder="Địa chỉ"
+                                                                value="<?= $user_address     ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="billing-info">
                                                             <label>Số điện thoại</label>
-                                                            <input type="text" name="user-phone" placeholder="Số điện thoại" value="<?= $user_phone     ?>" />
+                                                            <input type="text" name="user-phone"
+                                                                placeholder="Số điện thoại"
+                                                                value="<?= $user_phone     ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="billing-info">
                                                             <label>Email</label>
-                                                            <input name="user-email" placeholder="Địa chỉ email" type="email" value="<?= $user_email     ?>" />
+                                                            <input name="user-email" placeholder="Địa chỉ email"
+                                                                type="email" value="<?= $user_email     ?>" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="gioitinh">
                                                             <label for="gioi_tinh">Giới tính</label>
                                                             <select class="form-select" name="gender" id="gioi_tinh">
-                                                                <option value="Male" <?php if ($user_gender == 'Male') echo 'selected'; ?>>
+                                                                <option value="Male"
+                                                                    <?php if ($user_gender == 'Male') echo 'selected'; ?>>
                                                                     Nam
                                                                 </option>
-                                                                <option value="Female" <?php if ($user_gender == 'Female') echo 'selected'; ?>>
+                                                                <option value="Female"
+                                                                    <?php if ($user_gender == 'Female') echo 'selected'; ?>>
                                                                     Nữ</option>
-                                                                <option value="Other" <?php if ($user_gender == 'Other') echo 'selected'; ?>>
+                                                                <option value="Other"
+                                                                    <?php if ($user_gender == 'Other') echo 'selected'; ?>>
                                                                     Khác</option>
                                                             </select>
                                                         </div>
@@ -134,7 +150,8 @@
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="billing-info">
                                                             <label>Ngày sinh</label>
-                                                            <input type="date" name="birth" id="" value="<?= $user_birth ?>">
+                                                            <input type="date" name="birth" id=""
+                                                                value="<?= $user_birth ?>">
                                                         </div>
 
                                                     </div>
@@ -150,18 +167,15 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <?php
-                                            if (isset($thongbao)) {
-                                                echo '<div class="alert alert-primary" role="alert">' . $thongbao . '</div>';
-                                            }
-                                            ?>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default single-my-account" data-aos="fade-up" data-aos-delay="400">
                                 <div class="panel-heading my-account-title">
-                                    <h3 class="panel-title"><span>2 .</span> <a data-bs-toggle="collapse" class="collapsed" aria-expanded="false" href="#my-account-2">Thay đổi
+                                    <h3 class="panel-title"><span>2 .</span> <a data-bs-toggle="collapse"
+                                            class="collapsed" aria-expanded="false" href="#my-account-2">Thay đổi
                                             mật
                                             khẩu
                                             của bạn
@@ -204,17 +218,14 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <?php
-                                            if (isset($thongbao)) {
-                                                echo '<div class="alert alert-primary" role="alert">' . $thongbao . '</div>';
-                                            }
-                                            ?>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="panel panel-default single-my-account m-0" data-aos="fade-up" data-aos-delay="800">
+                            <div class="panel panel-default single-my-account m-0" data-aos="fade-up"
+                                data-aos-delay="800">
                                 <div class="panel-heading my-account-title">
                                     <h3 class="panel-title"><span>3 .</span> <a href="index.php?act=trangthaidon">Đơn
                                             hàng của
