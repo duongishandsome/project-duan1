@@ -175,6 +175,15 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
                                         </div>
+                                        <form action="index.php?act=addtocart" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                            <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                            <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                            <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+
+
+                                            <input type="submit" name="addtocart" value="Mua ngay">
+                                        </form>
                                         <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
                                     </div>
                                     <div class="content">

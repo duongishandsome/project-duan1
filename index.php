@@ -22,7 +22,6 @@
     $ds_color = loadall_color();
     $ds_sp_store = loadall_sanpham_store();
 
-
     if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 
@@ -135,11 +134,10 @@
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-                    $size = $_POST['size_name'];
-                    $color = $_POST['color_name'];
-                    $soluong = $_POST['p_quantity'];
-                    $ttien = $soluong * $price;
-                    $product_exists = false;
+                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
+                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
+                    $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;                    $ttien = $soluong * $price;
+                    $product_exists = false;                 
                     foreach ($_SESSION['cart'] as &$item) {
                         if ($item[0] == $id && $item[1] == $name && $item[3] == $price && $item[6] == $color && $item[7] == $size) {
                             $item[4] += $soluong;

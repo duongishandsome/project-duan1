@@ -97,26 +97,24 @@
                         <div class="pro-details-size-color d-flex">
                             <div class="pro-details-color-wrap">
                                 <span>Color</span>
-                                <select name="color_name">
+                                <select class="form-select" name="color_name">
                                     <?php
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
                                     <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
-
                                 </select>
                             </div>
                             <div class="product-size">
                                 <span>Size</span>
-                                <select name="size_name">
+                                <select class="form-select" name="size_name">
                                     <?php
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
                                     <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
-
                                 </select>
                             </div>
                         </div>
@@ -199,8 +197,8 @@
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <?php
-            if (isset($_SESSION['user-name'])) {
-        ?>
+                if (isset($_SESSION['user-name'])) {
+                ?>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <script>
                 $(document).ready(function() {
@@ -211,7 +209,7 @@
                 </script>
                 <div class="mb" id="binhluan">
                 </div>
-                <?php } else {?>
+                <?php } else { ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
                         <use xlink:href="#exclamation-triangle-fill" />
@@ -220,7 +218,7 @@
                         Vui lòng đăng nhập để bình luận sản phẩm này
                     </div>
                 </div>
-                <?php }?>
+                <?php } ?>
 
             </div>
 
@@ -244,11 +242,11 @@
                     <div class="new-product-wrapper swiper-wrapper">
                         <!-- Single Prodect -->
                         <?php
-                foreach ($sp_cung_loai as $sp) {
-                    extract($sp);
-                    $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
-                    $hinh = $img_path . $p_featured_photo;
-                    echo '
+                        foreach ($sp_cung_loai as $sp) {
+                            extract($sp);
+                            $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
+                            $hinh = $img_path . $p_featured_photo;
+                            echo '
                                 <div class="new-product-item swiper-slide">
                                 <div class="product">
                                 <div class="thumb">
