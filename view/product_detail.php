@@ -98,25 +98,25 @@
                             <div class="pro-details-color-wrap">
                                 <span>Màu</span>
                                 <select class="form-control" name="color_name">
+
                                     <?php
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
                                         <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
-
                                 </select>
                             </div>
                             <div class="product-size">
                                 <span>Kích cỡ</span>
                                 <select class="form-control" name="size_name">
+
                                     <?php
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
                                         <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
-
                                 </select>
                             </div>
                         </div>
@@ -200,25 +200,25 @@
                 <?php
                 if (isset($_SESSION['user-name'])) {
                 ?>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function() {
-                            $("#binhluan").load("view/binhluan/binhluanform.php", {
-                                idpro: <?php echo $id ?>
-                            });
-                        });
-                    </script>
-                    <div class="mb" id="binhluan">
-                    </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                <script>
+                $(document).ready(function() {
+                    $("#binhluan").load("view/binhluan/binhluanform.php", {
+                        idpro: <?php echo $id ?>
+                    });
+                });
+                </script>
+                <div class="mb" id="binhluan">
+                </div>
                 <?php } else { ?>
-                    <div class="alert alert-danger d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
-                        </svg>
-                        <div>
-                            Vui lòng đăng nhập để bình luận sản phẩm này
-                        </div>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        Vui lòng đăng nhập để bình luận sản phẩm này
                     </div>
+                </div>
                 <?php } ?>
 
             </div>

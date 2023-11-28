@@ -135,7 +135,7 @@ $error_message = '';
                                             echo $_SESSION['user-name']['role_id'] == 1 ? ' <li><a class="dropdown-item" href="./admin/index.php">Quản trị</a></li>' : "" 
                                         ?>
                                         <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a></li>
-                                        
+
                                     <?php
 
                                     } else {
@@ -146,13 +146,13 @@ $error_message = '';
                                 </ul>
                             </div>
                             <!-- Single Wedge End -->
+
                             
                             <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="icon-handbag"></i>
                                 <span
                                     class="header-action-num"><?php echo isset($_SESSION['cart']) ? (count($_SESSION['cart'])) : ""?></span>
                                 
-
                                 <!-- <span class="cart-amount">€30.00</span> -->
                             </a>
                             <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
