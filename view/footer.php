@@ -33,8 +33,7 @@
                     </div>
                     <!-- End single blog -->
                     <!-- Start single blog -->
-                    <div class="col-md-6 col-sm-6 col-lg-3 mb-md-30px mb-lm-30px" data-aos="fade-up"
-                        data-aos-delay="400">
+                    <div class="col-md-6 col-sm-6 col-lg-3 mb-md-30px mb-lm-30px" data-aos="fade-up" data-aos-delay="400">
                         <div class="single-wedge">
                             <h4 class="footer-herading">Thông tin</h4>
                             <div class="footer-links">
@@ -80,19 +79,14 @@
                             <div class="footer-links">
                                 <!-- News letter area -->
                                 <div id="mc_embed_signup" class="subscribe-form">
-                                    <form id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank"
-                                        name="mc-embedded-subscribe-form" method="post"
-                                        action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
+                                    <form id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
                                         <div id="mc_embed_signup_scroll" class="mc-form">
-                                            <input class="email" type="email" required="" placeholder="Thư của bạn*"
-                                                name="EMAIL" value="" />
+                                            <input class="email" type="email" required="" placeholder="Thư của bạn*" name="EMAIL" value="" />
                                             <div class="mc-news" aria-hidden="true">
-                                                <input type="text" value="" tabindex="-1"
-                                                    name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" />
+                                                <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" />
                                             </div>
                                             <div class="clear">
-                                                <button id="mc-embedded-subscribe" class="button btn-primary"
-                                                    type="submit" name="subscribe" value=""><i class="icon-cursor"></i>
+                                                <button id="mc-embedded-subscribe" class="button btn-primary" type="submit" name="subscribe" value=""><i class="icon-cursor"></i>
                                                     Gửi thư</button>
                                             </div>
                                         </div>
@@ -115,8 +109,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-start">
-                        <p class="copy-text"> © 2023 <strong>Nhóm</strong> 6 <i class="ion-heart"
-                                aria-hidden="true"></i> By <a class="company-name" href="https://hasthemes.com/">
+                        <p class="copy-text"> © 2023 <strong>Nhóm</strong> 6 <i class="ion-heart" aria-hidden="true"></i> By <a class="company-name" href="https://hasthemes.com/">
                                 <strong> Tung_Toan_Duong</strong></a>.</p>
                     </div>
                 </div>
@@ -132,8 +125,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">x</span></button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -290,9 +282,37 @@
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->
 <script src="assets/js/vendor/vendor.min.js"></script>
 <script src="assets/js/plugins/plugins.min.js"></script>
+<script src="assets/js/sweetalert2.all.min.js"></script>
 
 <!-- Main Js -->
 <script src="assets/js/main.js"></script>
+<script>
+    function validateInput(input) {
+        var inputValue = input.value;
+
+        // Kiểm tra nếu giá trị nhập là số từ 0 đến 9 hoặc là kiểu chữ
+        if (inputValue === "" || inputValue === "0" || isNaN(inputValue)) {
+            input.value = "1"; // Đặt giá trị mặc định là 1
+        }
+    }
+
+    function showConfirmationDialog(href, event) {
+        event.preventDefault(); // Ngăn chặn điều hướng mặc định của thẻ a
+
+        Swal.fire({
+            title: 'Xác nhận',
+            text: 'Bạn có chắc chắn muốn xóa?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Có',
+            cancelButtonText: 'Không'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = href;
+            }
+        });
+    }
+</script>
 </body>
 
 

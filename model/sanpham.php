@@ -5,7 +5,7 @@ function get_info_product()
             p.p_id, p.p_name, p.p_current_price, p.p_old_price, p.p_quantity, p.p_featured, p.p_featured_photo, p.p_status, c.cate_name
             from 
             product p left join category c on p.cate_id = c.cate_id  
-            order by p.p_id asc";
+            order by p.p_id desc";
     $list_product = pdo_query($sql);
     return  $list_product;
 }
@@ -17,7 +17,7 @@ function get_product_by_id($id)
     return $product;
 }
 
-function insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $status, $cate_id)
+function insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $is_featured, $status, $cate_id)
 {
     $sql = "INSERT INTO product(
             p_name,
@@ -27,9 +27,10 @@ function insert_product($name, $old_price, $current_price, $quantity, $featured_
             p_featured_photo,
             p_description,
             p_short_description,
+            p_featured,
             p_status,
             cate_id
-        ) VALUES ('$name', '$old_price', '$current_price', '$quantity','$featured_photo','$desc','$short_desc', '$status', '$cate_id')";
+        ) VALUES ('$name', '$old_price', '$current_price', '$quantity','$featured_photo','$desc','$short_desc',$is_featured, $status, $cate_id)";
     pdo_execute($sql);
 }
 
@@ -81,7 +82,7 @@ function delete_product($id)
     pdo_execute($sql);
 }
 
-function update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $status, $cate_id)
+function update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $is_featured, $status, $cate_id)
 {
     $check_old_price = !empty($old_price) ? $old_price : 'NULL';
     $sql = "UPDATE product SET 
@@ -92,13 +93,14 @@ function update_product_with_img($p_id, $name, $old_price, $current_price, $quan
         p_featured_photo='$featured_photo',
         p_description='$desc',
         p_short_description='$short_desc',
+        p_featured= $is_featured,
         p_status=$status,
         cate_id=$cate_id
         WHERE p_id=$p_id";
     pdo_execute($sql);
 }
 
-function update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $status, $cate_id)
+function update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $is_featured, $status, $cate_id)
 {
     $check_old_price = !empty($old_price) ? $old_price : 'NULL';
     $sql = "UPDATE product SET 
@@ -108,6 +110,7 @@ function update_product_no_img($p_id, $name, $old_price, $current_price, $quanti
         p_quantity=$quantity,
         p_description='$desc',
         p_short_description='$short_desc',
+        p_featured= $is_featured,
         p_status=$status,
         cate_id=$cate_id
         WHERE p_id=$p_id";

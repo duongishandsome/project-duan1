@@ -28,6 +28,13 @@ function checkemail($email)
     $sp = pdo_query_one($sql);
     return $sp;
 }
+
+function get_info_user($email) {
+    $sql = "select * from user where user_email='$email'";
+    $user = pdo_query_one($sql);
+    return  $user;
+}
+
 function update_taikhoan($id, $email, $user, $pass, $phone, $adress, $gender, $birth, $hinh)
 {
     if ($hinh != "") {

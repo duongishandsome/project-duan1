@@ -3,7 +3,7 @@ include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/color.php";
 include "../model/size.php";
-include "../model/accadmin.php";
+include "../model/user.php";
 include "../model/sanpham.php";
 include "../model/accuser.php";
 include "../model/voucher.php";
@@ -79,9 +79,45 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 }
             }
             break;
+
+        case "listuser":
+            $list_user = get_all_user_customer();
+            $list_admin = get_all_user_admin();
+            include "user/list.php";
+            break;
         case "listproduct":
             $list_product = get_info_product();
             include "product/list.php";
+            break;
+        case "adduser":
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) { 
+                $user_name = $_POST['user_name'];
+                $user_email = $_POST['user_email'];
+                $user_phone = $_POST['user_phone'];
+                $user_password = $_POST['user_password'];
+                $status = $_POST['status'];
+                $role_id = $_POST['role_id'];
+
+                $hashed_password = password_hash($user_password, PASSWORD_BCRYPT);
+
+                insert_user($user_name, $user_email, $user_phone, $hashed_password, $status, $role_id);
+                $success_message = 'Thêm tài khoản thành công.';
+            }
+            $list_role = get_role();
+            include "user/add.php";
+            break;
+        case "updatestatususer":
+            if (isset($_GET['user_id']) && ($_GET['user_id'] > 0)) {
+                update_user_status($_GET['user_id']);
+            }
+            header("location: index.php?act=listuser");
+            break;
+        case "deleteuser":
+            if (isset($_GET['user_id']) && ($_GET['user_id'] > 0)) {
+                delete_user($_GET['user_id']);
+                header("location: index.php?act=listuser");
+            }
+            break;
             break;
         case "addproduct":
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
@@ -127,6 +163,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $quantity = $_POST['p_quantity'];
                     $desc = $_POST['p_description'];
                     $short_desc = $_POST['p_short_description'];
+                    $is_featured = $_POST['p_is_featured'];
                     $status = $_POST['status'];
                     $cate_id = $_POST['cate_id'];
 
@@ -136,7 +173,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $featured_photo = 'product-featured-' . $product_id . '.' . $ext;
                     move_uploaded_file($path_tmp, '../upload/' . $featured_photo);
 
-                    insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $status, $cate_id);
+                    insert_product($name, $old_price, $current_price, $quantity, $featured_photo, $desc, $short_desc, $is_featured, $status, $cate_id);
 
 
 
@@ -278,11 +315,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $quantity = $_POST['p_quantity'];
                     $desc = $_POST['p_description'];
                     $short_desc = $_POST['p_short_description'];
+                    $is_featured = $_POST['p_is_featured'];
                     $status = $_POST['status'];
                     $cate_id = $_POST['cate_id'];
 
                     if ($path == '') {
-                        update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $status, $cate_id);
+                        update_product_no_img($p_id, $name, $old_price, $current_price, $quantity, $desc, $short_desc, $is_featured, $status, $cate_id);
                     } else {
 
                         unlink('../upload/' . $_POST['current_photo']);
@@ -290,7 +328,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $final_name = 'product-featured-' . $p_id . '.' . $ext;
                         move_uploaded_file($path_tmp, '../upload/' . $final_name);
 
-                        update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $final_name, $desc, $short_desc, $status, $cate_id);
+                        update_product_with_img($p_id, $name, $old_price, $current_price, $quantity, $final_name, $desc, $short_desc, $is_featured, $status, $cate_id);
                     }
 
                     if (isset($_POST['size'])) {
@@ -371,8 +409,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['p_id']) && ($_GET['p_id'] > 0)) {
                 delete_product($_GET['p_id']);
             }
-            $list_product = get_info_product();
-            include "product/list.php";
+            header("location: index.php?act=listproduct");
             break;
         case "listcolor":
             $listcolor = loadall_color();
@@ -472,70 +509,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listsize = loadall_size();
             include "settingpro/size/list.php";
             break;
-        case "listaccadmin":
-            $listadmin = loadall_admin();
-            include "taikhoan/admin/list.php";
-            break;
+
         case "logout_admin":
             ob_start();
             session_start();
-            unset($_SESSION['admin']);
-            header("location: ./taikhoan/admin/login.php"); 
+            unset($_SESSION['user-name']);
+            header('location: ../index.php?act=login');
+            exit;
             break;
-        case "addaccadmin":
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                $fullname = $_POST['fullname'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $password = $_POST['password'];
 
-                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-                
-                $role = $_POST['role'];
-                $status = $_POST['status'];
-                insert_admin($fullname, $email, $phone, $hashed_password, $role, $status);
-            }
-            $listadmin = loadall_admin();
-            include "taikhoan/admin/add.php";
-            break;
-        case "suaadmin":
-            if (isset($_GET['admin_id']) && ($_GET['admin_id'] > 0)) {
-                $admin = loadone_admin($_GET['admin_id']);
-            }
-            include "taikhoan/admin/update.php";
-            break;
-        case "updateadmin":
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $id = $_POST['id'];
-                $fullname = $_POST['fullname'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-               
-                $role = $_POST['role'];
-                $status = $_POST['status'];
-                update_admin($id, $fullname, $email, $phone, $role, $status);
-            }
-            $listadmin = loadall_admin();
-            include "taikhoan/admin/list.php";
-            break;
-        case "xoaadmin":
-            if (isset($_GET['admin_id']) && ($_GET['admin_id'] > 0)) {
-                delete_admin($_GET['admin_id']);
-            }
-            $listadmin = loadall_admin();
-            include "taikhoan/admin/list.php";
-            break;
-        case "listaccuser":
-            $listuser = loadall_taikhoan();
-            include "taikhoan/user/list.php";
-            break;
-        case "xoauser":
-            if (isset($_GET['user_id']) && ($_GET['user_id'] > 0)) {
-                delete_taikhoan($_GET['user_id']);
-            }
-            $listuser = loadall_taikhoan();
-            include "taikhoan/user/list.php";
-            break;
         case "listcomment":
             $listcomment = loadall_comment();
             include "binhluan/list.php";

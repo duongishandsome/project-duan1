@@ -184,6 +184,15 @@ if (is_array($product)) {
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="" class="col-sm-3 label-custom text-right pr-4">Sản phẩm nổi bật?</label>
+                                <div class="col-sm-8">
+                                    <select name="p_is_featured" class="form-control" style="width:auto;">
+                                        <option value="1" <?php echo $p_is_featured == '1' ? "selected" : ""; ?>>Có</option>
+                                        <option value="0" <?php echo $p_is_featured == '0' ? "selected" : ""; ?>>không</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="" class="col-sm-3 label-custom text-right pr-4">Trạng thái</label>
                                 <div class="col-sm-8">
                                     <select name="status" class="form-control" style="width:auto;">

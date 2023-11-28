@@ -78,30 +78,15 @@
                         </p>
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users"></i>
+                    <a href="index.php?act=listuser" class="nav-link">
+                    <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                            Quản lý tài khoản
-                            <i class="right fas fa-angle-left"></i>
+                         Quản lý tài khoản
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="index.php?act=listaccadmin" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Admin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.php?act=listaccuser" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>User</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="index.php?act=listvoucher" class="nav-link">
                         <i class="fa-solid fa-tag fa-xl"></i>

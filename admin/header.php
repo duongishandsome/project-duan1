@@ -3,8 +3,8 @@ ob_start();
 session_start();
 $error_message = '';
 $success_message = '';
-if(!isset($_SESSION['admin'])) {
-	header('location: ./taikhoan/admin/login.php');
+if(!isset($_SESSION['user-name']) && $_SESSION['user-name']['role_id'] != 1) {
+	header('location: ../index.php?act=login');
 	exit;
 }
 ?>
@@ -49,10 +49,7 @@ if(!isset($_SESSION['admin'])) {
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="../index.php" class="nav-link">Trang chủ</a>
                 </li>
             </ul>
 

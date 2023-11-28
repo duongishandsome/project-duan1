@@ -1,3 +1,7 @@
+<?php 
+$error_message = '';
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -8,8 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Furns - Furniture eCommerce HTML Template</title>
-    <meta name="description"
-        content="240+ Best Bootstrap Templates are available on this website. Find your template for your project compatible with the most popular HTML library in the world." />
+    <meta name="description" content="240+ Best Bootstrap Templates are available on this website. Find your template for your project compatible with the most popular HTML library in the world." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="canonical" href="https://htmldemo.hasthemes.com/furns/" />
@@ -32,12 +35,12 @@
 
     <!-- Structured Data  -->
     <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        "name": "Replace_with_your_site_title",
-        "url": "Replace_with_your_site_URL"
-    }
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Replace_with_your_site_title",
+            "url": "Replace_with_your_site_URL"
+        }
     </script>
 
     <!-- vendor css (Bootstrap & Icon Font) -->
@@ -57,7 +60,8 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css" />
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css" />
     <link rel="stylesheet" href="assets/css/style.min.css">
-    <link rel="stylesheet" href="assets/css/css.css">
+    <!-- <link rel="stylesheet" href="assets/css/css.css"> -->
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
 
 
     <!-- Main Style -->
@@ -84,12 +88,10 @@
                     <div class="col align-self-center">
                         <div class="header-actions">
                             <div class="header_account_list">
-                                <a href="javascript:void(0)" class="header-action-btn search-btn"><i
-                                        class="icon-magnifier"></i></a>
+                                <a href="javascript:void(0)" class="header-action-btn search-btn"><i class="icon-magnifier"></i></a>
                                 <div class="dropdown_search">
                                     <form class="action-form" action="index.php?act=sanpham" method="POST">
-                                        <input class="form-control" placeholder="Enter your search key" type="text"
-                                            name="kyw">
+                                        <input class="form-control" placeholder="Enter your search key" type="text" name="kyw">
                                         <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
                                     </form>
                                 </div>
@@ -113,11 +115,11 @@
                                             $hinh = "<img src='assets/images/avata/avata_null.jpg' alt='' ' style='height: 40px; width: 40px; border-radius: 50%;'>";
                                         }
                                     ?>
-                                    <?php echo $hinh ?>
+                                        <?php echo $hinh ?>
                                     <?php
                                     } else {
                                     ?>
-                                    <i class="icon-user"></i>
+                                        <i class="icon-user"></i>
                                     <?php } ?>
 
                                 </button>
@@ -127,28 +129,33 @@
                                     if (isset($_SESSION['user-name'])) {
                                         extract($_SESSION['user-name']);
                                     ?>
-                                    <li><a class="dropdown-item" href="index.php?act=account">Tài khoản</a></li>
-                                    <li><a class="dropdown-item" href="index.php?act=trangthaidon   ">Đơn mua</a></li>
-                                    <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a></li>
+                                        <li><a class="dropdown-item" href="index.php?act=account">Tài khoản</a></li>
+                                        <li><a class="dropdown-item" href="index.php?act=trangthaidon">Đơn mua</a></li>
+                                        <?php 
+                                            echo $_SESSION['user-name']['role_id'] == 1 ? ' <li><a class="dropdown-item" href="./admin/index.php">Quản trị</a></li>' : "" 
+                                        ?>
+                                        <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a></li>
+                                        
                                     <?php
 
                                     } else {
                                     ?>
-                                    <li><a class="dropdown-item" href="index.php?act=login">Đăng nhập</a></li>
+                                        <li><a class="dropdown-item" href="index.php?act=login">Đăng nhập</a></li>
                                     <?php } ?>
 
                                 </ul>
                             </div>
                             <!-- Single Wedge End -->
-                            <a href="#offcanvas-cart"
-                                class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                            
+                            <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="icon-handbag"></i>
                                 <span
-                                    class="header-action-num"><?php $cartItemCount = count($_SESSION['cart']); echo $cartItemCount?></span>
+                                    class="header-action-num"><?php echo isset($_SESSION['cart']) ? (count($_SESSION['cart'])) : ""?></span>
+                                
+
                                 <!-- <span class="cart-amount">€30.00</span> -->
                             </a>
-                            <a href="#offcanvas-mobile-menu"
-                                class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                            <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                 <i class="icon-menu"></i>
                             </a>
                         </div>

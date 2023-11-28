@@ -142,6 +142,15 @@
 								</div>
 							</div>
 							<div class="form-group row">
+								<label for="" class="col-sm-3 label-custom text-right pr-4">Sản phẩm nổi bật</label>
+								<div class="col-sm-8">
+									<select name="p_is_featured" class="form-control" style="width:auto;">
+										<option value="1">Có</option>
+										<option value="0">không</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
 								<label for="" class="col-sm-3 label-custom text-right pr-4">Trạng thái</label>
 								<div class="col-sm-8">
 									<select name="status" class="form-control" style="width:auto;">

@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 		<div class="card card-cus">
 			<div class="card-body">
-				<table id="example2" class="table table-bordered table-hover table-striped">
+				<table  class="example2 table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
 							<th>STT</th>
@@ -27,6 +27,7 @@
 							<th>Giá cũ</th>
 							<th>Giá bán</th>
 							<th>Số lượng</th>
+							<th>Nổi bật?</th>
 							<th>Trạng thái</th>
 							<th>Danh mục</th>
 							<th>Hành động</th>
@@ -47,6 +48,13 @@
 								<td><?php echo number_format($row['p_old_price'], 0, ',', '.'); ?></td>
 								<td><?php echo number_format($row['p_current_price'], 0, ',', '.');?></td>
 								<td><?php echo $row['p_quantity']; ?></td>
+								<td>
+									<?php if ($row['p_featured'] == 1) {
+										echo '<span class="badge badge-success p-2" style="font-size:14px">Có</span>';
+									} else {
+										echo '<span class="badge badge-success p-2" style="font-size:14px">Không</span>';
+									} ?>
+								</td>
 								<td>
 									<?php if ($row['p_status'] == 1) {
 										echo '<span class="badge badge-success p-2" style="font-size:14px">Hoạt động</span>';

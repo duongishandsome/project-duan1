@@ -37,7 +37,7 @@ if (isset($_SESSION['user-name'])) {
                 <form action="#">
                     <div class="table-content table-responsive cart-table-content">
 
-                        <table>
+                    <table>
                             <?php
                                 global $img_path;
                                 $tong = 0;

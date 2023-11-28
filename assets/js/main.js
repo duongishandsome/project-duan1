@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     "use strict";
 
     /*----------------------------------------
@@ -7,11 +7,11 @@
 
     // Add slideDown animation to Bootstrap dropdown when expanding.
 
-    $('.dropdown').on('show.bs.dropdown', function() {
+    $('.dropdown').on('show.bs.dropdown', function () {
         $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
     });
     // Add slideUp animation to Bootstrap dropdown when collapsing.
-    $('.dropdown').on('hide.bs.dropdown', function() {
+    $('.dropdown').on('hide.bs.dropdown', function () {
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
 
@@ -19,7 +19,7 @@
     /*---------------------
         Toggle Search Bar
     --------------------- */
-    $(".search-btn").on("click", function() {
+    $(".search-btn").on("click", function () {
         $(this).toggleClass('active');
         $('.dropdown_search').slideToggle('medium');
     });
@@ -27,7 +27,7 @@
     /*---------------------------
        Menu Fixed On Scroll Active
     ------------------------------ */
-    $(window).on("scroll", function(e) {
+    $(window).on("scroll", function (e) {
         var window_top = $(window).scrollTop() + 1;
         if (window_top > 250) {
             $(".sticky-nav").addClass("menu_fixed animated fadeInDown");
@@ -60,12 +60,12 @@
     /*---------------------------------
         Off Canvas Function
     -----------------------------------*/
-    (function() {
+    (function () {
         var $offCanvasToggle = $(".offcanvas-toggle"),
             $offCanvas = $(".offcanvas"),
             $offCanvasOverlay = $(".offcanvas-overlay"),
             $mobileMenuToggle = $(".mobile-menu-toggle");
-        $offCanvasToggle.on("click", function(e) {
+        $offCanvasToggle.on("click", function (e) {
             e.preventDefault();
             var $this = $(this),
                 $target = $this.attr("href");
@@ -76,7 +76,7 @@
                 $this.addClass("close");
             }
         });
-        $(".offcanvas-close, .offcanvas-overlay").on("click", function(e) {
+        $(".offcanvas-close, .offcanvas-overlay").on("click", function (e) {
             e.preventDefault();
             $body.removeClass("offcanvas-open");
             $offCanvas.removeClass("offcanvas-open");
@@ -96,7 +96,7 @@
         $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"></span>');
 
         /*Category Sub Menu Toggle*/
-        $offCanvasNav.on("click", "li a, .menu-expand", function(e) {
+        $offCanvasNav.on("click", "li a, .menu-expand", function (e) {
             var $this = $(this);
             if ($this.attr("href") === "#" || $this.hasClass("menu-expand")) {
                 e.preventDefault();
@@ -128,7 +128,7 @@
         $offCanvasNavSubMenu.parent().prepend('<span class="offcanvas__user-expand"></span>');
 
         /*Category Sub Menu Toggle*/
-        $offCanvasNav.on('click', 'li a, .offcanvas__user-expand', function(e) {
+        $offCanvasNav.on('click', 'li a, .offcanvas__user-expand', function (e) {
             var $this = $(this);
             if ($this.attr('href') === '#' || $this.hasClass('offcanvas__user-expand')) {
                 e.preventDefault();
@@ -364,11 +364,14 @@
     var CartPlusMinus = $(".cart-plus-minus");
     CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
     CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-    $(".qtybutton").on("click", function() {
+    $(".qtybutton").on("click", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
         if ($button.text() === "+") {
             var newVal = parseFloat(oldValue) + 1;
+            if (newVal > 10) {
+                newVal = 10; // Giới hạn giá trị mới là 10
+            }
         } else {
             // Don't allow decrementing below zero
             if (oldValue > 1) {
@@ -421,11 +424,11 @@
     /*-------------------------------
         Create an account toggle
     ---------------------------------*/
-    $(".checkout-toggle2").on("click", function() {
+    $(".checkout-toggle2").on("click", function () {
         $(".open-toggle2").slideToggle(1000);
     });
 
-    $(".checkout-toggle").on("click", function() {
+    $(".checkout-toggle").on("click", function () {
         $(".open-toggle").slideToggle(1000);
     });
 
@@ -442,10 +445,10 @@
     /*---------------------
         Countdown
     --------------------- */
-    $("[data-countdown]").each(function() {
+    $("[data-countdown]").each(function () {
         var $this = $(this),
             finalDate = $(this).data("countdown");
-        $this.countdown(finalDate, function(event) {
+        $this.countdown(finalDate, function (event) {
             $this.html(event.strftime('<span class="cdown day"><span class="cdown-1">%-D</span><p>Days</p></span> <span class="cdown hour"><span class="cdown-1">%-H</span><p>Hours</p></span> <span class="cdown minutes"><span class="cdown-1">%M</span> <p>Mins</p></span> <span class="cdown second"><span class="cdown-1"> %S</span> <p>Sec</p></span>'));
         });
     });
@@ -463,9 +466,9 @@
         },
     });
 
-     /*********************************************
-     *   Company Logo Slider Active - 7 Grid Single Rows
-     **********************************************/
+    /*********************************************
+    *   Company Logo Slider Active - 7 Grid Single Rows
+    **********************************************/
     var companyLogoSlider = new Swiper('.company-logo-slider.swiper-container', {
         slidesPerView: 5,
         speed: 1500,

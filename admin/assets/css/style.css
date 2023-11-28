@@ -24,3 +24,15 @@
     font-weight: 700;
     font-size: 18px;
 }
+
+.br-r {
+    background: #f9cccc;
+}
+
+.br-g {
+    background: #d3f9b4;
+}
+
+.status {
+    cursor: pointer;
+}

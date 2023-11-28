@@ -44,9 +44,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                            </div>
+                                <div class="swiper-slide zoom-image-hover">
+                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                                </div>
 
                             <?php  } ?>
 
@@ -60,9 +60,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                            </div>
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                                </div>
 
                             <?php  } ?>
 
@@ -96,25 +96,25 @@
                     <form action="index.php?act=addtocart>" method="post">
                         <div class="pro-details-size-color d-flex">
                             <div class="pro-details-color-wrap">
-                                <span>Color</span>
-                                <select name="color_name">
+                                <span>Màu</span>
+                                <select class="form-control" name="color_name">
                                     <?php
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
-                                    <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
+                                        <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
 
                                 </select>
                             </div>
                             <div class="product-size">
-                                <span>Size</span>
-                                <select name="size_name">
+                                <span>Kích cỡ</span>
+                                <select class="form-control" name="size_name">
                                     <?php
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
-                                    <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
+                                        <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
 
                                 </select>
@@ -122,29 +122,28 @@
                         </div>
                         <div class=" pro-details-quality">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="p_quantity" value="1" />
+                                <input class="cart-plus-minus-box" required type="text" maxlength="1" onblur="validateInput(this);" name="p_quantity" value="1" />
                             </div>
+                        
                             <div class="pro-details-cart">
                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                 <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                 <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-
+                                
                                 <div class="addtocart-wrapper">
-                                    <input type="submit" name="addtocart" value="Mua ngay">
+                                    <input type="submit" name="buynow" value="Mua ngay">
+
                                 </div>
+                                <div class="pro-details-cart mt-4">
+                                        <button type="submit" name="addtocart"><i class="icon-handbag"></i>Thêm vào giỏ hàng</button>
+                                        <!-- <a href="cart.php"><i class="icon-handbag"></i>Thêm vào giỏ hàng</a> -->
+                                    </div>
                     </form>
 
                 </div>
             </div>
-            <div class="pro-details-wish-com">
-                <div class="pro-details-cart">
-                    <a href="cart.php"><i class="icon-handbag"></i>Thêm vào giỏ hàng</a>
-                </div>
-                <div class="pro-details-compare">
-                    <a href="compare.php"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
-                </div>
-            </div>
+
             <div class="pro-details-social-info">
                 <span>Share</span>
                 <div class="social-info">
@@ -199,28 +198,28 @@
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <?php
-            if (isset($_SESSION['user-name'])) {
-        ?>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                <script>
-                $(document).ready(function() {
-                    $("#binhluan").load("view/binhluan/binhluanform.php", {
-                        idpro: <?php echo $id ?>
-                    });
-                });
-                </script>
-                <div class="mb" id="binhluan">
-                </div>
-                <?php } else {?>
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                        <use xlink:href="#exclamation-triangle-fill" />
-                    </svg>
-                    <div>
-                        Vui lòng đăng nhập để bình luận sản phẩm này
+                if (isset($_SESSION['user-name'])) {
+                ?>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $("#binhluan").load("view/binhluan/binhluanform.php", {
+                                idpro: <?php echo $id ?>
+                            });
+                        });
+                    </script>
+                    <div class="mb" id="binhluan">
                     </div>
-                </div>
-                <?php }?>
+                <?php } else { ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div>
+                            Vui lòng đăng nhập để bình luận sản phẩm này
+                        </div>
+                    </div>
+                <?php } ?>
 
             </div>
 
@@ -239,16 +238,15 @@
                     </div>
                 </div>
                 <!-- section title start -->
-                <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up"
-                    data-aos-delay="200">
+                <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
                     <div class="new-product-wrapper swiper-wrapper">
                         <!-- Single Prodect -->
                         <?php
-                foreach ($sp_cung_loai as $sp) {
-                    extract($sp);
-                    $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
-                    $hinh = $img_path . $p_featured_photo;
-                    echo '
+                        foreach ($sp_cung_loai as $sp) {
+                            extract($sp);
+                            $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
+                            $hinh = $img_path . $p_featured_photo;
+                            echo '
                                 <div class="new-product-item swiper-slide">
                                 <div class="product">
                                 <div class="thumb">
@@ -276,16 +274,16 @@
                     </div>
                 </div>
             </div>';
-            }
-            ?>
+                        }
+                        ?>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-buttons">
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Add Arrows -->
-        <div class="swiper-buttons">
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-</div>
-</div>
 
-<!-- New Product End -->
+        <!-- New Product End -->

@@ -46,7 +46,7 @@
       .container()
       .appendTo("#example1_wrapper .col-md-6:eq(0)");
 
-    $('#example2').DataTable({
+    $('.example2').DataTable({
       "paging": true,
       "pageLength": 10,
       "lengthChange": true,
@@ -56,19 +56,19 @@
       "autoWidth": false,
       "responsive": true,
       "language": {
-            "lengthMenu": "_MENU_",
-            "zeroRecords": "Không có kết quả nào được tìm thấy",
-            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ mục",
-            "infoEmpty":"Không có kết quả",
-            "infoFiltered":   "",
-            "paginate": {
-                "first":      "Đầu tiên",
-                "last":       "Cuối cùng",
-                "next":       "Tiếp",
-                "previous":   "Trước"
-            },
-            "search": "Tìm kiếm:",
-        }
+        "lengthMenu": "_MENU_",
+        "zeroRecords": "Không có kết quả nào được tìm thấy",
+        "info": "Hiển thị _START_ đến _END_ của _TOTAL_ mục",
+        "infoEmpty": "Không có kết quả",
+        "infoFiltered": "",
+        "paginate": {
+          "first": "Đầu tiên",
+          "last": "Cuối cùng",
+          "next": "Tiếp",
+          "previous": "Trước"
+        },
+        "search": "Tìm kiếm:",
+      }
     });
 
     $('#confirm-delete').on('show.bs.modal', function(e) {
@@ -112,13 +112,13 @@
 
     $.validator.addMethod("imageFormat", function(value, element) {
       if (value == '') {
-        return true; 
+        return true;
       }
       return this.optional(element) || /\.(jpe?g|png|gif)$/i.test(value);
     }, "Vui lòng chọn ảnh có định dạng JPEG, PNG, hoặc GIF.");
     $.validator.addMethod("positiveNumber", function(value, element) {
       if (value == '') {
-        return true; 
+        return true;
       }
       return Number(value) > 0;
     }, "Vui lòng nhập số dương");
@@ -130,7 +130,7 @@
           number: true,
           positiveNumber: true
         },
-        'photo[]' : {
+        'photo[]': {
           imageFormat: true,
         },
         p_current_price: {
@@ -168,12 +168,13 @@
         p_featured_photo: {
           required: 'Vui lòng chọn ảnh đại diện',
           imageFormat: 'Vui lòng chọn ảnh có định dạng JPEG, JPG, PNG, hoặc GIF'
-        } 
+        }
       },
       submitHandler: function(form) {
         form.submit();
       }
     });
+
     $('#updatePdForm').validate({
       rules: {
         cate_id: 'required',
@@ -182,7 +183,7 @@
           number: true,
           positiveNumber: true
         },
-        'photo[]' : {
+        'photo[]': {
           imageFormat: true,
         },
         p_current_price: {
@@ -218,7 +219,65 @@
         },
         p_featured_photo: {
           imageFormat: 'Vui lòng chọn ảnh có định dạng JPEG, JPG, PNG, hoặc GIF'
-        } 
+        }
+      },
+      submitHandler: function(form) {
+        form.submit();
+      }
+    });
+
+    $('#addUserForm').validate({
+      rules: {
+        user_name: {
+          required: true
+        },
+        user_email: {
+          required: true,
+          email: true
+        },
+        user_phone: {
+          required: true
+        },
+        user_password: {
+          required: true,
+          minlength: 6
+        },
+        confirm_password: {
+          required: true,
+          equalTo: '#user_password'
+        },
+        status: {
+          required: true
+        },
+        role_id: {
+          required: true
+        },
+      },
+      messages: {
+        user_name: {
+          required: 'Vui lòng nhập tên người dùng'
+        },
+        user_email: {
+          required: 'Vui lòng nhập email',
+          email: 'Vui lòng nhập đúng định dạng email'
+        },
+        user_phone: {
+          required: 'Vui lòng nhập số điện thoại'
+        },
+        user_password: {
+          required: 'Vui lòng nhập mật khẩu',
+          minlength: 'Mật khẩu phải chứa ít nhất 6 ký tự'
+        },
+        confirm_password: {
+          required: 'Vui lòng nhập lại mật khẩu',
+          equalTo: 'Mật khẩu không khớp'
+        },
+        status: {
+          required: "Vui lòng chọn trạng thái"
+        },
+        role_id: {
+          required: "Vui lòng chọn role"
+        },
       },
       submitHandler: function(form) {
         form.submit();
