@@ -68,7 +68,7 @@
                             <h3 class="title">
                                 Bộ sưu tập ghế <br /> văn phòng mới
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
+                            <a href="index.php?act=sanpham" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             <h3 class="title">
                                 Bộ sưu tập <br /> phòng khách
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
+                            <a href="index.php?act=sanpham" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                             <h3 class="title">
                                 Bộ sưu tập phòng<br /> trẻ em
                             </h3>
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="shop-link">Mua ngay</a>
+                            <a href="index.php?act=sanpham" class="shop-link">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -134,10 +134,6 @@
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-sale-item">Mặt hàng
                             giảm giá</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-on-sales">Sắp ra
-                            mắt
-                            <nav></nav>
-                        </a></li>
                 </ul>
             </div>
             <!-- Tab End -->
@@ -182,9 +178,12 @@
                                             <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
 
 
-                                            <input type="submit" name="addtocart" value="Mua ngay">
+                                            <button title="Add To Cart" type="submit" name="addtocart"
+                                                class=" add-to-cart">Add
+                                                to cart</button>
+
                                         </form>
-                                        <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
+
                                     </div>
                                     <div class="content">
                                         <h5 class="title"><a
@@ -192,6 +191,7 @@
                                         </h5>
                                         <span class="price">
                                             <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                            <span class="old">$38.00</span>
                                         </span>
                                     </div>
                                 </div>
@@ -302,50 +302,7 @@
                     <!-- 3rd tab end -->
                     <!-- sắp ra mắt -->
                     <!-- 4th tab start -->
-                    <div class="tab-pane fade" id="tab-product-on-sales">
-                        <div class="row">
-                            <?php
-                            $i = 0;
-                            foreach ($spnew as $sp) {
-                                extract($sp);
-                                $hinh = $img_path . $p_featured_photo;
-                            ?>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <!-- Single Prodect -->
-                                <div class="product">
-                                    <div class="thumb">
-                                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                            <img src="<?php echo $hinh ?>" alt="Product" />
-                                            <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                        </a>
-                                        <span class="badges">
-                                            <span class="new">New</span>
-                                        </span>
-                                        <div class="actions">
-                                            <a href="index.php?act=cart" class="action cart" title="cart"><i
-                                                    class="icon-heart"></i></a>
-                                            <a href="#" class="action quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
-                                            <a href="compare.html" class="action compare" title="Compare"><i
-                                                    class="icon-refresh"></i></a>
-                                        </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title"><a
-                                                href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
-                                        </h5>
-                                        <span class="price">
-                                            <span class="new"><?php echo $p_current_price . " đ" ?></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </div>
+
                 </div>
                 <!-- 4th tab end -->
             </div>

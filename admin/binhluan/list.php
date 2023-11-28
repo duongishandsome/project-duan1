@@ -13,7 +13,7 @@
             <div class="card-body">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
-                    <tr>
+                  
                         <th>Id</th>
                         <th>NameUser</th>
                         <th>NameProduct</th>
@@ -24,21 +24,21 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach($listcomment as $comment){
-                    extract($comment);
-                    $xoadm="index.php?act=xoadm&cate_id=".$cmt_id;
-                    echo '
+                  foreach($listbinhluan as $binhluan){
+                    $xoacmt = "index.php?act=xoabinhluan&cmt_id=" . $binhluan['cmt_id'];
+                  ?>
+                  
                     <tr>
-                    <td>'.$cmt_id.'</td>
-                    <td>'.$p_id.'</td>
-                    <td>'.$user_id.'</td>
-                    <td>'.$cmt_content.'</td>
-                    <td>'.$cmt_date.'</td>
-                    <td><a href="'.$xoadm.'"><input type="button" value="Xóa" class="btn btn-danger btn-xs"></a></td>
-                </tr>
-                    ';
-                }
-                ?>
+                        <td><?php echo $binhluan['cmt_id']?></td>
+                        <td><?php echo $binhluan['user_name']?></td>
+                        <td><?php echo $binhluan['p_name']?></td>
+                        <td><?php echo $binhluan['cmt_content']?></td>
+                        <td><?php echo $binhluan['cmt_date']?></td>
+                        <td><a class="btn btn-primary btn-sm" href="<?php echo $xoacmt?>">Xóa</a></td>
+                    <tr>
+                  <?php } ?>
+                  
+         
                 </tbody>
                 
             </table>

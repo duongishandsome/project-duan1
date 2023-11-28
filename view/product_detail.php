@@ -85,7 +85,7 @@
                             <i class="ion-android-star"></i>
                             <i class="ion-android-star"></i>
                         </div>
-                        <span class="read-review"><a class="reviews" href="#">Read reviews (1)</a></span>
+                        <span class="read-review"><a class="reviews" href="#">Lượt bình luận(1)</a></span>
                     </div>
                     <div class="pricing-meta">
                         <ul>
@@ -93,7 +93,7 @@
                         </ul>
                     </div>
                     <p class="quickview-para"><?php echo $p_short_description ?></p>
-                    <form action="index.php?act=addtocart>" method="post">
+                    <form action="index.php?act=addtocart" method="post">
                         <div class="pro-details-size-color d-flex">
                             <div class="pro-details-color-wrap">
                                 <span>Màu</span>
@@ -124,21 +124,20 @@
                             <div class="cart-plus-minus">
                                 <input class="cart-plus-minus-box" required type="text" maxlength="1" onblur="validateInput(this);" name="p_quantity" value="1" />
                             </div>
-                        
+
                             <div class="pro-details-cart">
                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                 <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                 <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                
-                                <div class="addtocart-wrapper">
-                                    <input type="submit" name="buynow" value="Mua ngay">
 
+                                <div class="addtocart-wrapper">
+                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart" type="submit">Mua ngay</button>
+                                    <button type="submit" name="themcart"><i class="icon-handbag"></i>Thêm vào giỏ
+                                        hàng</button>
                                 </div>
-                                <div class="pro-details-cart mt-4">
-                                        <button type="submit" name="addtocart"><i class="icon-handbag"></i>Thêm vào giỏ hàng</button>
-                                        <!-- <a href="cart.php"><i class="icon-handbag"></i>Thêm vào giỏ hàng</a> -->
-                                    </div>
+                                <!-- <div class="pro-details-cart mt-4">
+                                </div> -->
                     </form>
 
                 </div>
@@ -187,7 +186,7 @@
     <div class="container">
         <div class="description-review-wrapper">
             <div class="description-review-topbar nav">
-                <a class="active" data-bs-toggle="tab" href="#des-details2">Product Details</a>
+                <a class="active" data-bs-toggle="tab" href="#des-details2">Chi tiết sản phẩm</a>
             </div>
             <div class="tab-content description-review-bottom">
                 <div id="des-details2" class="tab-pane active">
@@ -195,35 +194,36 @@
                         <p><?php echo $p_description ?></p>
                     </div>
                 </div>
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                <?php
-                if (isset($_SESSION['user-name'])) {
-                ?>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                <script>
-                $(document).ready(function() {
-                    $("#binhluan").load("view/binhluan/binhluanform.php", {
-                        idpro: <?php echo $id ?>
-                    });
-                });
-                </script>
-                <div class="mb" id="binhluan">
-                </div>
-                <?php } else { ?>
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                        <use xlink:href="#exclamation-triangle-fill" />
-                    </svg>
-                    <div>
-                        Vui lòng đăng nhập để bình luận sản phẩm này
-                    </div>
-                </div>
-                <?php } ?>
-
             </div>
 
         </div>
+    </div>
+    <div >
+    <?php
+                if (isset($_SESSION['user-name'])) {
+                ?>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $("#binhluan").load("view/binhluan/binhluanform.php", {
+                                idpro: <?php echo $p_id ?>
+                            });
+                        });
+                    </script>
+                    <div class="mb" id="binhluan">
+                    </div>
+                <?php } else { ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div style="margin-top 20px;">
+                            Vui lòng đăng nhập để bình luận sản phẩm này
+                        </div>
+                    </div>
+                <?php } ?>
+    </div>
+</div>
         <!-- product details description area end -->
 
         <!-- New Product Start -->
@@ -285,5 +285,7 @@
                 </div>
             </div>
         </div>
-
+</div>
+</div>
+</div>
         <!-- New Product End -->

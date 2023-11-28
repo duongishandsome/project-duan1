@@ -7,7 +7,7 @@ include "../model/user.php";
 include "../model/sanpham.php";
 include "../model/accuser.php";
 include "../model/voucher.php";
-include "../model/comment.php";
+include "../model/binhluan.php";
 include "../model/thongke.php";
 include 'header.php';
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
@@ -517,16 +517,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             header('location: ../index.php?act=login');
             exit;
             break;
-
-        case "listcomment":
-            $listcomment = loadall_comment();
+        case "listbinhluan":
+            $listbinhluan = loadall_binhluan();
             include "binhluan/list.php";
             break;
-        case "xoacomment":
+        case "xoabinhluan":
             if (isset($_GET['cmt_id']) && ($_GET['cmt_id'] > 0)) {
-                delete_comment($_GET['cmt_id']);
+                delete_binhluan($_GET['cmt_id']);
             }
-            $listcomment = loadall_comment();
+            $listbinhluan = loadall_binhluan();
             include "binhluan/list.php";
             break;
         case "listvoucher":

@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?act=listcomment" class="nav-link">
+                    <a href="index.php?act=listbinhluan" class="nav-link">
                         <i class="nav-icon fa-solid fa-comments"></i>
                         <p>
                             Quản lý bình luận
