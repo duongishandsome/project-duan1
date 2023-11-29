@@ -37,79 +37,11 @@ if (isset($_SESSION['user-name'])) {
                 <form action="#">
                     <div class="table-content table-responsive cart-table-content">
 
-                    <table>
+                        <table>
                             <?php
-                                global $img_path;
-                                $tong = 0;
-                                $i = 0;
-                                $del = 1;
-                                if ($del == 1) {
-                                    $xoasp_th = 'Thao tác';
-                                    $xoasp_td2 = '<td></td>';
-                                } else {
-                                    $xoasp_th = '';
-                                    $xoasp_td2 = '';
-                                }
-                                ?>
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Ảnh</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Màu</th>
-                                    <th>Size</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
-                                    <th><?php echo $xoasp_th ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    foreach ($_SESSION['cart'] as $cart) {
-                                        $hinh = $img_path . $cart[2];
-                                        $ttien = $cart[3] * $cart[4];
-                                        $tong += $ttien;
-                                        $i++;
-                                        if ($del == 1) {
-                                            $xoasp_td = 'index.php?act=delcart&idcart=' . $i;                                   
-                                             } else {
-                                            $xoasp_td = '';
-                                        }
-                                    ?>
-                                <tr>
-                                    <td><?php echo $i ?> </td>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="<?php echo $hinh ?>"
-                                                alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#"><?php echo $cart[1] ?></td>
-                                    <td class="product-price-cart"><span class="amount"><?php echo $cart[3] ?></span>
-                                    </td>
-
-                                    <td>
-                                        <?php echo $cart[6] ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo $cart[7] ?>
-                                    </td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton"
-                                                value="<?php echo $cart[4] ?>" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal"><?php echo $cart[5] ?></td>
-
-                                    <td class="product-remove">
-                                        <a href="<?php echo $xoasp_td; ?>"><i class="icon-close"></i></a>
-
-                                    </td>
-                                </tr>
-                                <?php } ?>
-
-                            </tbody>
+                            include "model/cart.php";
+                            viewcart(1);
+                            ?>
                         </table>
                     </div>
                     <div class="row">

@@ -44,9 +44,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                                <div class="swiper-slide zoom-image-hover">
-                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                                </div>
+                            <div class="swiper-slide zoom-image-hover">
+                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                            </div>
 
                             <?php  } ?>
 
@@ -60,9 +60,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                                </div>
+                            <div class="swiper-slide">
+                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                            </div>
 
                             <?php  } ?>
 
@@ -103,7 +103,7 @@
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
+                                    <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -115,14 +115,15 @@
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
+                                    <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class=" pro-details-quality">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" required type="text" maxlength="1" onblur="validateInput(this);" name="p_quantity" value="1" />
+                                <input class="cart-plus-minus-box" required type="text" maxlength="1"
+                                    onblur="validateInput(this);" name="p_quantity" value="1" />
                             </div>
 
                             <div class="pro-details-cart">
@@ -132,7 +133,8 @@
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
 
                                 <div class="addtocart-wrapper">
-                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart" type="submit">Mua ngay</button>
+                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart"
+                                        type="submit">Mua ngay</button>
                                     <button type="submit" name="themcart"><i class="icon-handbag"></i>Thêm vào giỏ
                                         hàng</button>
                                 </div>
@@ -251,6 +253,7 @@
                     $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
                     $hinh = $img_path . $p_featured_photo;
                     echo '
+
                                 <div class="new-product-item swiper-slide">
                                 <div class="product">
                                 <div class="thumb">
