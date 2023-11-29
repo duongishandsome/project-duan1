@@ -44,9 +44,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                                <div class="swiper-slide zoom-image-hover">
-                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                                </div>
+                            <div class="swiper-slide zoom-image-hover">
+                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                            </div>
 
                             <?php  } ?>
 
@@ -60,9 +60,9 @@
                             foreach ($list_img as $row) {
                                 $hinh_con = $img_path2 . $row['img_name'];
                             ?>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                                </div>
+                            <div class="swiper-slide">
+                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                            </div>
 
                             <?php  } ?>
 
@@ -103,7 +103,7 @@
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
+                                    <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -115,14 +115,15 @@
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
+                                    <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class=" pro-details-quality">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" required type="text" maxlength="1" onblur="validateInput(this);" name="p_quantity" value="1" />
+                                <input class="cart-plus-minus-box" required type="text" maxlength="1"
+                                    onblur="validateInput(this);" name="p_quantity" value="1" />
                             </div>
 
                             <div class="pro-details-cart">
@@ -132,7 +133,8 @@
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
 
                                 <div class="addtocart-wrapper">
-                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart" type="submit">Mua ngay</button>
+                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart"
+                                        type="submit">Mua ngay</button>
                                     <button type="submit" name="themcart"><i class="icon-handbag"></i>Thêm vào giỏ
                                         hàng</button>
                                 </div>
@@ -198,50 +200,50 @@
 
         </div>
     </div>
-    <div >
-    <?php
+    <div>
+        <?php
                 if (isset($_SESSION['user-name'])) {
                 ?>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function() {
-                            $("#binhluan").load("view/binhluan/binhluanform.php", {
-                                idpro: <?php echo $p_id ?>
-                            });
-                        });
-                    </script>
-                    <div class="mb" id="binhluan">
-                    </div>
-                <?php } else { ?>
-                    <div class="alert alert-danger d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
-                        </svg>
-                        <div style="margin-top 20px;">
-                            Vui lòng đăng nhập để bình luận sản phẩm này
-                        </div>
-                    </div>
-                <?php } ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $("#binhluan").load("view/binhluan/binhluanform.php", {
+                idpro: <?php echo $p_id ?>
+            });
+        });
+        </script>
+        <div class="mb" id="binhluan">
+        </div>
+        <?php } else { ?>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div style="margin-top : 20px;">
+                Vui lòng đăng nhập để bình luận sản phẩm này
+            </div>
+        </div>
+        <?php } ?>
     </div>
 </div>
-        <!-- product details description area end -->
+<!-- product details description area end -->
 
-        <!-- New Product Start -->
-        <div class="section pb-100px" data-aos="fade-up" data-aos-delay="200">
-            <div class="container">
-                <!-- section title start -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title text-start mb-11">
-                            <h2 class="title">Sản Phẩm Khác Cùng Loại :</h2>
-                        </div>
-                    </div>
+<!-- New Product Start -->
+<div class="section pb-100px" data-aos="fade-up" data-aos-delay="200">
+    <div class="container">
+        <!-- section title start -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-start mb-11">
+                    <h2 class="title">Sản Phẩm Khác Cùng Loại :</h2>
                 </div>
-                <!-- section title start -->
-                <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
-                    <div class="new-product-wrapper swiper-wrapper">
-                        <!-- Single Prodect -->
-                        <?php
+            </div>
+        </div>
+        <!-- section title start -->
+        <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
+            <div class="new-product-wrapper swiper-wrapper">
+                <!-- Single Prodect -->
+                <?php
                         foreach ($sp_cung_loai as $sp) {
                             extract($sp);
                             $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
@@ -268,24 +270,24 @@
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="' . $linksp . ' ?>">' . $p_name . '</a></h5>
-                        <span class="price">
-                            <span class="new">' . $p_current_price . '</span>
-                        </span>
-                    </div>
-                </div>
-            </div>';
-                        }
-                        ?>
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-buttons">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
+                <span class="price">
+                    <span class="new">' . $p_current_price . '</span>
+                </span>
             </div>
         </div>
+    </div>';
+    }
+    ?>
+</div>
+<!-- Add Arrows -->
+<div class="swiper-buttons">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
 </div>
 </div>
-        <!-- New Product End -->
+</div>
+</div>
+</div>
+</div>
+<!-- New Product End -->
