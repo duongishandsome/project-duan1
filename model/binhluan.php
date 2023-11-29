@@ -9,7 +9,7 @@ function loadall_binhluan()
 }
 function loadall_binhluan1($idpro)
 {
-    $sql="select comment.cmt_content,comment.cmt_date,user.user_name FROM `comment`
+    $sql="select comment.cmt_content,comment.cmt_date,user.user_name, user.img FROM `comment`
     LEFT JOIN user on comment.user_id = user.user_id
     LEFT JOIN product on comment.p_id = product.p_id WHERE product.p_id=".$idpro;
     $listbl = pdo_query($sql);

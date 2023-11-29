@@ -186,7 +186,8 @@
     <div class="container">
         <div class="description-review-wrapper">
             <div class="description-review-topbar nav">
-                <a class="active" data-bs-toggle="tab" href="#des-details2">Chi tiết sản phẩm</a>
+                <a class="active" data-bs-toggle="tab" style="text-decoration: none;" href="#des-details2">Chi tiết sản phẩm</a>
+                <a data-bs-toggle="tab"  style="text-decoration: none;" href="#des-details3">Bình luận</a>
             </div>
             <div class="tab-content description-review-bottom">
                 <div id="des-details2" class="tab-pane active">
@@ -194,59 +195,62 @@
                         <p><?php echo $p_description ?></p>
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </div>
-    <div >
-    <?php
-                if (isset($_SESSION['user-name'])) {
-                ?>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function() {
-                            $("#binhluan").load("view/binhluan/binhluanform.php", {
-                                idpro: <?php echo $p_id ?>
+                <div id="des-details3" class="tab-pane">
+                    <?php
+                    if (isset($_SESSION['user-name'])) {
+                    ?>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function() {
+                                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                                    idpro: <?php echo $p_id ?>
+                                });
                             });
-                        });
-                    </script>
-                    <div class="mb" id="binhluan">
-                    </div>
-                <?php } else { ?>
-                    <div class="alert alert-danger d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
-                        </svg>
-                        <div style="margin-top 20px;">
-                            Vui lòng đăng nhập để bình luận sản phẩm này
+                        </script>
+                        <div class="mb" id="binhluan">
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } else { ?>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div style="margin-top: 20px;">
+                                Vui lòng đăng nhập để bình luận sản phẩm này
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-        <!-- product details description area end -->
+<div>
 
-        <!-- New Product Start -->
-        <div class="section pb-100px" data-aos="fade-up" data-aos-delay="200">
-            <div class="container">
-                <!-- section title start -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title text-start mb-11">
-                            <h2 class="title">Sản Phẩm Khác Cùng Loại :</h2>
-                        </div>
-                    </div>
+</div>
+<!-- product details description area end -->
+
+<!-- New Product Start -->
+<div class="section pb-100px" data-aos="fade-up" data-aos-delay="200">
+    <div class="container">
+        <!-- section title start -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-start mb-11">
+                    <h2 class="title">Sản Phẩm Khác Cùng Loại :</h2>
                 </div>
-                <!-- section title start -->
-                <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
-                    <div class="new-product-wrapper swiper-wrapper">
-                        <!-- Single Prodect -->
-                        <?php
-                        foreach ($sp_cung_loai as $sp) {
-                            extract($sp);
-                            $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
-                            $hinh = $img_path . $p_featured_photo;
-                            echo '
+            </div>
+        </div>
+        <!-- section title start -->
+        <div class="new-product-slider swiper-container slider-nav-style-1" data-aos="fade-up" data-aos-delay="200">
+            <div class="new-product-wrapper swiper-wrapper">
+                <!-- Single Prodect -->
+                <?php
+                foreach ($sp_cung_loai as $sp) {
+                    extract($sp);
+                    $linksp = "index.php?act=sanphamct&idsp=" . $p_id;
+                    $hinh = $img_path . $p_featured_photo;
+                    echo '
                                 <div class="new-product-item swiper-slide">
                                 <div class="product">
                                 <div class="thumb">
@@ -274,18 +278,18 @@
                     </div>
                 </div>
             </div>';
-                        }
-                        ?>
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-buttons">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
+                }
+                ?>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-buttons">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
+    </div>
 </div>
 </div>
 </div>
-        <!-- New Product End -->
+</div>
+<!-- New Product End -->
