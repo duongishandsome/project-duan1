@@ -39,7 +39,6 @@ if (isset($_SESSION['user-name'])) {
 
                         <table>
                             <?php
-                            include "model/cart.php";
                             viewcart(1);
                             ?>
                         </table>

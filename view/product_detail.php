@@ -89,7 +89,7 @@
                     </div>
                     <div class="pricing-meta">
                         <ul>
-                            <li class="old-price not-cut"><?php echo $p_current_price . " đ" ?></li>
+                            <li class="old-price not-cut"><?php echo number_format($p_current_price, 0, ',', '.')  . " đ" ?></li>
                         </ul>
                     </div>
                     <p class="quickview-para"><?php echo $p_short_description ?></p>
