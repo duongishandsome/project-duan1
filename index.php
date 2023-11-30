@@ -254,11 +254,16 @@ setTimeout(function() {
 
             include_once "view/cart/bill.php";
             break;
+
         case 'trangthaidon':
+            $billct = loadall_order($_SESSION['user-name']['user_id']);
             include_once "view/cart/trangthaidon.php";
             break;
 
-        case 'trangthai_chitiet':
+        case 'ctdh':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                $ct=loadall_ctdh($_GET['id']);
+            }
             include_once "view/cart/trangthai_chitiet.php";
             break;
         case 'error':
@@ -321,9 +326,6 @@ setTimeout(function() {
             }
             break;
 
-        case 'blog':
-            include_once "view/tintuc/blog.php";
-            break;
         case 'contact':
             include_once "view/lienhe/contact.php";
             break;

@@ -185,8 +185,7 @@ $error_message = '';
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="index.php?act=about">Giới thiệu</a></li>
-                                <li><a href="index.php?act=sanpham">Sản phẩm</a></li>
-                                <li><a href="index.php?act=blog">Tin tức</a></li>
+                                <li><a href="index.php?act=sanpham">Cửa Hàng</a></li>
                                 <li><a href="index.php?act=contact">Liên hệ</a></li>
                             </ul>
                         </div>

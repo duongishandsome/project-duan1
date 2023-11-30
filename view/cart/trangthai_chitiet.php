@@ -43,74 +43,32 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Ảnh</th>
                                     <th>Tên sản phẩm</th>
+                                    <th>Ảnh</th>
+                                    <th>Color</th>
+                                    <th>Size</th>
                                     <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px"
-                                                src="assets/images/product-image/3.jpg" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Product Name</a></td>
-                                    <td class="product-price-cart"><span class="amount">$70.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$90.00</td>
-                                    <td>
-                                        <div class="Place-order mt-25">
-                                            <p class="btn-hover text-danger">Chờ xác nhận</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary rounded-5"
-                                            style="width:100px;height:50px;">Xóa</a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px"
-                                                src="assets/images/product-image/6.jpg" alt="Product" alt="" /></a>
-                                    </td>
-                                    <td class=" product-name"><a href="#">Product Name</a>
-                                    </td>
-                                    <td class="product-price-cart"><span class="amount">$70.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$90.00</td>
-                                    <td>
-                                        <div class="Place-order mt-25">
-                                            <p class="btn-hover text-danger">Chờ xác nhận</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary rounded-5"
-                                            style="width:100px;height:50px;">Xóa</a>
-                                    </td>
-
+                                <tr><?php
+                                if(is_array($ct)){
+                                foreach($ct as $dh){
+                                    extract($dh);
+                                    $hinh="upload/".$product_img;
+                                    echo'<tr>
+                                    <td>'.$product_name.'</td>
+                                    <td><img style="height: 120px;width: 120px;" src="'.$hinh.'" alt=""></td>
+                                    <td>'.$color_name.'</td>
+                                    <td>'.$size_name.'</td>
+                                    <td>'.$price.'</td>
+                                    </tr>';
+                                }
+                            }
+                            ?>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="row my-5">
-                        <div class="col-lg-12 text-end">
-                            <h2> Tổng phụ : 100 tr</h2>
-                        </div>
                     </div>
 
 

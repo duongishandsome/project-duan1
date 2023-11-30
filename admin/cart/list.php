@@ -14,103 +14,56 @@
         <div class="card card-cus">
             <div class="card-body">
             <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Khách Hàng</th>
-                        <th>Số điện thoại </th>
-                        <th>Địa chỉ</th>
-                        <th>Email</th>
-                        <th>Bill</th>
-                        <th>Status</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>hoangduong</td>
-                        <td>0942127008</td>
-                        <td>mê linh sóc sơn</td>
-                        <td>duongtvph38960@fpt.edu.vn</td>
-                        <td>78945496</td>
-                        <td>Đang xử lý</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-danger">Xóa</a>
-                                <a class="btn btn-primary">Sửa</a>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hoangduong</td>
-                        <td>0942127008</td>
-                        <td>mê linh sóc sơn</td>
-                        <td>duongtvph38960@fpt.edu.vn</td>
-                        <td>78945496</td>
-                        <td>Đang xử lý</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-danger">Xóa</a>
-                                <a class="btn btn-primary">Sửa</a>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hoangduong</td>
-                        <td>0942127008</td>
-                        <td>mê linh sóc sơn</td>
-                        <td>duongtvph38960@fpt.edu.vn</td>
-                        <td>78945496</td>
-                        <td>Đang xử lý</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-danger">Xóa</a>
-                                <a class="btn btn-primary">Sửa</a>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hoangduong</td>
-                        <td>0942127008</td>
-                        <td>mê linh sóc sơn</td>
-                        <td>duongtvph38960@fpt.edu.vn</td>
-                        <td>78945496</td>
-                        <td>Đang xử lý</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-danger">Xóa</a>
-                                <a class="btn btn-primary">Sửa</a>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>hoangduong</td>
-                        <td>0942127008</td>
-                        <td>mê linh sóc sơn</td>
-                        <td>duongtvph38960@fpt.edu.vn</td>
-                        <td>78945496</td>
-                        <td>Đang xử lý</td>
-                        <td>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-danger">Xóa</a>
-                                <a class="btn btn-primary">Sửa</a>
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    
-                    
-                    
-                </tbody>
+            <thead>
+                             
+                             <tr>
+                             <th>Mã Đơn Hàng</th>
+                             <th>Ngày đặt</th>
+                             <th>Khách hàng</th>
+                             <th>Tổng tiền</th>
+                             <th>Trạng Thái</th>
+                             <th>Action</th>
+                             </tr>
+                           
+                         </thead>
+                         <tbody>
+                         
+
+                             <tr>
+                             <?php
+                         if(is_array($listbill)){
+                             foreach($listbill as $bill){
+                                 extract($bill);
+                                 $ttdh=get_ttdh($bill['status']);
+                                 $ctdh="index.php?act=trangthai_chitiet&id=".$id;
+                                 $kh=$bill["receiver_name"].'
+                                 <br>'.$bill["receiver_phone"].'
+                                 <br>'.$bill["receiver_address"];
+                                 
+                                 if($ttdh=='Đơn hàng mới !'){
+                                 $xoadh="index.php?act=xoabill&id=".$id;
+                                 } 
+                                 else{
+                                     $xoadh="";
+                                 }
+                                 $ctdh="index.php?act=ctdh&id=".$id;
+                                 echo'<tr>
+                                 <td>Đơn hàng-'.$bill['id'].'</td>
+                                 <td>'.$bill['payment_date'].'</td>
+                                 <td>'.$kh.'</td>
+                                 <td>'.$bill['paid_amount'].'</td>
+                                 <td>'.$ttdh.'</td>
+                                 <td><a class="btn btn-primary btn-sm" href="'.$ctdh.'">Xem chi tiết đơn hàng</a></td>
+                                 </tr>';
+                             }
+                         }
+                         ?>
+                             </tr>
+                             <tr>
+                                 
+                                 
+                             </tr>
+                         </tbody>
                 
             </table>
             </div> 

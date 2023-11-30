@@ -99,7 +99,15 @@
     $order = pdo_query_one($sql);
     return $order;
 }}
-
+if (!function_exists('loadall_order')) {
+    function loadall_order($iduser=0)
+{
+    $sql= "select * from `order` where 1";
+    if($iduser>0) $sql.=" AND user_id=".$iduser;
+    $sql.=" order by id desc";
+    $listbill=pdo_query($sql);
+    return $listbill;
+}}
 if (!function_exists('loadall_order_detail')) {
     function loadall_order_detail($id)
 {
@@ -114,5 +122,37 @@ if (!function_exists('loadall_order_detail_all')) {
     $order = pdo_query($sql);
     return $order;
 }}
-
-?>
+if (!function_exists('loadall_ctdh')) {
+    function loadall_ctdh($idbil)
+    {
+        $sql = "select * from  order_detail where order_id=" . $idbil;
+        $cart = pdo_query($sql);
+        return $cart;
+    }
+}
+if (!function_exists('get_ttdh')) {
+function get_ttdh($n)
+{
+    switch ($n) {
+        case '0':
+            $tt = "Đơn hàng mới !";
+            break;
+        case '1':
+            $tt = "Đang xử lý !";
+            break;
+        case '2':
+            $tt = "Đang giao hàng !";
+            break;
+        case '3':
+            $tt = "Đã giao hàng !";
+            break;
+        case '4':
+            $tt = "Hoàn tất!";
+            break;
+        default:
+        $tt="Đơn hàng mới ";
+        break;
+    }
+    return $tt;
+}
+}
