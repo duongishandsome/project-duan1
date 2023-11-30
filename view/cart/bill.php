@@ -39,10 +39,126 @@
                 </div>
             </div>
         </div>
-        <div class="your-order-area">
-            <h1 class="text-center">ĐƠN HÀNG</h1>
+        <div class="thontin">
+            <div class="your-order-area d-flex justify-content-around my-4">
+                <div class="kh">
+                    <?php
+                    if (isset($bill) && (is_array($bill))) {
+                        extract($bill);
+                    }
+                    ?>
+                    <h1 class="text-center">Thông tin khách hàng</h1>
+                    <ul>
+                        <li>Họ tên : <?php echo $receiver_name ?></li>
+                        <li>Địa chỉ : <?php echo $receiver_address ?></li>
+                        <li>Số điện thoại : <?php echo $receiver_phone ?> </li>
+                    </ul>
+                </div>
+                <div class="don">
+                    <h1 class="text-center">Thông tin đơn hàng</h1>
+                    <ul>
+                        <li>Mã đơn hàng : <?php echo $id ?></li>
+                        <li>Ngày đặt hàng : <?php echo $payment_date ?></li>
+                        <li>Phương thức thanh toán : <?php echo $payment_method ?></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="your-order-area">
+                <h1 class="text-center">ĐƠN HÀNG</h1>
+                <div class="row ">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive cart-table-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Ảnh</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Giá</th>
+                                            <th>Màu</th>
+                                            <th>Size</th>
+                                            <th>Số lượng</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    $i = 0;
+                                    $tongtien = 0;
+                                    global $img_path;
+
+                                    foreach ($billct as $billct) {
+                                        $hinh = $img_path . $billct['product_img'];
+                                        $i = $i + 1;
+                                        extract($billct);
+                                        $tongtien += $billct['price'];
+
+                                    ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td class="product-thumbnail">
+                                                    <a href="#"><img class="img-responsive ml-15px" src="<?php echo $hinh ?>" alt="" /></a>
+                                                </td>
+                                                <td class="product-name"><a href="#"><?php echo $product_name ?></a></td>
+                                                <td class="product-price-cart"><span class="amount"><?php echo $price ?></span></td>
+                                                <td><?php echo $color_name ?></td>
+                                                <td><?php echo $size_name ?></td>
+                                                <td class="product-quantity">
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="<?php echo "2" ?>" />
+                                                    </div>
+                                                </td>
+                                                <td class="product-subtotal"><?php echo $price ?></td>
+                                            </tr>
+
+                                        </tbody>
+                                    <?php } ?>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td>
+                                        </td>
+                                        <td class="d-flex justify-content-around">
+                                            <div class="Place-order ">
+                                                <p class="btn-hover text-danger">Chờ xác nhận</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="fw-bold">Thành tiền: <?php echo $tongtien ?></p>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cart-shiping-update-wrapper">
+                                        <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy
+                                            được đơn
+                                            hàng :)
+                                        </p>
+
+                                        <div class="cart-shiping-update">
+                                            <a href="#">Cập nhật đơn hàng</a>
+                                            <a href="#">Hủy đơn hàng</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 </div>
 
 

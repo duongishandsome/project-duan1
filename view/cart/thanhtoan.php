@@ -26,7 +26,12 @@
     <!-- checkout area start -->
     <div class="checkout-area pt-100px pb-100px">
         <div class="container">
+            <?php
+                //       foreach($list_order as $order){
+                // extract($order);
+                        ?>
             <form action="index.php?act=billcomfirm" method="post">
+                <?php  ?>
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="billing-info-wrap">

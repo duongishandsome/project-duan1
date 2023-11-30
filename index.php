@@ -20,7 +20,7 @@ $dsdm = loadall_danhmuc();
 $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
-
+$ds_sp_discount=loadall_sanpham_discount();
 
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -241,8 +241,16 @@ setTimeout(function() {
                 $phone = $_POST['phone'];
                 $tongdonhang = tongdonhang();
                 $message = $_POST['message'];
-                insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message);
+                $payment_date = date("Y-m-d H:i:s");
+                $id_bill=insert_bill($user_id, $name, $phone, $address,$payment_date, $tongdonhang, $pttt, $message);
+
+                foreach ($_SESSION['cart'] as $cart) {
+                        insert_bill_detail($cart['0'], $id_bill, $_SESSION['user-name']['user_id'], $cart['7'], $cart['6'], $cart['3'], $cart['1'], $cart['2']);
+                }
+                $_SESSION['cart']=[];
             }
+            $bill=loadone_order($id_bill);
+            $billct = loadall_order_detail($id_bill);
 
             include_once "view/cart/bill.php";
             break;
