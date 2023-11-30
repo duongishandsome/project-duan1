@@ -20,7 +20,7 @@ $dsdm = loadall_danhmuc();
 $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
-
+$ds_sp_discount=loadall_sanpham_discount();
 
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -247,21 +247,21 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $phone = $_POST['phone'];
                 $tongdonhang = tongdonhang();
                 $message = $_POST['message'];
-                $order_id = insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message);
-                $cart = cart_list();
-                foreach ($cart as $product) {
-                    insert_order_detail($order_id, $product['id'], $product['color'], $product['size'], $product['quantity'], $product['price']);
-                }
-                cart_destroy();
+                insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message);
             }
 
             include_once "view/cart/bill.php";
             break;
+
         case 'trangthaidon':
+            $billct = loadall_order($_SESSION['user-name']['user_id']);
             include_once "view/cart/trangthaidon.php";
             break;
 
-        case 'trangthai_chitiet':
+        case 'ctdh':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                $ct=loadall_ctdh($_GET['id']);
+            }
             include_once "view/cart/trangthai_chitiet.php";
             break;
         case 'error':
@@ -324,9 +324,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             }
             break;
 
-        case 'blog':
-            include_once "view/tintuc/blog.php";
-            break;
         case 'contact':
             include_once "view/lienhe/contact.php";
             break;

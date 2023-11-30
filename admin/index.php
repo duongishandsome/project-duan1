@@ -9,6 +9,7 @@ include "../model/accuser.php";
 include "../model/voucher.php";
 include "../model/binhluan.php";
 include "../model/thongke.php";
+include "../model/cart.php";
 include 'header.php';
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -579,13 +580,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listthongke = loadall_thongke();
             include "thongke/list.php";
             break;
+
         case "bieudo":
             $listthongke = loadall_thongke();
             include "thongke/bieudo.php";
             break;
         case "listoders":
+            $listbill=loadall_order(0);
             include "cart/list.php";
             break;
+            case 'ctdh':
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    $ct=loadall_ctdh($_GET['id']);
+                }
+                include "cart/donhang.php";
+                break;
         default:
             //
             break;

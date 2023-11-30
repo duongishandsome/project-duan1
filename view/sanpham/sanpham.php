@@ -132,20 +132,11 @@
                     </div>
                     <!-- Sidebar single item -->
                     <div class="sidebar-widget-group">
-                        <h3 class="sidebar-title">Lọc</h3>
-                        <div class="sidebar-widget">
-                            <h4 class="pro-sidebar-title">Price</h4>
-                            <div class="price-filter">
-                                <div class="price-slider-amount">
-                                    <input type="text" id="amount" class="p-0 h-auto lh-1" name="price" placeholder="Add Your Price" />
-                                </div>
-                                <div id="slider-range"></div>
-                            </div>
-                        </div>
+                        
                         <!-- Sidebar single item -->
                         <div class="sidebar-widget">
-                            <h4 class="pro-sidebar-title mt-5">Size</h4>
-                            <div class="sidebar-widget-list">
+                        <h3 class="sidebar-title">Size</h3>
+                            <div class="sidebar-widget-category">
                                 <ul>
                                     <?php
                                     foreach ($ds_size as $size) {
@@ -153,9 +144,9 @@
                                         $linksp="index.php?act=sanpham&size_id=".$size_id;
                                         echo '
                                         <li>
-                                            <div class="sidebar-widget-list-left">
+                                            <div>
                                              <a href="'.$linksp.'">'.$size_name.'</a>
-                                                <span class="checkmark"></span>
+                                                
                                             </div>
                                         </li>';
                                      } ?>
@@ -164,33 +155,7 @@
                             </div>
                         </div>
                         <!-- Sidebar single item -->
-                        <div class="sidebar-widget no-cba">
-                            <h4 class="pro-sidebar-title">Color</h4>
-                            <div class="sidebar-widget-list">
-                                <ul>
-                                    <?php
-                                    foreach ($ds_color as $color) {
-                                        extract($color);
-                                    ?>
-                                        <li>
-                                            <div class="sidebar-widget-list-left">
-                                                <input type="checkbox" /> <a href="#"><?php echo $color_name ?><span>(2)</span> </a>
-                                                <span class="checkmark <?php if ($color_name == "Trắng") {
-                                                                            echo "dark border";
-                                                                        } elseif ($color_name == "Đen") {
-                                                                            echo "black ";
-                                                                        } elseif ($color_name == "Nâu") {
-                                                                            echo "danger";
-                                                                        } elseif ($color_name == "Vàng") {
-                                                                            echo "yellow";
-                                                                        } ?>"></span>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
-
-                                </ul>
-                            </div>
-                        </div>
+                        
                         <!-- Sidebar single item -->
 
                     </div>

@@ -191,8 +191,6 @@
                                         </h5>
                                         <span class="price">
                                             <span class="new"><?php echo $p_current_price . " đ" ?></span>
-                                            <span class="old">$38.00</span>
-                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +205,7 @@
                             <div class="row">
                                 <?php
                                 $i = 0;
-                                foreach ($spnew as $sp) {
+                                foreach ($sp_moi as $sp) {
                                     extract($sp);
                                     $hinh = $img_path . $p_featured_photo;
                                 ?>
@@ -257,7 +255,7 @@
                             <div class="row">
                                 <?php
                                 $i = 0;
-                                foreach ($spnew as $sp) {
+                                foreach ($ds_sp_discount as $sp) {
                                     extract($sp);
                                     $hinh = $img_path . $p_featured_photo;
                                 ?>
@@ -290,7 +288,10 @@
                                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                             </h5>
                                             <span class="price">
-                                                <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                                <span class="new" style="color:red;"><?php echo $p_current_price . " đ" ?></span>
+                                                <span
+                                                class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
+                                        </span>
                                             </span>
                                         </div>
                                     </div>

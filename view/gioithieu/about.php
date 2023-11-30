@@ -39,9 +39,9 @@
                         <h2>Về chúng tôi</h2>
                     </div>
                     <p class="mb-30px" data-aos="fade-up" data-aos-delay="200">
-                        Được thành lập vào năm 2015, Zero là cửa hàng nội thất có trụ sở tại Sài Gòn, Việt Nam. Ở đây,
+                        Được thành lập vào năm 2023, Furns là cửa hàng nội thất có trụ sở tại Trịnh Văn Bô. Ở đây,
                         chúng tôi kể một câu chuyện về đồ nội thất “tự làm” của chúng tôi.
-                        Câu chuyện của Zero xoay quanh vẻ đẹp, sự thoải mái và chức năng của từng món đồ nội thất, chia
+                        Câu chuyện của Furns xoay quanh vẻ đẹp, sự thoải mái và chức năng của từng món đồ nội thất, chia
                         sẻ cách bạn nhìn ngôi nhà của mình theo cách của chúng tôi.
                         Bạn đã sẵn sàng nghe câu chuyện của chúng tôi chưa?
                     </p>
@@ -63,37 +63,6 @@
 </section>
 <!-- About Us Area End -->
 <!-- Start Slill Progress -->
-<div class="progressbar-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="content" data-aos="fade-up" data-aos-delay="0">
-                    <h4 class="title">Chức Năng Đáp Ứng Sự Hoàn Hảo </h4>
-                    <p class="title-desc">Trong thời đại ngày nay, người ta không thể đánh giá thấp tầm quan trọng của
-                        thiết kế, nghệ thuật tạo ra hình ảnh nổi bật để lay động và thu hút khán giả. Và khi thế giới
-                        ngày càng được số hóa theo từng giây trôi qua, tầm quan trọng của thiết kế đồ họa đã được đẩy
-                        lên hàng đầu.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="custom-progress m-t-40">
-                    <div class="skill-progressbar" data-aos="fade-up" data-aos-delay="0">
-                        <h6 class="font--semi-bold m-b-15">UI/UX</h6>
-                        <div class="line-progressbar" data-percentage="75" data-progress-color="#ff7004"></div>
-                    </div>
-                    <div class="skill-progressbar" data-aos="fade-up" data-aos-delay="200">
-                        <h6 class="font--semi-bold m-b-15">Ideas</h6>
-                        <div class="line-progressbar" data-percentage="86" data-progress-color="#ff7004"></div>
-                    </div>
-                    <div class="skill-progressbar" data-aos="fade-up" data-aos-delay="400">
-                        <h6 class="font--semi-bold m-b-15">Design</h6>
-                        <div class="line-progressbar" data-percentage="97" data-progress-color="#ff7004"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- End Slill Progress -->
 <div class="banner-preduct-wrapper pt-100px pb-100px">
     <div class="container">
@@ -139,81 +108,46 @@
     <div class="team-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-25px">
+                <div class="col-sm">
                     <div class="team-single" data-aos="fade-up" data-aos-delay="0">
                         <div class="team-img">
-                            <img class="img-fluid" src="assets/images/team/leader1.png" alt="">
+                            <img class="img-fluid" src="upload/duong.png" alt="">
                         </div>
                         <div class="team-content">
-                            <h6 class="team-name font--bold mt-5">Ms. Veronica</h6>
+                            <h6 class="team-name font--bold mt-5">Hoàng Văn Dương</h6>
                             <span class="team-title">Web Designer</span>
-                            <ul class="team-social pos-absolute">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 mb-25px">
+                <div class="col-sm">
                     <div class="team-single" data-aos="fade-up" data-aos-delay="200">
                         <div class="team-img">
-                            <img class="img-fluid" src="assets/images/team/leader2.png" alt="">
+                            <img class="img-fluid" src="upload/tung.jpg" alt="">
                         </div>
                         <div class="team-content">
-                            <h6 class="team-name font--bold mt-5">Missa Santos</h6>
-                            <span class="team-title">CEO Founder</span>
-                            <ul class="team-social pos-absolute">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            </ul>
+                            <h6 class="team-name font--bold mt-5">Nguyễn Thanh Tùng</h6>
+                            <span class="team-title">Web Designer</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-sm">
+                    <div class="team-single" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-img">
+                            <img class="img-fluid" src="upload/toan.jpg" alt="">
+                        </div>
+                        <div class="team-content">
+                            <h6 class="team-name font--bold mt-5">Nguyễn Thanh Tùng</h6>
+                            <span class="team-title">Web Designer</span>
+                            
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 mb-25px">
-                    <div class="team-single" data-aos="fade-up" data-aos-delay="400">
-                        <div class="team-img">
-                            <img class="img-fluid" src="assets/images/team/leader3.png" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h6 class="team-name font--bold mt-5">Missa Santos</h6>
-                            <span class="team-title">Chief Officer</span>
-                            <ul class="team-social pos-absolute">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 mb-25px">
-                    <div class="team-single" data-aos="fade-up" data-aos-delay="600">
-                        <div class="team-img">
-                            <img class="img-fluid" src="assets/images/team/leader4.png" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h6 class="team-name font--bold mt-5">Lisa Antonia</h6>
-                            <span class="team-title">CTO</span>
-                            <ul class="team-social pos-absolute">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>

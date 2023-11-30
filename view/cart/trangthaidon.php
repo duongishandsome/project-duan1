@@ -1,3 +1,6 @@
+<?php
+if (isset($_SESSION['user-name'])) {
+?>
 <!-- breadcrumb-area start -->
 <div class="breadcrumb-area">
     <div class="container">
@@ -33,42 +36,52 @@
                     <div class="table-content table-responsive cart-table-content">
                         <table>
                             <thead>
+                             
                                 <tr>
-                                    <th>Ảnh</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
-                                    <th>Trạng thái</th>
-                                    <th>Chi tiết</th>
+                                <th>Mã Đơn Hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Khách hàng</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng Thái</th>
+                                <th>Action</th>
                                 </tr>
+                              
                             </thead>
                             <tbody>
-
+                            
 
                                 <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px"
-                                                src="assets/images/product-image/3.jpg" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Product Name</a></td>
-                                    <td class="product-price-cart"><span class="amount">$70.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$90.00</td>
-                                    <td>
-                                        <div class="Place-order mt-25">
-                                            <p class="btn-hover text-danger">Chờ xác nhận</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="?act=trangthai_chitiet" class="btn btn-secondary"
-                                            style="width:100px;height:50px;">Chi
-                                            tiết đơn</a>
-                                    </td>
+                                <?php
+                            if(is_array($billct)){
+                                foreach($billct as $bill){
+                                    extract($bill);
+                                    $ttdh=get_ttdh($bill['status']);
+                                    $ctdh="index.php?act=ctdh&id=".$id;
+                                    $kh=$bill["receiver_name"].'
+                                    <br>'.$bill["receiver_phone"].'
+                                    <br>'.$bill["receiver_address"];
+                                    
+                                    if($ttdh=='Đơn hàng mới !'){
+                                    $xoadh="index.php?act=xoabill&id=".$id;
+                                    } 
+                                    else{
+                                        $xoadh="";
+                                    }
+                                    echo'<tr>
+                                    <td>Đơn hàng-'.$bill['id'].'</td>
+                                    <td>'.$bill['payment_date'].'</td>
+                                    <td>'.$kh.'</td>
+                                    <td>'.$bill['paid_amount'].'</td>
+                                    <td>'.$ttdh.'</td>
+                                    <td><a class="" href="'.$ctdh.'"><input type="button" value="Xem chi tiết đơn hàng"></a></td>
+                                    </tr>';
+                                }
+                            }
+                            ?>
+                                </tr>
+                                <tr>
+                                    
+                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -92,65 +105,7 @@
 
             </div>
         </div>
-        <div class="row ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <form action="#">
-                    <div class="table-content table-responsive cart-table-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Ảnh</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
-                                    <th>Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px"
-                                                src="assets/images/product-image/1.jpg" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Product Name</a></td>
-                                    <td class="product-price-cart"><span class="amount">$70.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$90.00</td>
-                                    <td>
-                                        <div class="Place-order mt-25">
-                                            <p class="btn-hover text-danger">Chờ xác nhận</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="cart-shiping-update-wrapper">
-                                <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy được đơn
-                                    hàng :)
-                                </p>
-
-                                <div class="cart-shiping-update">
-                                    <a href="#">Cập nhật đơn hàng</a>
-                                    <a href="#">Hủy đơn hàng</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
+       
         <div class="cart-shiping-update-wrapper">
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-clear">
@@ -162,4 +117,10 @@
     </div>
 
 </div>
+<?php
+} else {
+    include_once "view/acount/login.php";
+    echo '<script>document.querySelector(".thongbao").innerText = "Đăng nhập để mua hàng !";</script>';
+}
+?>
 <!-- Cart Area End -->
