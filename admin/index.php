@@ -91,7 +91,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "product/list.php";
             break;
         case "adduser":
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) { 
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $user_name = $_POST['user_name'];
                 $user_email = $_POST['user_email'];
                 $user_phone = $_POST['user_phone'];
@@ -586,18 +586,18 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "thongke/bieudo.php";
             break;
         case "listoders":
-            $listbill=loadall_order(0);
+            $listbill = loadall_order(0);
             include "cart/list.php";
             break;
         case 'ctdh':
-            if(isset($_GET['id'])&&($_GET['id']>0)){
-                $ct=loadall_ctdh($_GET['id']);
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $ct = loadall_order_detail($_GET['id']);
             }
             include "cart/donhang.php";
             break;
         case 'suadh':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $donhang=loadone_order($_GET['id']);
+                $donhang = loadone_order($_GET['id']);
             }
             include "cart/update.php";
             break;
@@ -607,7 +607,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $status = $_POST['status'];
                 update_dh($id, $status);
             }
-            $listbill=loadall_order(0);
+            $listbill = loadall_order(0);
             include "cart/list.php";
             break;
 

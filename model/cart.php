@@ -8,14 +8,14 @@
     }
 
 
-    function insert_order_detail( $p_id, $color, $size, $quantity, $price, $payment_id)
+    function insert_order_detail($p_id, $color, $size, $quantity, $price, $payment_id)
     {
         $sql = "insert into order_detail(p_id, payment_id,size_name,color_name, price,quantity) 
          values ($p_id, $payment_id, '$size', '$color', $price, $quantity)";
         return pdo_execute($sql);
     }
 
-    function insert_momo( $partner_code	, $payment_id, $amount, $order_info, $order_type, $trans_id, $pay_type)
+    function insert_momo($partner_code, $payment_id, $amount, $order_info, $order_type, $trans_id, $pay_type)
     {
         $sql = "insert into momo(partner_code, order_id,amount,order_info, order_type,trans_id, pay_type) 
          values ('$partner_code', $payment_id, '$amount', '$order_info', '$order_type', $trans_id, '$pay_type')";
@@ -105,13 +105,11 @@
         }
         return $tongtien;
     }
-
-if (!function_exists('update_dh')) {
-    function update_dh($id,$status){
-        $sql = "update `order` set status='" . $status . "' where id=" . $id;
+    function update_dh($id, $status)
+    {
+        $sql = "update `order` set status='" . $status . "' where payment_id=" . $id;
         pdo_execute($sql);
     }
-}
 
 
     function tongdonhangship()
@@ -152,19 +150,19 @@ if (!function_exists('update_dh')) {
 
     function loadall_order_detail_all()
     {
-        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quatity, p_name, p-featured_photo  
+        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity, p_name, p_featured_photo  
         FROM order_detail a join product  on a.p_id = product.p_id";
         $order = pdo_query($sql);
         return $order;
     }
 
 
-    // function loadall_ctdh($idbil)
-    // {
-    //     $sql = "select * from  order_detail where order_id=" . $idbil;
-    //     $cart = pdo_query($sql);
-    //     return $cart;
-    // }
+    function loadall_ctdh($idbil)
+    {
+        $sql = "select * from  order_detail where payment_id=" . $idbil;
+        $cart = pdo_query($sql);
+        return $cart;
+    }
 
 
     function get_ttdh($n)
