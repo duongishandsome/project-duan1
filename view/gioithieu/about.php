@@ -23,6 +23,69 @@
 </div>
 
 <!-- breadcrumb-area end -->
+<!--  Start  Team Section    -->
+<div class="team-section">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title">Team chúng tôi</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Section Content Text Area -->
+    <div class="team-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="team-single" data-aos="fade-up" data-aos-delay="0">
+                        <div class="team-img">
+                            <img class="img-fluid" src="upload/duong.png" alt="">
+                        </div>
+                        <div class="team-content">
+                            <h6 class="team-name font--bold mt-5">Hoàng Văn Dương</h6>
+                            <span class="team-title">Web Designer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="team-single" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-img">
+                            <img class="img-fluid" src="upload/tung.jpg" alt="">
+                        </div>
+                        <div class="team-content">
+                            <h6 class="team-name font--bold mt-5">Nguyễn Thanh Tùng</h6>
+                            <span class="team-title">Web Designer</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm">
+                    <div class="team-single" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-img">
+                            <img class="img-fluid" src="upload/toan.jpg" alt="">
+                        </div>
+                        <div class="team-content">
+                            <h6 class="team-name font--bold mt-5">Trần Quang Toản </h6>
+                            <span class="team-title">Web Designer</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--   End  Team Section   -->
 
 <!-- About Us Area Start -->
 <section class="about-area pb-100px pt-100px">

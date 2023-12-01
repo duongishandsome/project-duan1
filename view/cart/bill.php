@@ -88,33 +88,37 @@
                                     global $img_path;
 
                                     foreach ($billct as $billct) {
-                                        $hinh = $img_path . $billct['product_img'];
+                                        $hinh = $img_path . $billct['p_featured_photo'];
                                         $i = $i + 1;
                                         extract($billct);
                                         $tongtien += $billct['price'];
 
                                     ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $i ?></td>
-                                                <td class="product-thumbnail">
-                                                    <a href="#"><img class="img-responsive ml-15px" src="<?php echo $hinh ?>" alt="" /></a>
-                                                </td>
-                                                <td class="product-name"><a href="#"><?php echo $product_name ?></a></td>
-                                                <td class="product-price-cart"><span class="amount"><?php echo $price ?></span></td>
-                                                <td><?php echo $color_name ?></td>
-                                                <td><?php echo $size_name ?></td>
-                                                <td class="product-quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="<?php echo "2" ?>" />
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal"><?php echo $price ?></td>
-                                            </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $i ?></td>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img class="img-responsive ml-15px"
+                                                        src="<?php echo $hinh ?>" alt="" /></a>
+                                            </td>
+                                            <td class="product-name"><a href="#"><?php echo $p_name ?></a></td>
+                                            <td class="product-price-cart"><span
+                                                    class="amount"><?php echo $price ?></span></td>
+                                            <td><?php echo $color_name ?></td>
+                                            <td><?php echo $size_name ?></td>
+                                            <td class="product-quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                                        value="<?php echo $quantity ?>" />
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal">
+                                                <?php echo number_format($price*$quantity, 0, ',' , '.' ) ?></td>
+                                        </tr>
 
-                                        </tbody>
+                                    </tbody>
                                     <?php } ?>
-                                    <tr>
+                                    <!-- <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -129,9 +133,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="fw-bold">Thành tiền: <?php echo $tongtien ?></p>
+                                            <p class="fw-bold">Thành tiền: <?php //echo $tongtien ?></p>
                                         </td>
-                                    </tr>
+                                    </tr> -->
 
                                 </table>
                             </div>
@@ -144,7 +148,6 @@
                                         </p>
 
                                         <div class="cart-shiping-update">
-                                            <a href="#">Cập nhật đơn hàng</a>
                                             <a href="#">Hủy đơn hàng</a>
                                         </div>
                                     </div>

@@ -89,13 +89,14 @@
                     </div>
                     <div class="pricing-meta">
                         <ul>
-                            <li class="old-price not-cut"><?php echo $p_current_price . " đ" ?></li>
+                            <li class="old-price not-cut">
+                                <?php echo number_format($p_current_price, 0, ',', '.')  . " đ" ?></li>
                         </ul>
                     </div>
                     <p class="quickview-para"><?php echo $p_short_description ?></p>
                     <form action="index.php?act=addtocart" method="post">
                         <div class="pro-details-size-color d-flex">
-                            <div class="pro-details-color-wrap">
+                            <div class="pro-details-color-wrap mx-3">
                                 <span>Màu</span>
                                 <select class="form-control" name="color_name">
 
@@ -107,10 +108,9 @@
                                     <?php } ?>
                                 </select>
                             </div>
-                            <div class="product-size">
+                            <div class=" pro-details-color-wrap">
                                 <span>Kích cỡ</span>
                                 <select class="form-control" name="size_name">
-
                                     <?php
                                     foreach ($list_size as $row) {
                                         extract($row);
@@ -133,7 +133,7 @@
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
 
                                 <div class="addtocart-wrapper">
-                                    <button class="btn btn-primary btn-hover-primary ml-4 " name="addtocart"
+                                    <button class="btn btn-primary btn-hover-primary ml-4 mx-3" name="addtocart"
                                         type="submit">Mua ngay</button>
                                     <button type="submit" name="themcart"><i class="icon-handbag"></i>Thêm vào giỏ
                                         hàng</button>
@@ -188,8 +188,9 @@
     <div class="container">
         <div class="description-review-wrapper">
             <div class="description-review-topbar nav">
-                <a class="active" data-bs-toggle="tab" style="text-decoration: none;" href="#des-details2">Chi tiết sản phẩm</a>
-                <a data-bs-toggle="tab"  style="text-decoration: none;" href="#des-details3">Bình luận</a>
+                <a class="active" data-bs-toggle="tab" style="text-decoration: none;" href="#des-details2">Chi tiết sản
+                    phẩm</a>
+                <a data-bs-toggle="tab" style="text-decoration: none;" href="#des-details3">Bình luận</a>
             </div>
             <div class="tab-content description-review-bottom">
                 <div id="des-details2" class="tab-pane active">
@@ -201,25 +202,25 @@
                     <?php
                     if (isset($_SESSION['user-name'])) {
                     ?>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                $("#binhluan").load("view/binhluan/binhluanform.php", {
-                                    idpro: <?php echo $p_id ?>
-                                });
-                            });
-                        </script>
-                        <div class="mb" id="binhluan">
-                        </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script>
+                    $(document).ready(function() {
+                        $("#binhluan").load("view/binhluan/binhluanform.php", {
+                            idpro: <?php echo $p_id ?>
+                        });
+                    });
+                    </script>
+                    <div class="mb" id="binhluan">
+                    </div>
                     <?php } else { ?>
-                        <div class="alert alert-danger d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div style="margin-top: 20px;">
-                                Vui lòng đăng nhập để bình luận sản phẩm này
-                            </div>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div style="margin-top: 20px;">
+                            Vui lòng đăng nhập để bình luận sản phẩm này
                         </div>
+                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -265,32 +266,26 @@
                                     <span class="sale">-10%</span>
                                     <span class="new">New</span>
                                 </span>
-                                <div class="actions">
-                                    <a href="index.php?act=cart" class="action cart" title="cart"><i class="icon-heart"></i></a>
-                                    <a href="#" class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
-                                    <a href="compare.php" class="action compare" title="Compare"><i class="icon-refresh"></i></a>
-                                </div>
-                                <button title="Add To Cart" class=" add-to-cart">Add
-                                    To Cart</button>
+                                <button title="Add To Cart" class=" add-to-cart">Xem chi tiết</button>
                             </div>
                             <div class="content">
                                 <h5 class="title"><a href="' . $linksp . ' ?>">' . $p_name . '</a></h5>
-                        <span class="price">
-                            <span class="new">' . $p_current_price . '</span>
-                        </span>
-                    </div>
-                </div>
-            </div>';
-                }
-                ?>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <span class="price">
+                    <span class="new">' . number_format($p_current_price, 0, ',' , '.' ) . '</span>
+                </span>
             </div>
         </div>
-    </div>
+    </div>';
+    }
+    ?>
+</div>
+<!-- Add Arrows -->
+<div class="swiper-buttons">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

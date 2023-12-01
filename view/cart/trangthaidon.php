@@ -36,33 +36,33 @@ if (isset($_SESSION['user-name'])) {
                     <div class="table-content table-responsive cart-table-content">
                         <table>
                             <thead>
-                             
-                                <tr>
-                                <th>Mã Đơn Hàng</th>
-                                <th>Ngày đặt</th>
-                                <th>Khách hàng</th>
-                                <th>Tổng tiền</th>
-                                <th>Trạng Thái</th>
-                                <th>Action</th>
-                                </tr>
-                              
-                            </thead>
-                            <tbody>
-                            
 
                                 <tr>
-                                <?php
+                                    <th>Mã Đơn Hàng</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+
+                                <tr>
+                                    <?php
                             if(is_array($billct)){
                                 foreach($billct as $bill){
                                     extract($bill);
                                     $ttdh=get_ttdh($bill['status']);
-                                    $ctdh="index.php?act=ctdh&id=".$id;
+                                    $ctdh="index.php?act=ctdh&id=".$payment_id;
                                     $kh=$bill["receiver_name"].'
                                     <br>'.$bill["receiver_phone"].'
                                     <br>'.$bill["receiver_address"];
                                     
                                     if($ttdh=='Đơn hàng mới !'){
-                                    $xoadh="index.php?act=xoabill&id=".$id;
+                                    $xoadh="index.php?act=xoabill&id=".$payment_id;
                                     } 
                                     else{
                                         $xoadh="";
@@ -80,13 +80,13 @@ if (isset($_SESSION['user-name'])) {
                             ?>
                                 </tr>
                                 <tr>
-                                    
-                                    
+
+
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
                                 <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy được đơn
@@ -100,12 +100,12 @@ if (isset($_SESSION['user-name'])) {
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </form>
 
             </div>
         </div>
-       
+
         <div class="cart-shiping-update-wrapper">
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-clear">

@@ -3,7 +3,7 @@ session_start();
 include "model/pdo.php";
 include "model/taikhoanuser.php";
 include "model/danhmuc.php";
-include "model/cart.php";
+include_once "model/cart.php";
 include "model/voucher.php";
 include "model/binhluan.php";
 
@@ -20,11 +20,10 @@ $dsdm = loadall_danhmuc();
 $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
-$ds_sp_discount=loadall_sanpham_discount();
-
+$ds_sp_discount = loadall_sanpham_discount();
+$count_sp= count_sanpham_shop();
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
-
 
 if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -139,69 +138,76 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
 
         case 'addtocart':
-            if (isset($_POST['addtocart'])) {
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $img = $_POST['img'];
-                $price = $_POST['price'];
-                $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
-                $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
-                $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
-                $ttien = $soluong * $price;
-                $product_exists = false;
-                foreach ($_SESSION['cart'] as &$item) {
-                    if ($item[0] == $id && $item[1] == $name && $item[3] == $price && $item[6] == $color && $item[7] == $size) {
-                        $item[4] += $soluong;
-                        $product_exists = true;
-                        break;
+            if (isset($_SESSION['user-name'])) {
+                if (isset($_POST['addtocart'])) {
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
+                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
+                    $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
+                    $ttien = $soluong * $price;
+                    $product_exists = false;
+                    foreach ($_SESSION['cart'] as &$item) {
+                        if ($item['id'] == $id && $item['color'] == $color && $item['size'] == $size) {
+                            $item['quantity'] += $soluong;
+                            $product_exists = true;
+                            break;
+                        }
                     }
-                }
-                unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
-                if ($product_exists == false) {
-                    $spadd = [$id, $name, $img, $price, $soluong, $ttien, $color, $size];
-                    array_push($_SESSION['cart'], $spadd);
-                }
-?>
-<script>
-setTimeout(function() {
-    window.location.href = 'index.php?act=viewcart';
-}, 0);
-</script>
-<?php
-            }
-            if (isset($_POST['themcart'])) {
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $img = $_POST['img'];
-                $price = $_POST['price'];
-                $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
-                $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
-                $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
-                $ttien = $soluong * $price;
-                $product_exists = false;
-                foreach ($_SESSION['cart'] as &$item) {
-                    if ($item[0] == $id && $item[1] == $name && $item[3] == $price && $item[6] == $color && $item[7] == $size) {
-                        $item[4] += $soluong;
-                        $product_exists = true;
-                        break;
+                    unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
+                    if ($product_exists == false) {
+                        $spadd = array(
+                            'id' => $id,
+                            'name' => $name,
+                            'image' => $img,
+                            'quantity' => $soluong,
+                            'total_price' => $ttien,
+                            'price' => $price,
+                            'color' => $color,
+                            'size' => $size,
+                        );
+                        array_push($_SESSION['cart'], $spadd);
                     }
+                    echo "<script>window.location.href='index.php?act=viewcart'</script>";
                 }
-                unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
-                if ($product_exists == false) {
-                    $spadd = [$id, $name, $img, $price, $soluong, $ttien, $color, $size];
-                    array_push($_SESSION['cart'], $spadd);
+                if (isset($_POST['themcart'])) {
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
+                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
+                    $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
+                    $ttien = $soluong * $price;
+                    $product_exists = false;
+                    foreach ($_SESSION['cart'] as &$item) {
+                        if ($item['id'] == $id && $item['color'] == $color && $item['size'] == $size) {
+                            $item['quantity'] += $soluong;
+                            $product_exists = true;
+                            break;
+                        }
+                    }
+                    unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
+                    if ($product_exists == false) {
+                        $spadd = array(
+                            'id' => $id,
+                            'name' => $name,
+                            'image' => $img,
+                            'quantity' => $soluong,
+                            'total_price' => $ttien,
+                            'price' => $price,
+                            'color' => $color,
+                            'size' => $size,
+                        );
+                        array_push($_SESSION['cart'], $spadd);
+                    }
+                    echo "<script>window.location.href='index.php?act=sanphamct&idsp=$id'</script>";
                 }
-            ?>
-<script>
-setTimeout(function() {
-    window.location.href = '#';
-}, 0);
-</script>
-<?php
-
+            } else {
+                echo "<script>window.location.href='index.php?act=login'</script>";
             }
-
-
             break;
 
 
@@ -234,25 +240,71 @@ setTimeout(function() {
             break;
         case 'billcomfirm':
             if (isset($_POST['dongydathang'])) {
-                $user_id = $_SESSION['user-name']['user_id'];
-                $name = $_POST['name'];
-                $address = $_POST['address'];
-                $pttt = $_POST['pttt'];
-                $phone = $_POST['phone'];
-                $tongdonhang = tongdonhang();
-                $message = $_POST['message'];
-                $payment_date = date("Y-m-d H:i:s");
-                $id_bill=insert_bill($user_id, $name, $phone, $address,$payment_date, $tongdonhang, $pttt, $message);
-
-                foreach ($_SESSION['cart'] as $cart) {
-                        insert_bill_detail($cart['0'], $id_bill, $_SESSION['user-name']['user_id'], $cart['7'], $cart['6'], $cart['3'], $cart['1'], $cart['2']);
+                if ($_POST['payment_method'] == 'cash') {
+                    $user_id = $_SESSION['user-name']['user_id'];
+                    $payment_id = time() . "";
+                    $name = $_POST['name'];
+                    $address = $_POST['address'];
+                    $pttt = $_POST['payment_method'];
+                    $phone = $_POST['phone'];
+                    $phone = $_POST['phone'];
+                    $tongdonhang = $_POST['tongtien'];
+                    $message = $_POST['message'];
+                    $payment_date = date("Y-m-d H:i:s");
+                    insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
+                    $cart = cart_list();
+                    foreach ($cart as $product) {
+                        insert_order_detail($product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                    }
+                    cart_destroy();
+                    echo "<script>window.location.href='index.php?act=pagethank&payment_id=$payment_id'</script>";
                 }
-                $_SESSION['cart']=[];
-            }
-            $bill=loadone_order($id_bill);
-            $billct = loadall_order_detail($id_bill);
 
-            include_once "view/cart/bill.php";
+
+                if ($_POST['payment_method'] == 'momo_atm') {
+                    $user_id = $_SESSION['user-name']['user_id'];
+                    $payment_id = time() . "";
+                    $name = $_POST['name'];
+                    $address = $_POST['address'];
+                    $pttt = $_POST['payment_method'];
+                    $phone = $_POST['phone'];
+                    $phone = $_POST['phone'];
+                    $tongdonhang = $_POST['tongtien'];
+                    $message = $_POST['message'];
+                    $payment_date = date("Y-m-d H:i:s");
+                    insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
+                    $cart = cart_list();
+                    foreach ($cart as $product) {
+                        insert_order_detail( $product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                    }
+                    cart_destroy();
+                    echo "<script>window.location.href='model/xulythanhtoanmomo_atm.php?payment_id=$payment_id&total=$tongdonhang'</script>";
+                }
+            }
+
+            break;
+        case 'pagethank':
+            if (isset($_GET['payment_id'])) {
+                $payment_id = $_GET['payment_id'];
+                $bill = loadone_order($payment_id);
+                $billct = loadall_order_detail($payment_id);
+    
+                include_once "view/cart/bill.php";
+            } elseif(isset($_GET['partnerCode'])) {
+                $partnerCode = $_GET['partnerCode'];
+                $orderId = $_GET['orderId'];
+                $amount = $_GET['amount'];
+                $orderType = $_GET['orderType'];
+                $payType = $_GET['payType'];
+                $orderType = $_GET['orderType'];
+                $orderInfo = $_GET['orderInfo'];
+                $transId = $_GET['transId'];
+                insert_momo($partnerCode, $orderId, $amount, $orderInfo,  $orderType, $transId, $payType);
+
+                $bill = loadone_order($orderId);
+                $billct = loadall_order_detail($orderId);
+                include_once "view/cart/bill.php";
+            }
             break;
 
         case 'trangthaidon':
@@ -261,8 +313,8 @@ setTimeout(function() {
             break;
 
         case 'ctdh':
-            if(isset($_GET['id'])&&($_GET['id']>0)){
-                $ct=loadall_ctdh($_GET['id']);
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $ct = loadall_order_detail($_GET['id']);
             }
             include_once "view/cart/trangthai_chitiet.php";
             break;

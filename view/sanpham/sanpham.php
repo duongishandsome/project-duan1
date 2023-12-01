@@ -31,7 +31,7 @@
                 <!-- Shop Top Area Start -->
                 <div class="shop-top-bar d-flex">
                     <!-- Left Side start -->
-                    <p>There Are 17 Products.</p>
+                    <p>Cửa hàng có : <?php echo $count_sp; ?> sản phẩm.</p>
                     <!-- Left Side End -->
                     <!-- Right Side Start -->
                     <div class="select-shoing-wrap d-flex align-items-center">
@@ -63,33 +63,39 @@
                             extract($sp);
                             $hinh = $img_path . $p_featured_photo;
                         ?>
-                            <div class="col-lg-4  col-md-6 col-sm-6 col-xs-6" data-aos="fade-up" data-aos-delay="200">
-                                <!-- Single Prodect -->
-                                <div class="product mb-25px">
-                                    <div class="thumb">
-                                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                            <img src="<?php echo $hinh ?>" alt="Product" />
-                                            <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                        </a>
-                                        <span class="badges">
-                                            <span class="new">New</span>
-                                        </span>
-                                        <div class="actions">
-                                            <a href="cart.php" class="action cart" title="cart"><i class="icon-handbag"></i></a>
-                                            <a href="#" class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
-                                            <a href="compare.php" class="action compare" title="Compare"><i class="icon-refresh"></i></a>
-                                        </div>
-                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                            To Cart</button>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a></h5>
-                                        <span class="price">
-                                            <span class="new"><?php echo $p_current_price . " đ" ?></span>
-                                        </span>
-                                    </div>
+                        <div class="col-lg-4  col-md-6 col-sm-6 col-xs-6" data-aos="fade-up" data-aos-delay="200">
+                            <!-- Single Prodect -->
+                            <div class="product mb-25px">
+                                <div class="thumb">
+                                    <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                        <img src="<?php echo $hinh ?>" alt="Product" />
+                                        <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                    </a>
+                                    <span class="badges">
+                                        <span class="new">New</span>
+                                    </span>
+                                    <!-- <div class="actions">
+                                        <a href="cart.php" class="action cart" title="cart"><i
+                                                class="icon-handbag"></i></a>
+                                        <a href="#" class="action quickview" data-link-action="quickview"
+                                            title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                class="icon-size-fullscreen"></i></a>
+                                        <a href="compare.php" class="action compare" title="Compare"><i
+                                                class="icon-refresh"></i></a>
+                                    </div> -->
+                                    <button title="Add To Cart" class=" add-to-cart">Xem chi tiết</button>
+                                </div>
+                                <div class="content">
+                                    <h5 class="title"><a
+                                            href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
+                                    </h5>
+                                    <span class="price">
+                                        <span
+                                            class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
+                                    </span>
                                 </div>
                             </div>
+                        </div>
                         <?php } ?>
 
                     </div>
@@ -132,10 +138,10 @@
                     </div>
                     <!-- Sidebar single item -->
                     <div class="sidebar-widget-group">
-                        
+
                         <!-- Sidebar single item -->
                         <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Size</h3>
+                            <h3 class="sidebar-title">Size</h3>
                             <div class="sidebar-widget-category">
                                 <ul>
                                     <?php
@@ -155,12 +161,12 @@
                             </div>
                         </div>
                         <!-- Sidebar single item -->
-                        
+
                         <!-- Sidebar single item -->
 
                     </div>
                     <!-- Sidebar single item -->
-                    
+
                 </div>
             </div>
         </div>

@@ -244,3 +244,10 @@ function get_size_by_pid($id)
     return $list_size;
 }
 
+function count_sanpham_shop()
+{
+    $sql = "SELECT COUNT(*) AS total FROM product";
+    $rows = pdo_query($sql);
+    $total = $rows[0]['total'];
+    return $total;
+}
