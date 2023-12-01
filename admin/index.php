@@ -589,12 +589,28 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $listbill=loadall_order(0);
             include "cart/list.php";
             break;
-            case 'ctdh':
-                if(isset($_GET['id'])&&($_GET['id']>0)){
-                    $ct=loadall_order_detail($_GET['id']);
-                }
-                include "cart/donhang.php";
-                break;
+        case 'ctdh':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                $ct=loadall_ctdh($_GET['id']);
+            }
+            include "cart/donhang.php";
+            break;
+        case 'suadh':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $donhang=loadone_order($_GET['id']);
+            }
+            include "cart/update.php";
+            break;
+        case 'updatedh':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id = $_POST['id'];
+                $status = $_POST['status'];
+                update_dh($id, $status);
+            }
+            $listbill=loadall_order(0);
+            include "cart/list.php";
+            break;
+
         default:
             //
             break;

@@ -106,6 +106,14 @@
         return $tongtien;
     }
 
+if (!function_exists('update_dh')) {
+    function update_dh($id,$status){
+        $sql = "update `order` set status='" . $status . "' where id=" . $id;
+        pdo_execute($sql);
+    }
+}
+
+
     function tongdonhangship()
     {
         $tongtien = 20000;

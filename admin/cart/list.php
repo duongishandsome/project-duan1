@@ -53,7 +53,8 @@
                                  <td>'.$kh.'</td>
                                  <td>'.$bill['paid_amount'].'</td>
                                  <td>'.$ttdh.'</td>
-                                 <td><a class="btn btn-primary btn-sm" href="'.$ctdh.'">Xem chi tiết đơn hàng</a></td>
+                                 <td><a class="btn btn-primary btn-sm" href="'.$ctdh.'">Chi tiết</a></td>
+                                 <td><a class="btn btn-primary btn-sm" href="'.$csdh.'">Cập nhật</a></td>
                                  </tr>';
                              }
                          }
