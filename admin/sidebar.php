@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index.php?act=dashboard" class="brand-link">
-        <span class="brand-text font-weight-light">eCommerce PHP</span>
+        <span class="brand-text font-weight-light">Furns</span>
     </a>
 
     <div class="sidebar">
@@ -80,9 +80,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?act=listuser" class="nav-link">
-                    <i class="nav-icon fa-solid fa-users"></i>
+                        <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                         Quản lý tài khoản
+                            Quản lý tài khoản
                         </p>
                     </a>
                 </li>
@@ -105,7 +105,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?act=listthongke" class="nav-link">
-                    <i class="fa-solid fa-bars-staggered fa-xl"></i>
+                        <i class="fa-solid fa-bars-staggered fa-xl"></i>
                         <p>
                             Thống kê
                         </p>

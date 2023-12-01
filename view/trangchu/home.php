@@ -187,7 +187,7 @@
                                         </h5>
                                         <span class="price">
                                             <span
-                                                class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
+                                                class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -229,11 +229,13 @@
                                                         class="icon-refresh"></i></a>
                                             </div> -->
 
-                                            <!-- <button title="Add To Cart"><a
+                                            <button title="Add To Cart">
+                                                <a class=" add-to-cart"
                                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"> Xem chi
-                                                    tiết </a></button> -->
-                                            <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
-                                                tiết</button>
+                                                    tiết </a>
+                                            </button>
+                                            <!-- <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
+                                                tiết</button> -->
                                         </div>
                                         <div class="content">
                                             <h5 class="title"><a
@@ -241,7 +243,7 @@
                                             </h5>
                                             <span class="price">
                                                 <span
-                                                    class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
+                                                    class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
                                             </span>
                                         </div>
                                     </div>
@@ -293,7 +295,7 @@
                                             </h5>
                                             <span class="price">
                                                 <span class="new"
-                                                    style="color:red;"><?php echo number_format($p_current_price, 0, ',' , '.' ). " đ" ?></span>
+                                                    style="color:red;"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
                                                 <span
                                                     class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
                                             </span>
@@ -408,7 +410,7 @@
                                 </a></h5>
                             <span class="price">
                                 <span
-                                    class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
+                                    class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
                             </span>
                         </div>
                     </div>

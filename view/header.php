@@ -1,5 +1,6 @@
 <?php 
 $error_message = '';
+$listdm = loadall_danhmuc();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ $error_message = '';
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Furns - Furniture eCommerce HTML Template</title>
+    <title>Furns </title>
     <meta name="description"
         content="240+ Best Bootstrap Templates are available on this website. Find your template for your project compatible with the most popular HTML library in the world." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -194,14 +195,21 @@ $error_message = '';
                                     <ul>
                                         <li class="dropdown-submenu">
                                             <ul class="dropdown-menu sub-menu">
-                                                <li><a class="dropdown-item" href="#">Tủ</a></li>
-                                                <li><a class="dropdown-item" href="#">Sofa</a></li>
-                                                <li><a class="dropdown-item" href="#">Ghế</a></li>
+                                                <?php 
+                                                    foreach ($listdm as $dm) {
+                                                        extract($dm);
+                                                        $linkdm="index.php?act=sanpham&cate_id=".$cate_id;
+                                                    ?>
+
+                                                <li><a class="dropdown-item"
+                                                        href="<?php echo $linkdm ?>"><?php echo $cate_name ?></a>
+                                                </li>
+                                                <?php  } ?>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="index.php?act=contact">Liên hệ</a></li>
+                                <li><a href=" index.php?act=contact">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
