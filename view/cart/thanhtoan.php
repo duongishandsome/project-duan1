@@ -194,12 +194,6 @@
                             <div class="Place-order mt-25">
                                 <input type="text" hidden name="tongtien" value="<?php echo tongdonhangship(); ?>">
                                 <input type="submit" class="btn-hover btn-order" name="dongydathang" value="Đặt hàng">
-                                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="model/xulythanhtoanmomo.php">
-                                    <button type="submit" class="btn btn-primary btn-block">Start MoMo payment....</button>
-                                </form>
-                                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="model/xulythanhtoanmomo_atm.php">
-                                    <button type="submit" class="btn btn-primary btn-block">Thanh toán atm</button>
-                                </form>
                             </div>
                         </div>
                     </div>

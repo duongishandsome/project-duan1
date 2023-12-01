@@ -291,13 +291,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
     
                 include_once "view/cart/bill.php";
             } elseif(isset($_GET['partnerCode'])) {
+                $partnerCode = $_GET['partnerCode'];
                 $orderId = $_GET['orderId'];
                 $amount = $_GET['amount'];
                 $orderType = $_GET['orderType'];
                 $payType = $_GET['payType'];
                 $orderType = $_GET['orderType'];
                 $orderInfo = $_GET['orderInfo'];
-
+                $transId = $_GET['transId'];
+                insert_momo($partnerCode, $orderId, $amount, $orderInfo,  $orderType, $transId, $payType);
 
                 $bill = loadone_order($orderId);
                 $billct = loadall_order_detail($orderId);

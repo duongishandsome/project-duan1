@@ -14,6 +14,15 @@
          values ($p_id, $payment_id, '$size', '$color', $price, $quantity)";
         return pdo_execute($sql);
     }
+
+    function insert_momo( $partner_code	, $payment_id, $amount, $order_info, $order_type, $trans_id, $pay_type)
+    {
+        $sql = "insert into momo(partner_code, order_id,amount,order_info, order_type,trans_id, pay_type) 
+         values ('$partner_code', $payment_id, '$amount', '$order_info', '$order_type', $trans_id, '$pay_type')";
+        return pdo_execute($sql);
+    }
+
+
     function cart_list()
     {
         return $_SESSION['cart'];
