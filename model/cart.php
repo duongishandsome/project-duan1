@@ -105,7 +105,7 @@
         }
         return $tongtien;
     }
-}
+
 if (!function_exists('update_dh')) {
     function update_dh($id,$status){
         $sql = "update `order` set status='" . $status . "' where id=" . $id;
@@ -113,28 +113,6 @@ if (!function_exists('update_dh')) {
     }
 }
 
-if (!function_exists('get_ttdh')) {
-function get_ttdh($n)
-{
-    switch ($n) {
-        case '0':
-            $tt = "Đơn hàng mới !";
-            break;
-        case '1':
-            $tt = "Đang xử lý !";
-            break;
-        case '2':
-            $tt = "Đang giao hàng !";
-            break;
-        case '3':
-            $tt = "Đã giao hàng !";
-            break;
-        case '4':
-            $tt = "Hoàn tất!";
-            break;
-        default:
-        $tt="Đơn hàng mới ";
-        break;
 
     function tongdonhangship()
     {
