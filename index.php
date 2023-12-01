@@ -144,8 +144,8 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
-                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
+                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : '60cm';
+                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Đen';
                     $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
                     $ttien = $soluong * $price;
                     $product_exists = false;
@@ -177,8 +177,8 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : 'Default Size';
-                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Default Color';
+                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : '60cm';
+                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Đen';
                     $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
                     $ttien = $soluong * $price;
                     $product_exists = false;
@@ -203,7 +203,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                         );
                         array_push($_SESSION['cart'], $spadd);
                     }
-                    echo "<script>window.location.href='index.php?act=sanphamct&idsp=$id'</script>";
+                    // echo "<script>window.location.href='index.php?act=sanphamct&idsp=$id'</script>";
+                    echo "<script>window.location.href='index.php'</script>";
+
                 }
             } else {
                 echo "<script>window.location.href='index.php?act=login'</script>";

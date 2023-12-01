@@ -71,9 +71,7 @@
                                         <img src="<?php echo $hinh ?>" alt="Product" />
                                         <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
                                     </a>
-                                    <span class="badges">
-                                        <span class="new">New</span>
-                                    </span>
+
                                     <!-- <div class="actions">
                                         <a href="cart.php" class="action cart" title="cart"><i
                                                 class="icon-handbag"></i></a>
@@ -83,7 +81,14 @@
                                         <a href="compare.php" class="action compare" title="Compare"><i
                                                 class="icon-refresh"></i></a>
                                     </div> -->
-                                    <button title="Add To Cart" class=" add-to-cart">Xem chi tiết</button>
+                                    <form action="index.php?act=addtocart" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                        <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                        <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                        <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                        <button title="Add To Cart" type="submit" name="themcart"
+                                            class=" add-to-cart">Thêm vào giỏ hàng</button>
+                                    </form>
                                 </div>
                                 <div class="content">
                                     <h5 class="title"><a
