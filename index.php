@@ -20,7 +20,7 @@ $dsdm = loadall_danhmuc();
 $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
-$ds_sp_discount=loadall_sanpham_discount();
+$ds_sp_discount = loadall_sanpham_discount();
 
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -240,17 +240,69 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
         case 'billcomfirm':
             if (isset($_POST['dongydathang'])) {
-                $user_id = $_SESSION['user-name']['user_id'];
-                $name = $_POST['name'];
-                $address = $_POST['address'];
-                $pttt = $_POST['pttt'];
-                $phone = $_POST['phone'];
-                $tongdonhang = tongdonhang();
-                $message = $_POST['message'];
-                insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message);
+                if ($_POST['payment_method'] == 'cash') {
+                    $user_id = $_SESSION['user-name']['user_id'];
+                    $payment_id = time() . "";
+                    $name = $_POST['name'];
+                    $address = $_POST['address'];
+                    $pttt = $_POST['payment_method'];
+                    $phone = $_POST['phone'];
+                    $phone = $_POST['phone'];
+                    $tongdonhang = $_POST['tongtien'];
+                    $message = $_POST['message'];
+                    $payment_date = date("Y-m-d H:i:s");
+                    insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
+                    $cart = cart_list();
+                    foreach ($cart as $product) {
+                        insert_order_detail($product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                    }
+                    cart_destroy();
+                    echo "<script>window.location.href='index.php?act=pagethank&payment_id=$payment_id'</script>";
+                }
+
+
+                if ($_POST['payment_method'] == 'momo_atm') {
+                    $user_id = $_SESSION['user-name']['user_id'];
+                    $payment_id = time() . "";
+                    $name = $_POST['name'];
+                    $address = $_POST['address'];
+                    $pttt = $_POST['payment_method'];
+                    $phone = $_POST['phone'];
+                    $phone = $_POST['phone'];
+                    $tongdonhang = $_POST['tongtien'];
+                    $message = $_POST['message'];
+                    $payment_date = date("Y-m-d H:i:s");
+                    insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
+                    $cart = cart_list();
+                    foreach ($cart as $product) {
+                        insert_order_detail( $product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                    }
+                    cart_destroy();
+                    echo "<script>window.location.href='model/xulythanhtoanmomo_atm.php?payment_id=$payment_id&total=$tongdonhang'</script>";
+                }
             }
 
-            include_once "view/cart/bill.php";
+            break;
+        case 'pagethank':
+            if (isset($_GET['payment_id'])) {
+                $payment_id = $_GET['payment_id'];
+                $bill = loadone_order($payment_id);
+                $billct = loadall_order_detail($payment_id);
+    
+                include_once "view/cart/bill.php";
+            } elseif(isset($_GET['partnerCode'])) {
+                $orderId = $_GET['orderId'];
+                $amount = $_GET['amount'];
+                $orderType = $_GET['orderType'];
+                $payType = $_GET['payType'];
+                $orderType = $_GET['orderType'];
+                $orderInfo = $_GET['orderInfo'];
+
+
+                $bill = loadone_order($orderId);
+                $billct = loadall_order_detail($orderId);
+                include_once "view/cart/bill.php";
+            }
             break;
 
         case 'trangthaidon':
@@ -259,8 +311,8 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
 
         case 'ctdh':
-            if(isset($_GET['id'])&&($_GET['id']>0)){
-                $ct=loadall_ctdh($_GET['id']);
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $ct = loadall_order_detail($_GET['id']);
             }
             include_once "view/cart/trangthai_chitiet.php";
             break;

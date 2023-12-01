@@ -1,23 +1,17 @@
  <?php
 
-    function insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message)
+    function insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id)
     {
-        $sql = "insert into `order`(user_id, receiver_name,receiver_phone,receiver_address,paid_amount,payment_method,message) values ($user_id, '$name', '$phone', '$address', $tongdonhang, '$pttt', '$message')";
+        $sql = "insert into `order`(user_id, receiver_name,receiver_phone,receiver_address,paid_amount,payment_method,message, payment_date, payment_id) 
+            values ($user_id, '$name', '$phone', '$address', $tongdonhang, '$pttt', '$message', '$payment_date', '$payment_id')";
         return pdo_execute_return_lastInssertId($sql);
     }
-    
-    if (!function_exists('insert_bill_detail')) {
 
-        function insert_bill_detail($p_id, $order_id, $user_id, $size, $color, $price, $p_name, $p_img)
-        {
-            $sql = "insert into `order_detail`(p_id, order_id,user_id,size_name,color_name,price,product_name,product_img) values ('$p_id', '$order_id', '$user_id', '$size', '$color', '$price', '$p_name', '$p_img')";
-            return pdo_execute($sql);
-        }
-    }
 
-    function insert_order_detail($order_id, $p_id, $color, $size, $quantity, $price)
+    function insert_order_detail( $p_id, $color, $size, $quantity, $price, $payment_id)
     {
-        $sql = "insert into order_detail(p_id, order_id,size_name,color_name, price,quantity) values ($p_id, $order_id, '$size', '$color', $price, $quantity)";
+        $sql = "insert into order_detail(p_id, payment_id,size_name,color_name, price,quantity) 
+         values ($p_id, $payment_id, '$size', '$color', $price, $quantity)";
         return pdo_execute($sql);
     }
     function cart_list()
@@ -102,69 +96,81 @@
         return $tongtien;
     }
 
-
-    if (!function_exists('loadone_order')) {
-    function loadone_order($id)
-{
-    $sql = "SELECT * FROM `order` WHERE id = $id";
-    $order = pdo_query_one($sql);
-    return $order;
-}}
-if (!function_exists('loadall_order')) {
-    function loadall_order($iduser=0)
-{
-    $sql= "select * from `order` where 1";
-    if($iduser>0) $sql.=" AND user_id=".$iduser;
-    $sql.=" order by id desc";
-    $listbill=pdo_query($sql);
-    return $listbill;
-}}
-if (!function_exists('loadall_order_detail')) {
-    function loadall_order_detail($id)
-{
-    $sql = "SELECT * FROM `order_detail` WHERE order_id = $id";
-    $order = pdo_query($sql);
-    return $order;
-}}
-if (!function_exists('loadall_order_detail_all')) {
-    function loadall_order_detail_all()
-{
-    $sql = "SELECT * FROM `order_detail`";
-    $order = pdo_query($sql);
-    return $order;
-}}
-if (!function_exists('loadall_ctdh')) {
-    function loadall_ctdh($idbil)
+    function tongdonhangship()
     {
-        $sql = "select * from  order_detail where order_id=" . $idbil;
-        $cart = pdo_query($sql);
-        return $cart;
+        $tongtien = 20000;
+        foreach ($_SESSION['cart'] as $cart) {
+            $tongtien += $cart['price'] * $cart['quantity'];
+        }
+        return $tongtien;
     }
-}
-if (!function_exists('get_ttdh')) {
-function get_ttdh($n)
-{
-    switch ($n) {
-        case '0':
-            $tt = "Đơn hàng mới !";
-            break;
-        case '1':
-            $tt = "Đang xử lý !";
-            break;
-        case '2':
-            $tt = "Đang giao hàng !";
-            break;
-        case '3':
-            $tt = "Đã giao hàng !";
-            break;
-        case '4':
-            $tt = "Hoàn tất!";
-            break;
-        default:
-        $tt="Đơn hàng mới ";
-        break;
-    }
-    return $tt;
-}
-}
 
+
+
+    function loadone_order($id)
+    {
+        $sql = "SELECT * FROM `order` WHERE payment_id = $id";
+        $order = pdo_query_one($sql);
+        return $order;
+    }
+
+    function loadall_order($iduser = 0)
+    {
+        $sql = "select * from `order` where 1";
+        if ($iduser > 0) $sql .= " AND user_id=" . $iduser;
+        $sql .= " order by id desc";
+        $listbill = pdo_query($sql);
+        return $listbill;
+    }
+
+    function loadall_order_detail($id)
+    {
+        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity, p_name, p_featured_photo  
+            FROM order_detail a join product  on a.p_id = product.p_id WHERE payment_id = $id";
+        $order = pdo_query($sql);
+        return $order;
+    }
+
+
+    function loadall_order_detail_all()
+    {
+        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quatity, p_name, p-featured_photo  
+        FROM order_detail a join product  on a.p_id = product.p_id";
+        $order = pdo_query($sql);
+        return $order;
+    }
+
+
+    // function loadall_ctdh($idbil)
+    // {
+    //     $sql = "select * from  order_detail where order_id=" . $idbil;
+    //     $cart = pdo_query($sql);
+    //     return $cart;
+    // }
+
+
+    function get_ttdh($n)
+    {
+        switch ($n) {
+            case '0':
+                $tt = "Đơn hàng mới !";
+                break;
+            case '1':
+                $tt = "Đang xử lý !";
+                break;
+            case '2':
+                $tt = "Đang giao hàng !";
+                break;
+            case '3':
+                $tt = "Đã giao hàng !";
+                break;
+            case '4':
+                $tt = "Hoàn tất!";
+                break;
+            default:
+                $tt = "Đơn hàng mới ";
+                break;
+        }
+        return $tt;
+    }
+    ?>

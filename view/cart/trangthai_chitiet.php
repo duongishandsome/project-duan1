@@ -55,9 +55,9 @@
                                 if(is_array($ct)){
                                 foreach($ct as $dh){
                                     extract($dh);
-                                    $hinh="upload/".$product_img;
+                                    $hinh="upload/".$p_featured_photo;
                                     echo'<tr>
-                                    <td>'.$product_name.'</td>
+                                    <td>'.$p_name.'</td>
                                     <td><img style="height: 120px;width: 120px;" src="'.$hinh.'" alt=""></td>
                                     <td>'.$color_name.'</td>
                                     <td>'.$size_name.'</td>

@@ -27,9 +27,9 @@
     <div class="checkout-area pt-100px pb-100px">
         <div class="container">
             <?php
-                //       foreach($list_order as $order){
-                // extract($order);
-                        ?>
+            //       foreach($list_order as $order){
+            // extract($order);
+            ?>
             <form action="index.php?act=billcomfirm" method="post">
                 <?php  ?>
                 <div class="row">
@@ -78,17 +78,17 @@
                                     </div>
                                 </div>
 
-                                
+
 
                                 <div class="col-lg-12">
                                     <h5 class="boxtitle">PHƯƠNG THỨC THANH TOÁN</h5>
                                     <div class="form-check">
-                                        <input class="form-check-input p-0 btn-rounded" type="radio" name="pttt" id="payment1" checked>
+                                        <input class="form-check-input p-0 btn-rounded" type="radio"  value="cash" name="payment_method" id="payment1" checked>
                                         <label class="form-check-label" for="payment1">Trả tiền khi nhận hàng</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input p-0 btn-rounded" type="radio" name="pttt" id="payment3">
+                                        <input class="form-check-input p-0 btn-rounded" type="radio" name="payment_method" value="momo_atm" id="payment3">
                                         <label class="form-check-label" for="payment3">Thanh toán online</label>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                         <div class="discount-code py-2">
                                             <p class="fw-bold mb-2">Nhập mã phiếu giảm giá của bạn nếu bạn có.</p>
                                             <form class="d-flex align-items-center">
-                                                <select class="form-select me-2" required name="voucher_id">
+                                                <select class="form-select me-2"  name="voucher_id">
                                                     <option value="" selected>Mã giảm giá</option>
                                                     <?php foreach ($voucher as $row) {
                                                         extract($row);
@@ -185,15 +185,21 @@
                                             <?php
                                             $tongtien = tongdonhang(); ?>
                                             <li class="order-total">Tổng cộng</li>
-                                            <li><?php echo number_format( $tongtien + 20000, 0, ',', '.');  ?></li>
+                                            <li><?php echo number_format($tongtien + 20000, 0, ',', '.');  ?></li>
                                         </ul>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="Place-order mt-25">
+                                <input type="text" hidden name="tongtien" value="<?php echo tongdonhangship(); ?>">
                                 <input type="submit" class="btn-hover btn-order" name="dongydathang" value="Đặt hàng">
-                            
+                                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="model/xulythanhtoanmomo.php">
+                                    <button type="submit" class="btn btn-primary btn-block">Start MoMo payment....</button>
+                                </form>
+                                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="model/xulythanhtoanmomo_atm.php">
+                                    <button type="submit" class="btn btn-primary btn-block">Thanh toán atm</button>
+                                </form>
                             </div>
                         </div>
                     </div>

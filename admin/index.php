@@ -591,7 +591,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
             case 'ctdh':
                 if(isset($_GET['id'])&&($_GET['id']>0)){
-                    $ct=loadall_ctdh($_GET['id']);
+                    $ct=loadall_order_detail($_GET['id']);
                 }
                 include "cart/donhang.php";
                 break;
