@@ -209,8 +209,8 @@
                                         </div>
                                         <ul>
                                             <?php
-                            include_once "model/cart.php";
-                            $tongtien = tongdonhang(); ?>
+                                            include_once "model/cart.php";
+                                            $tongtien = tongdonhang(); ?>
                                             <li class="order-total">Tổng cộng</li>
                                             <li><?php echo $tongtien; ?></li>
                                         </ul>

@@ -140,7 +140,7 @@
                             <img class="img-fluid" src="upload/toan.jpg" alt="">
                         </div>
                         <div class="team-content">
-                            <h6 class="team-name font--bold mt-5">Nguyễn Thanh Tùng</h6>
+                            <h6 class="team-name font--bold mt-5">Trần Quang Toản</h6>
                             <span class="team-title">Web Designer</span>
                             
                         </div>

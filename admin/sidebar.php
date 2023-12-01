@@ -74,7 +74,7 @@
                     <a href="index.php?act=listoders" class="nav-link">
                         <i class="nav-icon fa-solid fa-note-sticky"></i>
                         <p>
-                            Quản lý đặt hàng
+                            Quản lý đơn hàng
                         </p>
                     </a>
                 </li>

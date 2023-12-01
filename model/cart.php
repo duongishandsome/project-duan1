@@ -130,6 +130,13 @@ if (!function_exists('loadall_ctdh')) {
         return $cart;
     }
 }
+if (!function_exists('update_dh')) {
+    function update_dh($id,$status){
+        $sql = "update `order` set status='" . $status . "' where id=" . $id;
+        pdo_execute($sql);
+    }
+}
+
 if (!function_exists('get_ttdh')) {
 function get_ttdh($n)
 {

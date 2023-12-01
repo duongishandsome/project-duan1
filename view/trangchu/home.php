@@ -190,7 +190,7 @@
                                                 href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                         </h5>
                                         <span class="price">
-                                            <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                            <span class="new"><?php echo number_format($p_current_price) . " đ" ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@
                                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                             </h5>
                                             <span class="price">
-                                                <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                                <span class="new"><?php echo number_format($p_current_price) . " đ" ?></span>
                                             </span>
                                         </div>
                                     </div>
@@ -402,7 +402,7 @@
                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?>
                                 </a></h5>
                             <span class="price">
-                                <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                <span class="new"><?php echo number_format($p_current_price) . " đ" ?></span>
                             </span>
                         </div>
                     </div>

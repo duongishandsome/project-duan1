@@ -35,17 +35,11 @@
                              foreach($listbill as $bill){
                                  extract($bill);
                                  $ttdh=get_ttdh($bill['status']);
-                                 $ctdh="index.php?act=trangthai_chitiet&id=".$id;
+                                 $csdh="index.php?act=suadh&id=".$id;
+                                 $ctdh="index.php?act=ctdh&id=".$id;
                                  $kh=$bill["receiver_name"].'
                                  <br>'.$bill["receiver_phone"].'
                                  <br>'.$bill["receiver_address"];
-                                 
-                                 if($ttdh=='Đơn hàng mới !'){
-                                 $xoadh="index.php?act=xoabill&id=".$id;
-                                 } 
-                                 else{
-                                     $xoadh="";
-                                 }
                                  $ctdh="index.php?act=ctdh&id=".$id;
                                  echo'<tr>
                                  <td>Đơn hàng-'.$bill['id'].'</td>
@@ -53,7 +47,8 @@
                                  <td>'.$kh.'</td>
                                  <td>'.$bill['paid_amount'].'</td>
                                  <td>'.$ttdh.'</td>
-                                 <td><a class="btn btn-primary btn-sm" href="'.$ctdh.'">Xem chi tiết đơn hàng</a></td>
+                                 <td><a class="btn btn-primary btn-sm" href="'.$ctdh.'">Chi tiết</a></td>
+                                 <td><a class="btn btn-primary btn-sm" href="'.$csdh.'">Cập nhật</a></td>
                                  </tr>';
                              }
                          }
