@@ -162,7 +162,7 @@
                                         <span class="badges">
                                             <span class="new">New</span>
                                         </span>
-                                        <div class="actions">
+                                        <!-- <div class="actions">
                                             <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                     class="icon-handbag"></i></a>
                                             <a href="#" class="action quickview" data-link-action="quickview"
@@ -170,19 +170,15 @@
                                                 data-bs-target="#exampleModal"><i class="icon-size-fullscreen"></i></a>
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
-                                        </div>
-                                        <form action="index.php?act=addtocart" method="post">
+                                        </div> -->
+                                        <!-- <form action="index.php?act=addtocart" method="post">
                                             <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                             <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                             <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                             <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-
-
-                                            <button title="Add To Cart" type="submit" name="addtocart"
-                                                class=" add-to-cart">Add
-                                                to cart</button>
-
-                                        </form>
+                                        </form> -->
+                                        <button title="Add To Cart" class=" add-to-cart">Xem chi
+                                            tiết</button>
 
                                     </div>
                                     <div class="content">
@@ -190,7 +186,8 @@
                                                 href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                         </h5>
                                         <span class="price">
-                                            <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                            <span
+                                                class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +218,7 @@
                                             <span class="badges">
                                                 <span class="new">New</span>
                                             </span>
-                                            <div class="actions">
+                                            <!-- <div class="actions">
                                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                         class="icon-heart"></i></a>
                                                 <a href="#" class="action quickview" data-link-action="quickview"
@@ -230,15 +227,21 @@
                                                         class="icon-size-fullscreen"></i></a>
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
-                                            </div>
-                                            <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
+                                            </div> -->
+
+                                            <!-- <button title="Add To Cart"><a
+                                                    href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"> Xem chi
+                                                    tiết </a></button> -->
+                                            <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
+                                                tiết</button>
                                         </div>
                                         <div class="content">
                                             <h5 class="title"><a
                                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                             </h5>
                                             <span class="price">
-                                                <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                                <span
+                                                    class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
                                             </span>
                                         </div>
                                     </div>
@@ -269,9 +272,10 @@
                                                 <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
                                             </a>
                                             <span class="badges">
+                                                <span class="sale">-10%</span>
                                                 <span class="new">New</span>
                                             </span>
-                                            <div class="actions">
+                                            <!-- <div class="actions">
                                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                         class="icon-heart"></i></a>
                                                 <a href="#" class="action quickview" data-link-action="quickview"
@@ -280,18 +284,19 @@
                                                         class="icon-size-fullscreen"></i></a>
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
-                                            </div>
-                                            <button title="Add To Cart" class=" add-to-cart">Add to cart</button>
+                                            </div> -->
+                                            <button title="Add To Cart" class=" add-to-cart">Xem chi tiết</button>
                                         </div>
                                         <div class="content">
                                             <h5 class="title"><a
                                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
                                             </h5>
                                             <span class="price">
-                                                <span class="new" style="color:red;"><?php echo $p_current_price . " đ" ?></span>
+                                                <span class="new"
+                                                    style="color:red;"><?php echo number_format($p_current_price, 0, ',' , '.' ). " đ" ?></span>
                                                 <span
-                                                class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
-                                        </span>
+                                                    class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
+                                            </span>
                                             </span>
                                         </div>
                                     </div>
@@ -386,7 +391,7 @@
                             <span class="badges">
                                 <span class="new">New</span>
                             </span>
-                            <div class="actions">
+                            <!-- <div class="actions">
                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                         class="icon-heart"></i></a>
                                 <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
@@ -394,15 +399,16 @@
                                         class="icon-size-fullscreen"></i></a>
                                 <a href="compare.html" class="action compare" title="Compare"><i
                                         class="icon-refresh"></i></a>
-                            </div>
-                            <button title="Add To Cart" class=" add-to-cart">Add To Cart</button>
+                            </div> -->
+                            <button title="Add To Cart" class=" add-to-cart">Xem chi tiết</button>
                         </div>
                         <div class="content">
                             <h5 class="title"><a
                                     href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?>
                                 </a></h5>
                             <span class="price">
-                                <span class="new"><?php echo $p_current_price . " đ" ?></span>
+                                <span
+                                    class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
                             </span>
                         </div>
                     </div>

@@ -60,7 +60,8 @@
                                 <div class="col-lg-12">
                                     <div class="billing-info mb-20px">
                                         <label>Địa chỉ</label>
-                                        <input class="billing-address" name="address" value="<?php echo $address ?>" type="text" />
+                                        <input class="billing-address" name="address" value="<?php echo $address ?>"
+                                            type="text" />
                                     </div>
                                 </div>
 
@@ -78,21 +79,6 @@
                                     </div>
                                 </div>
 
-
-
-                                <div class="col-lg-12">
-                                    <h5 class="boxtitle">PHƯƠNG THỨC THANH TOÁN</h5>
-                                    <div class="form-check">
-                                        <input class="form-check-input p-0 btn-rounded" type="radio"  value="cash" name="payment_method" id="payment1" checked>
-                                        <label class="form-check-label" for="payment1">Trả tiền khi nhận hàng</label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input p-0 btn-rounded" type="radio" name="payment_method" value="momo_atm" id="payment3">
-                                        <label class="form-check-label" for="payment3">Thanh toán online</label>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <div class="checkout-account-toggle open-toggle2 mb-30">
@@ -104,7 +90,9 @@
                                 <h4>Thông tin thêm</h4>
                                 <div class="additional-info">
                                     <label>Ghi chú đặt hàng</label>
-                                    <textarea placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt để giao hàng." name="message"></textarea>
+                                    <textarea
+                                        placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt để giao hàng."
+                                        name="message"></textarea>
                                 </div>
                             </div>
 
@@ -128,9 +116,10 @@
                                             foreach ($_SESSION['cart'] as $cart) {
                                             ?>
 
-                                                <li><span class="order-middle-left"><?php echo $cart['name'] ?></span>
-                                                    x<?php echo $cart['quantity'] ?> <span class="order-price">
-                                                        <?php echo number_format($cart['total_price'], 0, ',', '.')  ?></span></li>
+                                            <li><span class="order-middle-left"><?php echo $cart['name'] ?></span>
+                                                x<?php echo $cart['quantity'] ?> <span class="order-price">
+                                                    <?php echo number_format($cart['total_price'], 0, ',', '.')  ?></span>
+                                            </li>
 
                                             <?php
                                             } ?>
@@ -144,7 +133,7 @@
                                             <li><?php echo $phiship = number_format(20000, 0, ',', '.')  ?></li>
                                         </ul>
                                     </div>
-                                    <div style="border-top: 1px solid #dee0e4; margin-top:30px;">
+                                    <!-- <div style="border-top: 1px solid #dee0e4; margin-top:30px;">
                                         <div class="discount-code py-2">
                                             <p class="fw-bold mb-2">Nhập mã phiếu giảm giá của bạn nếu bạn có.</p>
                                             <form class="d-flex align-items-center">
@@ -159,7 +148,7 @@
                                                 <button class="btn btn-primary" type="submit">Áp dụng</button>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="your-order-total">
                                         <div class="sub-total">
@@ -167,7 +156,8 @@
                                                 <tbody>
                                                     <tr>
                                                         <td class="text-start">Tổng giá đơn :</td>
-                                                        <td class="text-end"><?php echo number_format($tien, 0, ',', '.'); ?></td>
+                                                        <td class="text-end">
+                                                            <?php echo number_format($tien, 0, ',', '.'); ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start">Phí ship :</td>
@@ -188,6 +178,21 @@
                                             <li><?php echo number_format($tongtien + 20000, 0, ',', '.');  ?></li>
                                         </ul>
                                     </div>
+                                    <div class="col-lg-12">
+                                        <h5 class="boxtitle">PHƯƠNG THỨC THANH TOÁN</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input p-0 btn-rounded" type="radio" value="cash"
+                                                name="payment_method" id="payment1" checked>
+                                            <label class="form-check-label" for="payment1">Trả tiền khi nhận
+                                                hàng</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input p-0 btn-rounded" type="radio"
+                                                name="payment_method" value="momo_atm" id="payment3">
+                                            <label class="form-check-label" for="payment3">Thanh toán online</label>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -200,7 +205,7 @@
                 </div>
             </form>
 
-            <div class="col-lg-12 d-flex justify-content-lg-end">
+            <div class="col-lg-12 d-flex justify-content-lg-end py-3">
                 <div class="cart-shiping-update-wrapper">
                     <div class="cart-shiping-update">
                         <a href="index.php?act=cart">Quay lại</a>

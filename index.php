@@ -21,7 +21,7 @@ $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
 $ds_sp_discount = loadall_sanpham_discount();
-
+$count_sp= count_sanpham_shop();
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 

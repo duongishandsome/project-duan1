@@ -67,7 +67,7 @@ $error_message = '';
 
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css" />
-
+    <link rel="stylesheet" href="assets/css/css.css">
 </head>
 
 <body>
@@ -185,7 +185,22 @@ $error_message = '';
                             <ul>
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="index.php?act=about">Giới thiệu</a></li>
-                                <li><a href="index.php?act=sanpham">Cửa Hàng</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                        href="index.php?act=sanpham" role="button" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Cửa Hàng
+                                    </a>
+                                    <ul>
+                                        <li class="dropdown-submenu">
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a class="dropdown-item" href="#">Tủ</a></li>
+                                                <li><a class="dropdown-item" href="#">Sofa</a></li>
+                                                <li><a class="dropdown-item" href="#">Ghế</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li><a href="index.php?act=contact">Liên hệ</a></li>
                             </ul>
                         </div>

@@ -81,7 +81,7 @@
 
                                 <div class="cart-shiping-update">
                                     <a href="#">Hủy đơn hàng</a>
-                                    <a href="#">Cập nhật đơn hàng</a>
+                                    <!-- <a href="#">Cập nhật đơn hàng</a> -->
                                 </div>
                             </div>
 
