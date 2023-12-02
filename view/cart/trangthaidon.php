@@ -73,7 +73,7 @@ if (isset($_SESSION['user-name'])) {
                                     <td>'.$kh.'</td>
                                     <td>'.$bill['paid_amount'].'</td>
                                     <td>'.$ttdh.'</td>
-                                    <td><a class="" href="'.$ctdh.'"><input type="button" value="Xem chi tiết đơn hàng"></a></td>
+                                    <td ><a class="" href="'.$ctdh.'"><input class="btn btn-primary px-2 text-white" type="button" value="Chi tiết đơn hàng"></a></td>
                                     </tr>';
                                 }
                             }

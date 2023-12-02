@@ -73,9 +73,11 @@
      <tr>
          <td><?php echo $i ?></td>
          <td class="product-thumbnail">
-             <a href="#"><img class="img-responsive" src="<?php echo $hinh ?>" alt="" /></a>
+             <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive"
+                     src="<?php echo $hinh ?>" alt="" /></a>
          </td>
-         <td class="product-name"><a href="#"><?php echo $cart['name'] ?></a></td>
+         <td class="product-name"><a
+                 href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
          <td class="product-price-cart"><span
                  class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
          <td><?php echo $cart['color'] ?></td>
@@ -141,7 +143,7 @@
 
     function loadall_order_detail($id)
     {
-        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity, p_name, p_featured_photo  
+        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity,a.p_id, p_name, p_featured_photo  
             FROM order_detail a join product  on a.p_id = product.p_id WHERE payment_id = $id";
         $order = pdo_query($sql);
         return $order;

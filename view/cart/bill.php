@@ -98,10 +98,13 @@
                                         <tr>
                                             <td><?php echo $i ?></td>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img class="img-responsive ml-15px"
-                                                        src="<?php echo $hinh ?>" alt="" /></a>
+                                                <a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><img
+                                                        class="img-responsive ml-15px" src="<?php echo $hinh ?>"
+                                                        alt="" /></a>
                                             </td>
-                                            <td class="product-name"><a href="#"><?php echo $p_name ?></a></td>
+                                            <td class="product-name"><a
+                                                    href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><?php echo $p_name ?></a>
+                                            </td>
                                             <td class="product-price-cart"><span
                                                     class="amount"><?php echo $price ?></span></td>
                                             <td><?php echo $color_name ?></td>

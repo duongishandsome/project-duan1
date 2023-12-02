@@ -31,7 +31,7 @@
 
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-shiping-update">
-                    <a href="index.php?act=cart">Quay lại</a>
+                    <a href="index.php">Quay lại</a>
                 </div>
 
             </div>
@@ -56,10 +56,10 @@
                                 foreach($ct as $dh){
                                     extract($dh);
                                     $hinh="upload/".$p_featured_photo;
+                                    $link = "index.php?act=sanphamct&idsp=" . $p_id;
                                     echo'<tr>
-                                    <td>'.$p_name.'</td>
-                                    <td><img style="height: 120px;width: 120px;" src="'.$hinh.'" alt=""></td>
-                                    <td>'.$color_name.'</td>
+                                    <td><a href="' . $link . '">' . $p_name . '</a></td>
+                                    <td><a href="' . $link . '"><img style="height: 120px;width: 120px;" src="' . $hinh . '" alt=""></a></td>                                    <td>'.$color_name.'</td>
                                     <td>'.$size_name.'</td>
                                     <td>'.$price.'</td>
                                     </tr>';
