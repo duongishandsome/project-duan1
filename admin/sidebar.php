@@ -7,30 +7,6 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a href="index.php?act=listdm" class="nav-link">
                         <i class="nav-icon fa-solid fa-bars"></i>
@@ -48,27 +24,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-gears"></i>
+                    <a href="index.php?act=listsize" class="nav-link">
+                        <i class="fa-solid fa-palette fa-lg"></i>
                         <p>
-                            Cài đặt sản phẩm
-                            <i class="right fas fa-angle-left"></i>
+                            Quản lý màu
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="index.php?act=listsize" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Size</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.php?act=listcolor" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Color</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?act=listcolor" class="nav-link">
+                        <i class="fa-solid fa-cube fa-lg"></i>
+                        <p>
+                            Quản lý kích cỡ
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="index.php?act=listoders" class="nav-link">
