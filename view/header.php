@@ -187,7 +187,7 @@ $listdm = loadall_danhmuc();
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="index.php?act=about">Giới thiệu</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    <a class="dropdown-toggle" data-toggle="dropdown"
                                         href="index.php?act=sanpham" role="button" aria-haspopup="true"
                                         aria-expanded="false">
                                         Cửa Hàng

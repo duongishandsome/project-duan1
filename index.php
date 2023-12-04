@@ -22,6 +22,7 @@ $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
 $ds_sp_discount = loadall_sanpham_discount();
 $count_sp= count_sanpham_shop();
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
@@ -149,14 +150,19 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
                     $ttien = $soluong * $price;
                     $product_exists = false;
-                    foreach ($_SESSION['cart'] as &$item) {
+                    foreach ($_SESSION['cart'] as $key => $item) {
                         if ($item['id'] == $id && $item['color'] == $color && $item['size'] == $size) {
-                            $item['quantity'] += $soluong;
+                            $_SESSION['cart'][$key]['quantity'] += $soluong;
+                            $soluongnew =  $_SESSION['cart'][$key]['quantity'];
+                            $total = $soluongnew * $price;
+                            $_SESSION['cart'][$key]['total_price'] = $total;
                             $product_exists = true;
                             break;
                         }
                     }
-                    unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
+
+                    unset($item);
+                   
                     if ($product_exists == false) {
                         $spadd = array(
                             'id' => $id,
@@ -171,41 +177,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                         array_push($_SESSION['cart'], $spadd);
                     }
                     echo "<script>window.location.href='index.php?act=viewcart'</script>";
-                }
-                if (isset($_POST['themcart'])) {
-                    $id = $_POST['id'];
-                    $name = $_POST['name'];
-                    $img = $_POST['img'];
-                    $price = $_POST['price'];
-                    $size = isset($_POST['size_name']) ? $_POST['size_name'] : '60cm';
-                    $color = isset($_POST['color_name']) ? $_POST['color_name'] : 'Đen';
-                    $soluong = isset($_POST['p_quantity']) && $_POST['p_quantity'] ? $_POST['p_quantity'] : 1;
-                    $ttien = $soluong * $price;
-                    $product_exists = false;
-                    foreach ($_SESSION['cart'] as &$item) {
-                        if ($item['id'] == $id && $item['color'] == $color && $item['size'] == $size) {
-                            $item['quantity'] += $soluong;
-                            $product_exists = true;
-                            break;
-                        }
-                    }
-                    unset($item); // Hủy tham chiếu để tránh ảnh hưởng đến các vòng lặp sau
-                    if ($product_exists == false) {
-                        $spadd = array(
-                            'id' => $id,
-                            'name' => $name,
-                            'image' => $img,
-                            'quantity' => $soluong,
-                            'total_price' => $ttien,
-                            'price' => $price,
-                            'color' => $color,
-                            'size' => $size,
-                        );
-                        array_push($_SESSION['cart'], $spadd);
-                    }
-                    // echo "<script>window.location.href='index.php?act=sanphamct&idsp=$id'</script>";
-                    echo "<script>window.location.href='index.php'</script>";
-
                 }
             } else {
                 echo "<script>window.location.href='index.php?act=login'</script>";

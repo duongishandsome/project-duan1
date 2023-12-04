@@ -48,7 +48,6 @@
 
     $('.example2').DataTable({
       "paging": true,
-      "pageLength": 10,
       "lengthChange": true,
       "searching": true,
       "ordering": true,

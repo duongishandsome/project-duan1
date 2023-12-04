@@ -280,9 +280,11 @@
     <script src="assets/js/plugins/ajax-mail.js"></script> -->
 
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/vendor/vendor.min.js"></script>
 <script src="assets/js/plugins/plugins.min.js"></script>
 <script src="assets/js/sweetalert2.all.min.js"></script>
+
 
 <!-- Main Js -->
 <script src="assets/js/main.js"></script>
@@ -312,10 +314,70 @@
             }
         });
     }
+
+    $(document).ready(function() {
+        $('#addToCartButton').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: './model/addtocart.php',
+                type: 'POST',
+                data: $('#AddToCartForm').serialize(),
+                success: function(response) {
+                    $('.header-action-num').text(response);
+                    Swal.fire({
+                        title: 'Thông báo',
+                        text: 'Đã thêm vào giỏ hàng',
+                        icon: 'success',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }
+            });
+        });
+
+
+        $('.dec').on('click', function() {
+            changeQuantity($(this));
+        })
+
+        $('.inc').on('click', function() {
+            changeQuantity($(this));
+        })
+
+        $('.quantity-change').on('input', function() {
+            changeQuantity($(this));
+        })
+
+        const changeQuantity = function(element) {
+            const row = element.closest('tr');
+            const newValue = row.find('.quantity-change').val();
+
+            const priceText = row.find('.amount').text();
+            const price = parseFloat(priceText.replace('.', ''));
+            const subtotal = price * newValue;
+
+            const productId = row.find('input[type="hidden"]').val();
+            const color = row.find('.color').text();
+            const size = row.find('.size').text();
+
+            $.ajax({
+                url: './model/updatequantitycart.php',
+                type: 'POST',
+                data: {
+                    id: productId,
+                    color: color,
+                    size: size,
+                    quantity: newValue,
+                    total: subtotal,
+                },
+                success: function(response) {}
+            });
+            row.find('.product-subtotal').text(subtotal.toLocaleString('vi-VN'));
+        }
+    });
 </script>
 </body>
-
-
-<!-- Mirrored from template.hasthemes.com/furns/furns/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 Nov 2023 15:04:45 GMT -->
 
 </html>

@@ -59,7 +59,7 @@
                     <ul>
                         <li>Mã đơn hàng : <?php echo $id ?></li>
                         <li>Ngày đặt hàng : <?php echo $payment_date ?></li>
-                        <li>Phương thức thanh toán : <?php echo $payment_method ?></li>
+                        <li>Phương thức thanh toán : <?php echo $payment_method == "cash" ? "Tiền mặt" : 'Momo ATM'  ?></li>
                     </ul>
                 </div>
             </div>
@@ -94,32 +94,25 @@
                                         $tongtien += $billct['price'];
 
                                     ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td class="product-thumbnail">
-                                                <a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><img
-                                                        class="img-responsive ml-15px" src="<?php echo $hinh ?>"
-                                                        alt="" /></a>
-                                            </td>
-                                            <td class="product-name"><a
-                                                    href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><?php echo $p_name ?></a>
-                                            </td>
-                                            <td class="product-price-cart"><span
-                                                    class="amount"><?php echo $price ?></span></td>
-                                            <td><?php echo $color_name ?></td>
-                                            <td><?php echo $size_name ?></td>
-                                            <td class="product-quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton"
-                                                        value="<?php echo $quantity ?>" />
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal">
-                                                <?php echo number_format($price*$quantity, 0, ',' , '.' ) ?></td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td class="product-thumbnail">
+                                                    <a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><img class="img-responsive ml-15px" src="<?php echo $hinh ?>" alt="" /></a>
+                                                </td>
+                                                <td class="product-name"><a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><?php echo $p_name ?></a>
+                                                </td>
+                                                <td class="product-price-cart"><span class="amount"><?php echo $price ?></span></td>
+                                                <td><?php echo $color_name ?></td>
+                                                <td><?php echo $size_name ?></td>
+                                                <td class="product-quantity">
+                                                    <span><?php echo $quantity ?></span>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <?php echo number_format($price * $quantity, 0, ',', '.') ?></td>
+                                            </tr>
 
-                                    </tbody>
+                                        </tbody>
                                     <?php } ?>
                                     <!-- <tr>
                                         <td></td>
@@ -136,7 +129,8 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="fw-bold">Thành tiền: <?php //echo $tongtien ?></p>
+                                            <p class="fw-bold">Thành tiền: <?php //echo $tongtien 
+                                                                            ?></p>
                                         </td>
                                     </tr> -->
 

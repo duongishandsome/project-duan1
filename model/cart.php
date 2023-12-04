@@ -11,7 +11,7 @@
     function insert_order_detail($p_id, $color, $size, $quantity, $price, $payment_id)
     {
         $sql = "insert into order_detail(p_id, payment_id,size_name,color_name, price,quantity) 
-         values ($p_id, $payment_id, '$size', '$color', $price, $quantity)";
+         values ($p_id, '$payment_id', '$size', '$color', $price, $quantity)";
         return pdo_execute($sql);
     }
 
@@ -72,6 +72,7 @@
             ?>
      <tr>
          <td><?php echo $i ?></td>
+         <input type="hidden" value="<?php echo $cart['id']; ?>" />
          <td class="product-thumbnail">
              <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive"
                      src="<?php echo $hinh ?>" alt="" /></a>
@@ -80,17 +81,17 @@
                  href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
          <td class="product-price-cart"><span
                  class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
-         <td><?php echo $cart['color'] ?></td>
-         <td><?php echo $cart['size'] ?></td>
+         <td class="color"><?php echo $cart['color'] ?></td>
+         <td  class="size"><?php echo $cart['size'] ?></td>
          <td class="product-quantity">
              <div class="cart-plus-minus">
-                 <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                 <input class="cart-plus-minus-box quantity-change"required type="text" maxlength="1" onblur="validateInput(this);" name="qtybutton"
                      value="<?php echo $cart['quantity'] ?>" />
              </div>
          </td>
          <td class="product-subtotal"><?php echo number_format($cart['total_price'], 0, ',', '.')  ?></td>
          <td class="product-remove">
-             <a href="<?php echo $xoasp_td; ?>"><i class="icon-close"></i></a>
+             <a href="<?php echo $xoasp_td; ?>" onclick="showConfirmationDialog(this.href, event)"><i class="icon-close"></i></a>
          </td>
      </tr>
      <?php } ?>
