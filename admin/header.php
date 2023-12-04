@@ -56,12 +56,33 @@ if(!isset($_SESSION['user-name']) && $_SESSION['user-name']['role_id'] != 1) {
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="../upload/user-1.png" class="user-image" alt="User Image">
-                        <span>Admin</span>
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                                    if (isset($_SESSION['user-name'])) {
+                                        extract($_SESSION['user-name']);
+                                        if (!empty($img)) {
+                                            $hinhpath = "../upload/" . $img;
+                                            if (is_file($hinhpath)) {
+                                                $hinh = "<img src='" . $hinhpath . "' style='height: 40px; width: 40px; border-radius: 50%;'>";
+                                            } else {
+                                                $hinh = "No photo";
+                                            }
+                                        } else {
+                                            $hinh = "<img src='assets/images/avata/avata_null.jpg' alt='' ' style='height: 40px; width: 40px; border-radius: 50%;'>";
+                                        }
+                                    ?>
+                        <?php echo $_SESSION['user-name']['user_name'] ?>
+                        <?php echo $hinh ?>
+                        <?php
+                                    } else {
+                                    ?>
+                        <i class="icon-user"></i>
+                        <?php } ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="../index.php?act=account">Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="./index.php?act=logout_admin">Đăng xuất</a>
                     </div>

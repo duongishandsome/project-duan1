@@ -41,8 +41,8 @@
                             <div class="login-form-container">
                                 <div class="login-register-form">
                                     <form action="index.php?act=login" method="post">
-                                        <input type="email" name="email" placeholder="Nhập email" required/>
-                                        <input type="password" name="password" placeholder="Mật khẩu"  required/>
+                                        <input type="email" name="email" placeholder="Nhập email" required />
+                                        <input type="password" name="password" placeholder="Mật khẩu" required />
                                         <?php
                                         if ($error_message != '') {
                                             echo "<div class='error text-danger' style='padding: 10px;margin-bottom:20px;'>" . $error_message . "</div>";
@@ -74,9 +74,8 @@
                                 <div class="login-register-form">
                                     <form action="index.php?act=login" method="post">
                                         <input name="user-email" placeholder="Địa chỉ email" type="email" required />
-                                        <input type="text" name="username" placeholder="Tên tài khoản" required />
-                                        <input type="password" name="password" placeholder="Mật khẩu" required />
-
+                                        <input type="text" name="user-name" placeholder="Tên tài khoản" required />
+                                        <input type="password" name="user-password" placeholder="Mật khẩu" required />
                                         <div class="dangky col-lg-3 my-3">
                                             <input type="submit" value="Đăng ký" name="dangky">
                                         </div>

@@ -5,10 +5,10 @@ function loadall_taikhoan()
     $listuser = pdo_query($sql);
     return $listuser;
 }
-function insert_taikhoan($email, $user, $pass)
+function insert_taikhoan($email, $user, $hashedPassword,$role_id)
 {
     // $birth = date('Y/d/m');
-    $sql = "insert into user(user_email,user_name,user_password) values('$email','$user','$pass')";
+    $sql = "insert into user(user_email,user_name,user_password,role_id) values('$email','$user','$hashedPassword',$role_id)";
     pdo_execute($sql);
 }
 function delete_taikhoan($id)
@@ -92,7 +92,7 @@ function sendMailPass($email, $username, $pass)
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients ngưởi nhận
-        $mail->setFrom('thanhtung2432004@gmail.com', 'Hacker');
+        $mail->setFrom('thanhtung2432004@gmail.com', 'Nội thất 89');
         $mail->addAddress($email, $username);     //Add a recipient
 
         //Content

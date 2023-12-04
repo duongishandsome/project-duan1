@@ -50,8 +50,8 @@ if (isset($_SESSION['user-name'])) {
                                     <a href="index.php">Tiếp tục mua sắm</a>
                                 </div>
                                 <div class="cart-shiping-update">
-                                    <a href="#">Cập nhật giỏ hàng</a>
-                                    <a href="index.php?act=xoahet_cart">Xóa giỏ hàng</a>
+                                    <a href="index.php?act=xoahet_cart"
+                                        onclick="showConfirmationDialog(this.href, event)">Xóa giỏ hàng</a>
                                 </div>
                             </div>
 

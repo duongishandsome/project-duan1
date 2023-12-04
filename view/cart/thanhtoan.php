@@ -53,15 +53,15 @@
                                 <div class="col-lg-12">
                                     <div class="billing-info mb-20px">
                                         <label>Tên</label>
-                                        <input type="text" name="name" id="" value="<?php echo $name ?>">
+                                        <input type="text" name="name" id="" required value="<?php echo $name ?>">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="billing-info mb-20px">
                                         <label>Địa chỉ</label>
-                                        <input class="billing-address" name="address" value="<?php echo $address ?>"
-                                            type="text" />
+                                        <input class="billing-address" name="address" required
+                                            value="<?php echo $address ?>" type="text" />
                                     </div>
                                 </div>
 
@@ -69,13 +69,13 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-20px">
                                         <label>Phone</label>
-                                        <input type="text" name="phone" value="<?php echo $tel ?>" />
+                                        <input type="text" name="phone" required value="<?php echo $tel ?>" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-20px">
                                         <label>Email</label>
-                                        <input type="text" value="<?php echo $email ?>" />
+                                        <input type="text" required value="<?php echo $email ?>" />
                                     </div>
                                 </div>
 

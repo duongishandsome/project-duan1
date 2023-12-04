@@ -94,7 +94,7 @@ $listdm = loadall_danhmuc();
                                         class="icon-magnifier"></i></a>
                                 <div class="dropdown_search">
                                     <form class="action-form" action="index.php?act=sanpham" method="POST">
-                                        <input class="form-control" placeholder="Enter your search key" type="text"
+                                        <input class="form-control" placeholder="Nhập sản phẩm bạn muốn tìm" type="text"
                                             name="kyw">
                                         <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
                                     </form>
@@ -144,7 +144,7 @@ $listdm = loadall_danhmuc();
 
                                     } else {
                                     ?>
-                                    <li><a class="dropdown-item" href="index.php?act=login">Đăng nhập</a></li>
+                                    <li><a class="dropdown-item" href="index.php?act=login">Đăng nhập / Đăng ký</a></li>
                                     <?php } ?>
 
                                 </ul>
@@ -187,9 +187,8 @@ $listdm = loadall_danhmuc();
                                 <li><a href="index.php">Trang chủ</a></li>
                                 <li><a href="index.php?act=about">Giới thiệu</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"
-                                        href="index.php?act=sanpham" role="button" aria-haspopup="true"
-                                        aria-expanded="false">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="index.php?act=sanpham"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
                                         Cửa Hàng
                                     </a>
                                     <ul>

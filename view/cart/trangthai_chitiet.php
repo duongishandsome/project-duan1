@@ -31,7 +31,7 @@
 
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-shiping-update">
-                    <a href="index.php">Quay lại</a>
+                    <a href="index.php?act=trangthaidon">Quay lại</a>
                 </div>
 
             </div>

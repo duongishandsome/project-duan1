@@ -21,7 +21,7 @@ $ds_size = loadall_size();
 $ds_color = loadall_color();
 $ds_sp_store = loadall_sanpham_store();
 $ds_sp_discount = loadall_sanpham_discount();
-$count_sp= count_sanpham_shop();
+$count_sp = count_sanpham_shop();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -69,8 +69,10 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $email = $_POST['user-email'];
                 $user = $_POST['user-name'];
                 $pass = $_POST['user-password'];
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $role_id=2;
 
-                insert_taikhoan($email, $user, $pass);
+                insert_taikhoan($email, $user, $hashedPassword,$role_id);
                 echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
 
 
@@ -162,7 +164,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     }
 
                     unset($item);
-                   
+
                     if ($product_exists == false) {
                         $spadd = array(
                             'id' => $id,
@@ -248,7 +250,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
                     $cart = cart_list();
                     foreach ($cart as $product) {
-                        insert_order_detail( $product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                        insert_order_detail($product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
                     }
                     cart_destroy();
                     echo "<script>window.location.href='model/xulythanhtoanmomo_atm.php?payment_id=$payment_id&total=$tongdonhang'</script>";
@@ -261,9 +263,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $payment_id = $_GET['payment_id'];
                 $bill = loadone_order($payment_id);
                 $billct = loadall_order_detail($payment_id);
-    
+
                 include_once "view/cart/bill.php";
-            } elseif(isset($_GET['partnerCode'])) {
+            } elseif (isset($_GET['partnerCode'])) {
                 $partnerCode = $_GET['partnerCode'];
                 $orderId = $_GET['orderId'];
                 $amount = $_GET['amount'];

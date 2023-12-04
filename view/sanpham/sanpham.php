@@ -26,6 +26,10 @@
 <!-- Shop Category pages -->
 <div class="shop-category-area pb-100px pt-70px">
     <div class="container">
+        <h1 class="timk text-center"><?php if(isset($kyw)){
+            echo "Kết quả tìm kiếm : ". $kyw;
+        } ?></h1>
+
         <div class="row">
             <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
                 <!-- Shop Top Area Start -->
@@ -96,7 +100,7 @@
                                     </h5>
                                     <span class="price">
                                         <span
-                                            class="new"><?php echo number_format($p_current_price, 0, ',' , '.' ) . " đ" ?></span>
+                                            class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
                                     </span>
                                 </div>
                             </div>
@@ -134,8 +138,8 @@
                                 <?php
                                 foreach ($dsdm as $dm) {
                                     extract($dm);
-                                    $linkdm="index.php?act=sanpham&cate_id=".$cate_id;
-                                    echo ' <li><a href="'.$linkdm.'">'.$cate_name.'</a></li>';
+                                    $linkdm = "index.php?act=sanpham&cate_id=" . $cate_id;
+                                    echo ' <li><a href="' . $linkdm . '">' . $cate_name . '</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -152,15 +156,15 @@
                                     <?php
                                     foreach ($ds_size as $size) {
                                         extract($size);
-                                        $linksp="index.php?act=sanpham&size_id=".$size_id;
+                                        $linksp = "index.php?act=sanpham&size_id=" . $size_id;
                                         echo '
                                         <li>
                                             <div>
-                                             <a href="'.$linksp.'">'.$size_name.'</a>
+                                             <a href="' . $linksp . '">' . $size_name . '</a>
                                                 
                                             </div>
                                         </li>';
-                                     } ?>
+                                    } ?>
 
                                 </ul>
                             </div>

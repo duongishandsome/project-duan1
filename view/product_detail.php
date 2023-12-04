@@ -42,9 +42,9 @@
                         foreach ($list_img as $row) {
                             $hinh_con = $img_path2 . $row['img_name'];
                         ?>
-                            <div class="swiper-slide zoom-image-hover">
-                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                            </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                        </div>
 
                         <?php  } ?>
 
@@ -58,9 +58,9 @@
                         foreach ($list_img as $row) {
                             $hinh_con = $img_path2 . $row['img_name'];
                         ?>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
-                            </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="<?php echo $hinh_con ?>" alt="">
+                        </div>
 
                         <?php  } ?>
 
@@ -102,7 +102,7 @@
                                     foreach ($list_color as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
+                                    <option value="<?php echo $color_name ?>"><?php echo $color_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -113,14 +113,15 @@
                                     foreach ($list_size as $row) {
                                         extract($row);
                                     ?>
-                                        <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
+                                    <option value="<?php echo $size_name ?>"><?php echo $size_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class=" pro-details-quality">
                             <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" required type="text" maxlength="1" onblur="validateInput(this);" name="p_quantity" value="1" />
+                                <input class="cart-plus-minus-box" required type="text" maxlength="1"
+                                    onblur="validateInput(this);" name="p_quantity" value="1" />
                             </div>
 
                             <div class="pro-details-cart">
@@ -130,8 +131,10 @@
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
 
                                 <div class="addtocart-wrapper">
-                                    <button class="btn btn-primary btn-hover-primary ml-4 mx-3" name="addtocart" type="submit">Mua ngay</button>
-                                    <button id="addToCartButton" name="themcart"><i class="icon-handbag"></i>Thêm vào giỏ
+                                    <button class="btn btn-primary btn-hover-primary ml-4 mx-3" name="addtocart"
+                                        type="submit">Mua ngay</button>
+                                    <button id="addToCartButton" name="themcart"><i class="icon-handbag"></i>Thêm vào
+                                        giỏ
                                         hàng</button>
                                 </div>
                             </div>
@@ -140,25 +143,6 @@
                 </div>
             </div>
 
-            <div class="pro-details-social-info">
-                <span>Share</span>
-                <div class="social-info">
-                    <ul class="d-flex">
-                        <li>
-                            <a href="#"><i class="ion-social-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="ion-social-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="ion-social-google"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="ion-social-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="pro-details-policy">
                 <ul>
                     <li><img src="assets/images/icons/policy.png" alt="" /><span>Chính sách bảo mật (Chỉnh
@@ -197,25 +181,25 @@
                     <?php
                     if (isset($_SESSION['user-name'])) {
                     ?>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                $("#binhluan").load("view/binhluan/binhluanform.php", {
-                                    idpro: <?php echo $p_id ?>
-                                });
-                            });
-                        </script>
-                        <div class="mb" id="binhluan">
-                        </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script>
+                    $(document).ready(function() {
+                        $("#binhluan").load("view/binhluan/binhluanform.php", {
+                            idpro: <?php echo $p_id ?>
+                        });
+                    });
+                    </script>
+                    <div class="mb" id="binhluan">
+                    </div>
                     <?php } else { ?>
-                        <div class="alert alert-danger d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div style="margin-top: 20px;">
-                                Vui lòng đăng nhập để bình luận sản phẩm này
-                            </div>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div style="margin-top: 20px;">
+                            Vui lòng đăng nhập để bình luận sản phẩm này
                         </div>
+                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -271,16 +255,16 @@
             </div>
         </div>
     </div>';
-                }
-                ?>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    </div>
+    }
+    ?>
+</div>
+<!-- Add Arrows -->
+<div class="swiper-buttons">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
