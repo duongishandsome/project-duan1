@@ -69,7 +69,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $email = $_POST['user-email'];
                 $user = $_POST['user-name'];
                 $pass = $_POST['user-password'];
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $hashedPassword = password_hash($pass, PASSWORD_BCRYPT);
                 $role_id=2;
 
                 insert_taikhoan($email, $user, $hashedPassword,$role_id);
@@ -113,7 +113,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 update_taikhoan($id, $email, $user, $pass, $phone, $adress, $gender, $birth, $hinh);
 
                 // cập nhật lại session user mới 
-                $_SESSION['user-name'] = checkuser($user, $pass);
+                $_SESSION['user-name'] = get_info_user($email);
 
                 $thongbao = "Cập nhật thông tin thành công !";
             }
@@ -128,9 +128,11 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
                 if ($pass_new == $pass_new_confirm) {
                     $pass = $pass_new;
-                    update_pass($id, $pass, $user);
+                    $hashedPassword = password_hash($pass, PASSWORD_BCRYPT);
+                    update_pass($id, $hashedPassword, $user);
                     // cập nhật lại session user mới 
-                    $_SESSION['user-name'] = checkuser($user, $pass);
+                    $email_user = $_SESSION['user-name']['user_email'];
+                    $_SESSION['user-name'] = get_info_user($email_user);
                     $thongbao = "Thay đổi mật khẩu thành công !";
                 } else {
                     $thongbao = "Mật khẩu không trùng khớp !";

@@ -8,7 +8,7 @@ function loadall_taikhoan()
 function insert_taikhoan($email, $user, $hashedPassword,$role_id)
 {
     // $birth = date('Y/d/m');
-    $sql = "insert into user(user_email,user_name,user_password,role_id) values('$email','$user','$hashedPassword',$role_id)";
+    $sql = "insert into user(user_email,user_name,user_password,role_id, user_status) values('$email','$user','$hashedPassword',$role_id, 1)";
     pdo_execute($sql);
 }
 function delete_taikhoan($id)
@@ -58,7 +58,13 @@ function sendMail($email)
     $taikhoan = pdo_query_one($sql);
 
     if ($taikhoan != false) {
-        sendMailPass($email, $taikhoan['user_name'], $taikhoan['user_password']);
+        $randomBytes = random_bytes(4);
+        $randomString = bin2hex($randomBytes);
+        sendMailPass($email, $taikhoan['user_name'], $randomString);
+        $id = $taikhoan['user_id'];
+        $hashedPassword = password_hash($randomString, PASSWORD_BCRYPT);
+        $sql = "UPDATE user SET  user_password='" . $hashedPassword . "' WHERE user_id=" . $id;
+        pdo_execute($sql);
         return "Gửi email thành công";
     } else {
         return "Email bạn nhập ko có trong hệ thống";
@@ -90,6 +96,8 @@ function sendMailPass($email, $username, $pass)
         $mail->Password   = 'kwjm vrkt xilq rcjn';                               //SMTP password
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->CharSet = 'UTF-8';
+        $mail->isHTML(true);
 
         //Recipients ngưởi nhận
         $mail->setFrom('thanhtung2432004@gmail.com', 'Nội thất 89');
@@ -97,9 +105,9 @@ function sendMailPass($email, $username, $pass)
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'BAN YEU CAU LAY LAI MAT KHAU!';
+        $mail->Subject = 'Quên mật khẩu!';
 
-        $mail->Body    = 'Mau khau cua ban la' . $pass . ' Nhé !';
+        $mail->Body    = 'Xin chào '.$username. '<br>  Mật khẩu mới của bạn là: ' . $pass;
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
