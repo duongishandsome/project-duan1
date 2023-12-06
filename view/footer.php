@@ -323,16 +323,51 @@
                 type: 'POST',
                 data: $('#AddToCartForm').serialize(),
                 success: function(response) {
-                    $('.header-action-num').text(response);
-                    Swal.fire({
-                        title: 'Thông báo',
-                        text: 'Đã thêm vào giỏ hàng',
-                        icon: 'success',
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                    });
+                    if (response == 'error') {
+                        window.location.href = 'index.php?act=login';
+
+                    } else {
+                        $('.header-action-num').text(response);
+                        Swal.fire({
+                            title: 'Thông báo',
+                            text: 'Đã thêm vào giỏ hàng',
+                            icon: 'success',
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            showCloseButton: true,
+                        });
+                    }
+
+                }
+            });
+        });
+
+        $('.addToCartButtonItem').click(function(event) {
+            event.preventDefault();
+            const form = $(this).closest('.AddToCartFormItem');
+            $.ajax({
+                url: './model/addtocart.php',
+                type: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    if (response == 'error') {
+                        window.location.href = 'index.php?act=login';
+
+                    } else {
+                        $('.header-action-num').text(response);
+                        Swal.fire({
+                            title: 'Thông báo',
+                            text: 'Đã thêm vào giỏ hàng',
+                            icon: 'success',
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            showCloseButton: true,
+                        });
+                    }
                 }
             });
         });

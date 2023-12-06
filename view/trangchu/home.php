@@ -177,13 +177,13 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
                                         </div> -->
-                                        <form action="index.php?act=addtocart&idsp=<?php echo $p_id ?>" method="post">
+                                        <form class="AddToCartFormItem" method="post">
                                             <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                             <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                             <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                             <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                            <button title="Add To Cart" type="submit" id="addToCartButton"
-                                                name="themcart" class=" add-to-cart">Thêm vào giỏ hàng</button>
+                                            <button title="Add To Cart" type="submit"
+                                                name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
                                         </form>
                                     </div>
                                     <div class="content">
@@ -234,15 +234,14 @@
                                                         class="icon-refresh"></i></a>
                                             </div> -->
 
-                                            <form action="index.php?act=addtocart&idsp=<?php echo $p_id ?>"
-                                                method="post">
+                                            <form class="AddToCartFormItem" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                                 <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                                 <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                                 <input type="hidden" name="price"
                                                     value="<?php echo $p_current_price ?>">
-                                                <button title="Add To Cart" id="addToCartButton" type="submit"
-                                                    name="themcart" class=" add-to-cart">Thêm vào giỏ hàng</button>
+                                                <button title="Add To Cart" type="submit"
+                                                    name="themcart" class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
                                             </form>
                                             <!-- <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
                                                 tiết</button> -->
@@ -296,14 +295,14 @@
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
                                             </div> -->
-                                            <form action="index.php?act=addtocart" method="post">
+                                            <form class="AddToCartFormItem" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                                 <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                                 <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                                 <input type="hidden" name="price"
                                                     value="<?php echo $p_current_price ?>">
-                                                <button title="Add To Cart" type="submit" name="themcart"
-                                                    class=" add-to-cart">Thêm vào giỏ hàng</button>
+                                                <button title="Add To Cart" type="submit" name="themcart" 
+                                                    class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
                                             </form>
                                         </div>
                                         <div class="content">
@@ -419,14 +418,12 @@
                                 <a href="compare.html" class="action compare" title="Compare"><i
                                         class="icon-refresh"></i></a>
                             </div> -->
-                            <form action="index.php?act=addtocart&idsp=<?php echo $p_id ?>" method="post">
+                            <form class="AddToCartFormItem"" method="post">
                                 <input type="hidden" name="id" value="<?php echo $p_id ?>">
                                 <input type="hidden" name="name" value="<?php echo $p_name ?>">
                                 <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
                                 <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                <button title="Add To Cart" type="submit" id="addToCartButton" name="themcart"
-                                    class=" add-to-cart">Thêm vào
-                                    giỏ hàng</button>
+                                <button title="Add To Cart" type="submit"  name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
                             </form>
                         </div>
                         <div class="content">
