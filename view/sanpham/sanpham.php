@@ -101,6 +101,7 @@
                                     <span class="price">
                                         <span
                                             class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                        <span class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
                                     </span>
                                 </div>
                             </div>

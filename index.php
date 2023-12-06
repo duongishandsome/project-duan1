@@ -1,5 +1,9 @@
 <?php
 session_start();
+// Tạo cookie để lưu trữ URL của trang trước đó
+if (empty($_SESSION['user-name'])) {
+    setcookie('previous_page', $_SERVER['HTTP_REFERER'], time() + 3600);
+}
 include "model/pdo.php";
 include "model/taikhoanuser.php";
 include "model/danhmuc.php";
@@ -53,7 +57,11 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                                 if ($checkuser['role_id'] == 1) {
                                     echo "<script>window.location.href='./admin/index.php '</script>";
                                 } else {
-                                    echo "<script>window.location.href='index.php'</script>";
+                                    // Nếu người dùng tải lại trang
+                                    if (isset($_COOKIE['previous_page'])) {
+                                        // Chuyển hướng người dùng trở lại trang trước đó
+                                        echo "<script>window.location.href='" . $_COOKIE['previous_page'] . "'</script>";                                        // header('Location: ' . $_COOKIE['previous_page']);
+                                    }
                                 }
                             }
                         } else {
@@ -70,9 +78,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $user = $_POST['user-name'];
                 $pass = $_POST['user-password'];
                 $hashedPassword = password_hash($pass, PASSWORD_BCRYPT);
-                $role_id=2;
+                $role_id = 2;
 
-                insert_taikhoan($email, $user, $hashedPassword,$role_id);
+                insert_taikhoan($email, $user, $hashedPassword, $role_id);
                 echo '<script>document.querySelector(".thongbao").innerText = "Đăng ký thành công :)";</script>';                        // $thongbao = "Tài khoản hoặc mật khẩu không chính xác !";
 
 

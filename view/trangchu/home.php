@@ -74,8 +74,7 @@
                             <h3 class="title">
                                 Bộ sưu tập ghế <br /> văn phòng mới
                             </h3>
-                            <a href="index.php?act=sanpham" class="shop-link"><button
-                                    class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
+                            <a href="index.php?act=sanpham" class="shop-link"><button class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
                         </div>
                     </div>
                 </div>
@@ -91,8 +90,7 @@
                             <h3 class="title">
                                 Bộ sưu tập <br /> phòng khách
                             </h3>
-                            <a href="index.php?act=sanpham" class="shop-link"><button
-                                    class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
+                            <a href="index.php?act=sanpham" class="shop-link"><button class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
                         </div>
                     </div>
                 </div>
@@ -108,8 +106,7 @@
                             <h3 class="title">
                                 Bộ sưu tập phòng<br /> trẻ em
                             </h3>
-                            <a href="index.php?act=sanpham" class="shop-link"><button
-                                    class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
+                            <a href="index.php?act=sanpham" class="shop-link"><button class="btn btn-primary btn-hover-primary">Mua ngay</button></a>
                         </div>
                     </div>
                 </div>
@@ -136,8 +133,7 @@
             <!-- Tab Start -->
             <div class="col-md-12 text-center mb-40px" data-aos="fade-up" data-aos-delay="200">
                 <ul class="product-tab-nav nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
-                            href="#tab-product-new-arrivals">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-product-new-arrivals">Sản phẩm</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-best-sellers">Sản
                             phẩm mới </a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-sale-item">Mặt hàng
@@ -159,16 +155,15 @@
                                 extract($sp);
                                 $hinh = $img_path . $p_featured_photo;
                             ?>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <!-- Single Prodect -->
-                                <div class="product">
-                                    <div class="thumb">
-                                        <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                            <img src="<?php echo $hinh ?>" alt="Product" />
-                                            <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                        </a>
-                                        <!-- <div class="actions">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up" data-aos-delay="200">
+                                    <!-- Single Prodect -->
+                                    <div class="product">
+                                        <div class="thumb">
+                                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                                <img src="<?php echo $hinh ?>" alt="Product" />
+                                                <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                            </a>
+                                            <!-- <div class="actions">
                                             <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                     class="icon-handbag"></i></a>
                                             <a href="#" class="action quickview" data-link-action="quickview"
@@ -177,25 +172,22 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="icon-refresh"></i></a>
                                         </div> -->
-                                        <form class="AddToCartFormItem" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                            <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                            <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                            <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                            <button title="Add To Cart" type="submit"
-                                                name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
-                                        </form>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title"><a
-                                                href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
-                                        </h5>
-                                        <span class="price">
-                                            <span
-                                                class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                            <form class="AddToCartFormItem" method="post">
+                                                <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                                <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                                <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                                <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                                <button title="Add To Cart" type="submit" name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
+                                            </form>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
+                                            </h5>
+                                            <span class="price">
+                                                <span class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php } ?>
                         </div>
                     </div>
@@ -211,19 +203,18 @@
                                     extract($sp);
                                     $hinh = $img_path . $p_featured_photo;
                                 ?>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                    data-aos-delay="200">
-                                    <!-- Single Prodect -->
-                                    <div class="product">
-                                        <div class="thumb">
-                                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                                <img src="<?php echo $hinh ?>" alt="Product" />
-                                                <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                            </a>
-                                            <span class="badges">
-                                                <span class="new">New</span>
-                                            </span>
-                                            <!-- <div class="actions">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up" data-aos-delay="200">
+                                        <!-- Single Prodect -->
+                                        <div class="product">
+                                            <div class="thumb">
+                                                <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                                    <img src="<?php echo $hinh ?>" alt="Product" />
+                                                    <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                                </a>
+                                                <span class="badges">
+                                                    <span class="new">New</span>
+                                                </span>
+                                                <!-- <div class="actions">
                                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                         class="icon-heart"></i></a>
                                                 <a href="#" class="action quickview" data-link-action="quickview"
@@ -234,29 +225,25 @@
                                                         class="icon-refresh"></i></a>
                                             </div> -->
 
-                                            <form class="AddToCartFormItem" method="post">
-                                                <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                                <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                                <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                                <input type="hidden" name="price"
-                                                    value="<?php echo $p_current_price ?>">
-                                                <button title="Add To Cart" type="submit"
-                                                    name="themcart" class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
-                                            </form>
-                                            <!-- <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
+                                                <form class="AddToCartFormItem" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                                    <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                                    <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                                    <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                                    <button title="Add To Cart" type="submit" name="themcart" class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
+                                                </form>
+                                                <!-- <button title="Add To Cart" name="addtocart" class=" add-to-cart">Xem chi
                                                 tiết</button> -->
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a
-                                                    href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
-                                            </h5>
-                                            <span class="price">
-                                                <span
-                                                    class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
-                                            </span>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
+                                                </h5>
+                                                <span class="price">
+                                                    <span class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -273,19 +260,18 @@
                                     extract($sp);
                                     $hinh = $img_path . $p_featured_photo;
                                 ?>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                    data-aos-delay="200">
-                                    <!-- Single Prodect -->
-                                    <div class="product">
-                                        <div class="thumb">
-                                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                                <img src="<?php echo $hinh ?>" alt="Product" />
-                                                <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                                            </a>
-                                            <span class="badges">
-                                                <span class="sale">-10%</span>
-                                            </span>
-                                            <!-- <div class="actions">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up" data-aos-delay="200">
+                                        <!-- Single Prodect -->
+                                        <div class="product">
+                                            <div class="thumb">
+                                                <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                                    <img src="<?php echo $hinh ?>" alt="Product" />
+                                                    <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                                </a>
+                                                <span class="badges">
+                                                    <span class="sale">-10%</span>
+                                                </span>
+                                                <!-- <div class="actions">
                                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                                         class="icon-heart"></i></a>
                                                 <a href="#" class="action quickview" data-link-action="quickview"
@@ -295,30 +281,25 @@
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
                                             </div> -->
-                                            <form class="AddToCartFormItem" method="post">
-                                                <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                                <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                                <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                                <input type="hidden" name="price"
-                                                    value="<?php echo $p_current_price ?>">
-                                                <button title="Add To Cart" type="submit" name="themcart" 
-                                                    class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
-                                            </form>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a
-                                                    href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
-                                            </h5>
-                                            <span class="price">
-                                                <span class="new"
-                                                    style="color:red;"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
-                                                <span
-                                                    class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
-                                            </span>
-                                            </span>
+                                                <form class="AddToCartFormItem" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                                    <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                                    <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                                    <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                                    <button title="Add To Cart" type="submit" name="themcart" class="addToCartButton add-to-cart">Thêm vào giỏ hàng</button>
+                                                </form>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?></a>
+                                                </h5>
+                                                <span class="price">
+                                                    <span class="new" style="color:red;"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                                    <span class="old"><?php echo $p_old_price ? $p_old_price .  " đ" : "" ?></span>
+                                                </span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -399,17 +380,17 @@
                     extract($sp);
                     $hinh = $img_path . $p_featured_photo;
                 ?>
-                <div class="new-product-item swiper-slide">
-                    <div class="product">
-                        <div class="thumb">
-                            <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
-                                <img src="<?php echo $hinh ?>" alt="Product" />
-                                <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
-                            </a>
-                            <span class="badges">
-                                <span class="new">New</span>
-                            </span>
-                            <!-- <div class="actions">
+                    <div class="new-product-item swiper-slide">
+                        <div class="product">
+                            <div class="thumb">
+                                <a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>" class="image">
+                                    <img src="<?php echo $hinh ?>" alt="Product" />
+                                    <img class="hover-image" src="<?php echo $hinh ?>" alt="Product" />
+                                </a>
+                                <span class="badges">
+                                    <span class="new">New</span>
+                                </span>
+                                <!-- <div class="actions">
                                 <a href="index.php?act=cart" class="action cart" title="cart"><i
                                         class="icon-heart"></i></a>
                                 <a href="#" class="action quickview" data-link-action="quickview" title="Quick view"
@@ -418,25 +399,23 @@
                                 <a href="compare.html" class="action compare" title="Compare"><i
                                         class="icon-refresh"></i></a>
                             </div> -->
-                            <form class="AddToCartFormItem"" method="post">
-                                <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                <button title="Add To Cart" type="submit"  name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
-                            </form>
-                        </div>
-                        <div class="content">
-                            <h5 class="title"><a
-                                    href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?>
-                                </a></h5>
-                            <span class="price">
-                                <span
-                                    class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
-                            </span>
+                                <form class="AddToCartFormItem"" method=" post">
+                                    <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                    <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                    <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                    <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                    <button title="Add To Cart" type="submit" name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
+                                </form>
+                            </div>
+                            <div class="content">
+                                <h5 class="title"><a href="index.php?act=sanphamct&idsp=<?php echo $p_id; ?>"><?php echo $p_name ?>
+                                    </a></h5>
+                                <span class="price">
+                                    <span class="new"><?php echo number_format($p_current_price, 0, ',', '.') . " đ" ?></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php } ?>
 
             </div>
