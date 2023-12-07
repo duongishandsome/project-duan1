@@ -78,12 +78,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
+                <h4 class="modal-title" id="myModalLabel">Xác nhận</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Bạn có chắc muốn xóa đơn hàng này không?</p>
-                <p style="color:red;">Hãy cẩn thận! Các dữ liệu liên quan cũng có thể bị xóa.</p>
+                <p>Bạn có chắc muốn tiếp tục hành động này không?</p>
+                <p style="color:red;">Hãy cẩn thận!</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>

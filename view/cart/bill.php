@@ -138,7 +138,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="cart-shiping-update-wrapper">
+                                    <!-- <div class="cart-shiping-update-wrapper">
                                         <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy
                                             được đơn
                                             hàng
@@ -147,7 +147,7 @@
                                         <div class="cart-shiping-update">
                                             <a href="index.php?act=huydon"  onclick="showConfirmCancle(this.href, event)">Hủy đơn hàng</a>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             </div>

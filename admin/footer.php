@@ -125,6 +125,14 @@
       rules: {
         cate_id: 'required',
         p_name: 'required',
+        'color[]': {
+            required: true
+        },
+        'size[]': {
+            required: true
+        },
+        // 'color[]': 'requiredd',
+        // 'size[]': 'requiredd',
         p_old_price: {
           number: true,
           positiveNumber: true
@@ -153,6 +161,12 @@
         p_old_price: {
           number: 'Vui lòng nhập kiểu số',
           positiveNumber: 'Vui lòng nhâp số dương',
+        },
+        'color[]': {
+            required: "Vui lòng chọn ít nhất một màu sắc",
+        },
+        'size[]': {
+            required: "Vui lòng chọn ít nhất một kích cỡ",
         },
         p_current_price: {
           required: 'Trường này không được để trống',
