@@ -2,7 +2,8 @@
 session_start();
 // Tạo cookie để lưu trữ URL của trang trước đó
 if (empty($_SESSION['user-name'])) {
-    setcookie('previous_page', $_SERVER['HTTP_REFERER'], time() + 3600);
+    if (isset($_SERVER['HTTP_REFERER']))
+        setcookie('previous_page', $_SERVER['HTTP_REFERER'], time() + 3600);
 }
 include "model/pdo.php";
 include "model/taikhoanuser.php";
@@ -223,6 +224,11 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             $voucher = loadall_voucher();
             include_once "view/cart/thanhtoan.php";
             break;
+        case 'huydon':
+            $payment_id = $_GET['payment_id'];
+            huydon($payment_id );
+            echo "<script>window.location.href='index.php'</script>";
+            break;
         case 'billcomfirm':
             if (isset($_POST['dongydathang'])) {
                 if ($_POST['payment_method'] == 'cash') {
@@ -253,16 +259,22 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $address = $_POST['address'];
                     $pttt = $_POST['payment_method'];
                     $phone = $_POST['phone'];
-                    $phone = $_POST['phone'];
                     $tongdonhang = $_POST['tongtien'];
                     $message = $_POST['message'];
                     $payment_date = date("Y-m-d H:i:s");
-                    insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
-                    $cart = cart_list();
-                    foreach ($cart as $product) {
-                        insert_order_detail($product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
-                    }
-                    cart_destroy();
+
+                    $_SESSION['infobill'] = array(
+                        'user_id' => $user_id,
+                        'payment_id' => $payment_id,
+                        'name' => $name,
+                        'address' => $address,
+                        'payment_method' => $pttt,
+                        'phone' => $phone,
+                        'tongdonhang' => $tongdonhang,
+                        'message' => $message,
+                        'payment_date' => $payment_date
+                    );
+
                     echo "<script>window.location.href='model/xulythanhtoanmomo_atm.php?payment_id=$payment_id&total=$tongdonhang'</script>";
                 }
             }
@@ -276,6 +288,24 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
                 include_once "view/cart/bill.php";
             } elseif (isset($_GET['partnerCode'])) {
+                $infobill = $_SESSION['infobill'];
+
+                $user_id = $infobill['user_id'];
+                $payment_id = $infobill['payment_id'];
+                $name = $infobill['name'];
+                $address = $infobill['address'];
+                $pttt = $infobill['payment_method'];
+                $phone = $infobill['phone'];
+                $tongdonhang = $infobill['tongdonhang'];
+                $message = $infobill['message'];
+                $payment_date = $infobill['payment_date'];
+                insert_bill($user_id, $name, $phone, $address, $tongdonhang, $pttt, $message, $payment_date, $payment_id);
+                $cart = cart_list();
+                foreach ($cart as $product) {
+                    insert_order_detail($product['id'], $product['color'], $product['size'], $product['quantity'], $product['price'],  $payment_id);
+                }
+                unset($_SESSION['infobill']);
+                cart_destroy();
                 $partnerCode = $_GET['partnerCode'];
                 $orderId = $_GET['orderId'];
                 $amount = $_GET['amount'];
@@ -291,9 +321,10 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 include_once "view/cart/bill.php";
             }
             break;
+            unset($_SESSION['infobill']);
 
         case 'trangthaidon':
-            $billct = loadall_order($_SESSION['user-name']['user_id']);
+            $billct = loadall_order_user($_SESSION['user-name']['user_id']);
             include_once "view/cart/trangthaidon.php";
             break;
 

@@ -33,13 +33,13 @@
         <div class="row">
             <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
                 <!-- Shop Top Area Start -->
-                <div class="shop-top-bar d-flex">
+                <div class="shop-top-bar d-flex p-2">
                     <!-- Left Side start -->
                     <p>Cửa hàng có : <?php echo $count_sp; ?> sản phẩm.</p>
                     <!-- Left Side End -->
                     <!-- Right Side Start -->
                     <div class="select-shoing-wrap d-flex align-items-center">
-                        <div class="shot-product">
+                        <!-- <div class="shot-product">
                             <p>Sort By:</p>
                         </div>
                         <div class="shop-select">
@@ -51,7 +51,7 @@
                                 <option value="4"> Price, high to low</option>
                             </select>
 
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Right Side End -->
                 </div>

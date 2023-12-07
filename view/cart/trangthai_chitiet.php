@@ -52,20 +52,20 @@
                             </thead>
                             <tbody>
                                 <tr><?php
-                                if(is_array($ct)){
-                                foreach($ct as $dh){
-                                    extract($dh);
-                                    $hinh="upload/".$p_featured_photo;
-                                    $link = "index.php?act=sanphamct&idsp=" . $p_id;
-                                    echo'<tr>
+                                    if (is_array($ct)) {
+                                        foreach ($ct as $dh) {
+                                            extract($dh);
+                                            $hinh = "upload/" . $p_featured_photo;
+                                            $link = "index.php?act=sanphamct&idsp=" . $p_id;
+                                            echo '<tr>
                                     <td><a href="' . $link . '">' . $p_name . '</a></td>
-                                    <td><a href="' . $link . '"><img style="height: 120px;width: 120px;" src="' . $hinh . '" alt=""></a></td>                                    <td>'.$color_name.'</td>
-                                    <td>'.$size_name.'</td>
-                                    <td>'.$price.'</td>
+                                    <td><a href="' . $link . '"><img style="height: 120px;width: 120px;" src="' . $hinh . '" alt=""></a></td>                                    <td>' . $color_name . '</td>
+                                    <td>' . $size_name . '</td>
+                                    <td>' . $price . '</td>
                                     </tr>';
-                                }
-                            }
-                            ?>
+                                        }
+                                    }
+                                    ?>
                                 </tr>
                             </tbody>
                         </table>
@@ -76,13 +76,22 @@
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
                                 <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy được đơn
-                                    hàng :)
+                                    hàng
                                 </p>
 
-                                <div class="cart-shiping-update">
-                                    <a href="#">Hủy đơn hàng</a>
-                                    <!-- <a href="#">Cập nhật đơn hàng</a> -->
-                                </div>
+                                <?php
+                                $status = get_status($_GET['id']);
+                                if ($status['status'] == 0) {
+                                ?>
+                                    <div class="cart-shiping-update">
+                                        <a onclick="showConfirmCancle(this.href, event)" href="index.php?act=huydon&payment_id=<?php echo $_GET['id'] ?>">Hủy đơn hàng</a>
+                                        <!-- <a href="#">Cập nhật đơn hàng</a> -->
+                                    </div>
+                                <?php
+                                }
+                                ?>
+
+
                             </div>
 
                         </div>
@@ -95,7 +104,7 @@
         <div class="cart-shiping-update-wrapper">
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-clear">
-                    <a href="index.php?act=home">Tiếp tục mua sắm</a>
+                    <a href="index.php">Tiếp tục mua sắm</a>
                 </div>
             </div>
         </div>

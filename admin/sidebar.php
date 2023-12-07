@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?act=listsize" class="nav-link">
+                    <a href="index.php?act=listcolor" class="nav-link">
                         <i class="fa-solid fa-palette fa-lg"></i>
                         <p>
                             Quản lý màu
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?act=listcolor" class="nav-link">
+                    <a href="index.php?act=listsize" class="nav-link">
                         <i class="fa-solid fa-cube fa-lg"></i>
                         <p>
                             Quản lý kích cỡ
@@ -56,14 +56,14 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="index.php?act=listvoucher" class="nav-link">
                         <i class="fa-solid fa-tag fa-xl"></i>
                         <p>
                             Quản lý voucher
                         </p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="index.php?act=listbinhluan" class="nav-link">
                         <i class="nav-icon fa-solid fa-comments"></i>

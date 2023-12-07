@@ -57,7 +57,7 @@
                 <div class="don">
                     <h1 class="text-center">Thông tin đơn hàng</h1>
                     <ul>
-                        <li>Mã đơn hàng : <?php echo $id ?></li>
+                        <li>Mã đơn hàng : <?php echo $payment_id ?></li>
                         <li>Ngày đặt hàng : <?php echo $payment_date ?></li>
                         <li>Phương thức thanh toán : <?php echo $payment_method == "cash" ? "Tiền mặt" : 'Momo ATM'  ?></li>
                     </ul>
@@ -141,11 +141,11 @@
                                     <div class="cart-shiping-update-wrapper">
                                         <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy
                                             được đơn
-                                            hàng :)
+                                            hàng
                                         </p>
 
                                         <div class="cart-shiping-update">
-                                            <a href="#">Hủy đơn hàng</a>
+                                            <a href="index.php?act=huydon"  onclick="showConfirmCancle(this.href, event)">Hủy đơn hàng</a>
                                         </div>
                                     </div>
 

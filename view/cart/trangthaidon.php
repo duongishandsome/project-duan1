@@ -43,7 +43,7 @@ if (isset($_SESSION['user-name'])) {
                                     <th>Khách hàng</th>
                                     <th>Tổng tiền</th>
                                     <th>Trạng Thái</th>
-                                    <th>Action</th>
+                                    <th>Hành động</th>
                                 </tr>
 
                             </thead>
@@ -68,7 +68,7 @@ if (isset($_SESSION['user-name'])) {
                                         $xoadh="";
                                     }
                                     echo'<tr>
-                                    <td>Đơn hàng-'.$bill['id'].'</td>
+                                    <td>'.$bill['payment_id'].'</td>
                                     <td>'.$bill['payment_date'].'</td>
                                     <td>'.$kh.'</td>
                                     <td>'.$bill['paid_amount'].'</td>
@@ -90,7 +90,7 @@ if (isset($_SESSION['user-name'])) {
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
                                 <p class="col-lg-4">Vui lòng khi trạng thái "Đang vận chuyển" Bạn sẽ không hủy được đơn
-                                    hàng :)
+                                    hàng 
                                 </p>
 
                                 <div class="cart-shiping-update">
@@ -109,7 +109,7 @@ if (isset($_SESSION['user-name'])) {
         <div class="cart-shiping-update-wrapper">
             <div class="cart-shiping-update-wrapper">
                 <div class="cart-clear">
-                    <a href="index.php?act=home">Tiếp tục mua sắm</a>
+                    <a href="index.php">Tiếp tục mua sắm</a>
                 </div>
             </div>
         </div>

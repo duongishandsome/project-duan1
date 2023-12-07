@@ -35,26 +35,37 @@
                                 $kh = $bill["receiver_name"] . '
                                  <br>' . $bill["receiver_phone"] . '
                                  <br>' . $bill["receiver_address"];
-
-                                if ($ttdh == 'Đơn hàng mới !') {
-                                    $xoadh = "index.php?act=xoabill&id=" . $payment_id;
-                                } else {
-                                    $xoadh = "";
-                                }
+                                $xoadh = "index.php?act=xoabill&id=" . $payment_id;
                                 $ctdh = "index.php?act=ctdh&id=" . $payment_id;
+                                $huydon = "index.php?act=huydon&payment_id=" . $payment_id;
+
                                 echo '<tr>
-                                 <td>Đơn hàng-' . $bill['id'] . '</td>
-                                 <td>' . $bill['payment_date'] . '</td>
-                                 <td>' . $kh . '</td>
-                                 <td>' . $bill['paid_amount'] . '</td>
-                                 <td>' . $ttdh . '</td>
-                                 <td><a class="btn btn-primary btn-sm" href="' . $ctdh . '">Chi tiết</a>
-                                 <a class="btn btn-primary btn-sm" href="' . $csdh . '">Cập nhật</a></td>
-                                 </tr>';
+                                    <td>' . $bill['payment_id'] . '</td>
+                                    <td>' . $bill['payment_date'] . '</td>
+                                    <td>' . $kh . '</td>
+                                    <td>' . number_format($bill['paid_amount'], 0, ',', '.')  . '</td>
+                                    <td>' . $ttdh . '</td>
+                                    <td>
+                                        <a style="margin: 0 3px" class="btn px-2 btn-primary btn-sm" href="' . $ctdh . '">Chi tiết</a>';
+                                // Hủy thì không hiển thị nút cập nhật
+                                if ($bill['status'] != -1) {
+                                    echo '<a style="margin: 0 3px" class="btn btn-secondary btn-sm" href="' . $csdh . '">Cập nhật</a>';
+                                }
+                                // Hoàn thành thì không hiển thị nút Xóa
+                                if ($bill['status'] != 4) {
+                                    echo '<a style="margin: 0 3px" class="btn btn-danger btn-sm" href="#" data-href="' . $xoadh . '" data-toggle="modal" data-target="#confirm-delete">Xóa</a>';
+                                }
+                                //Hủy và Hoàn thành thì không hiển thị nút Hủy
+                                if ($bill['status'] != 4 && $bill['status'] != -1) {
+                                    echo '<a style="margin: 0 3px" class="btn btn-warning btn-sm" href="#" data-href="' . $huydon . '" data-toggle="modal" data-target="#confirm-delete">Hủy</a>';
+                                }
+
+                                echo '</td>
+                            </tr>';
                             }
                         }
                         ?>
-                        
+
                     </tbody>
 
                 </table>
@@ -62,3 +73,22 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Xác nhận xóa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc muốn xóa đơn hàng này không?</p>
+                <p style="color:red;">Hãy cẩn thận! Các dữ liệu liên quan cũng có thể bị xóa.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger btn-ok">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>

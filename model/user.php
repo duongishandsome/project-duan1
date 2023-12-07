@@ -20,6 +20,12 @@ function get_role() {
 }
 
 function delete_user($id) {
+    $sql1 = "DELETE FROM `comment` WHERE user_id=" . $id;
+    pdo_execute($sql1);
+
+    $sql2 = "DELETE FROM `order` WHERE user_id=" . $id;
+    pdo_execute($sql2);
+
     $sql = "delete from user where user_id=" . $id;
     pdo_execute($sql);
 }

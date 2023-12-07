@@ -46,21 +46,21 @@
             $xoasp_td2 = '';
         }
     ?>
- <thead class="cart-table">
-     <tr>
-         <th>STT</th>
-         <th>Ảnh</th>
-         <th>Tên sản phẩm</th>
-         <th>Giá</th>
-         <th>Màu</th>
-         <th>Size</th>
-         <th>Số lượng</th>
-         <th>Thành tiền</th>
-         <th><?php echo $xoasp_th ?></th>
-     </tr>
- </thead>
- <tbody>
-     <?php foreach ($_SESSION['cart'] as $cart) {
+     <thead class="cart-table">
+         <tr>
+             <th>STT</th>
+             <th>Ảnh</th>
+             <th>Tên sản phẩm</th>
+             <th>Giá</th>
+             <th>Màu</th>
+             <th>Size</th>
+             <th>Số lượng</th>
+             <th>Thành tiền</th>
+             <th><?php echo $xoasp_th ?></th>
+         </tr>
+     </thead>
+     <tbody>
+         <?php foreach ($_SESSION['cart'] as $cart) {
                 $hinh = $img_path . $cart['image'];
                 $tong = tongdonhang();
                 $i++;
@@ -70,32 +70,28 @@
                     $xoasp_td = '';
                 }
             ?>
-     <tr>
-         <td><?php echo $i ?></td>
-         <input type="hidden" value="<?php echo $cart['id']; ?>" />
-         <td class="product-thumbnail">
-             <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive"
-                     src="<?php echo $hinh ?>" alt="" /></a>
-         </td>
-         <td class="product-name"><a
-                 href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
-         <td class="product-price-cart"><span
-                 class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
-         <td class="color"><?php echo $cart['color'] ?></td>
-         <td  class="size"><?php echo $cart['size'] ?></td>
-         <td class="product-quantity">
-             <div class="cart-plus-minus">
-                 <input class="cart-plus-minus-box quantity-change"required type="text" maxlength="1" onblur="validateInput(this);" name="qtybutton"
-                     value="<?php echo $cart['quantity'] ?>" />
-             </div>
-         </td>
-         <td class="product-subtotal"><?php echo number_format($cart['total_price'], 0, ',', '.')  ?></td>
-         <td class="product-remove">
-             <a href="<?php echo $xoasp_td; ?>" onclick="showConfirmationDialog(this.href, event)"><i class="icon-close"></i></a>
-         </td>
-     </tr>
-     <?php } ?>
- </tbody>
+             <tr>
+                 <td><?php echo $i ?></td>
+                 <input type="hidden" value="<?php echo $cart['id']; ?>" />
+                 <td class="product-thumbnail">
+                     <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive" src="<?php echo $hinh ?>" alt="" /></a>
+                 </td>
+                 <td class="product-name"><a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
+                 <td class="product-price-cart"><span class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
+                 <td class="color"><?php echo $cart['color'] ?></td>
+                 <td class="size"><?php echo $cart['size'] ?></td>
+                 <td class="product-quantity">
+                     <div class="cart-plus-minus">
+                         <input class="cart-plus-minus-box quantity-change" required type="text" maxlength="1" onblur="validateInput(this);" name="qtybutton" value="<?php echo $cart['quantity'] ?>" />
+                     </div>
+                 </td>
+                 <td class="product-subtotal"><?php echo number_format($cart['total_price'], 0, ',', '.')  ?></td>
+                 <td class="product-remove">
+                     <a href="<?php echo $xoasp_td; ?>" onclick="showConfirmationDialog(this.href, event)"><i class="icon-close"></i></a>
+                 </td>
+             </tr>
+         <?php } ?>
+     </tbody>
  <?php
     }
 
@@ -142,6 +138,15 @@
         return $listbill;
     }
 
+
+    function loadall_order_user($iduser)
+    {
+        $sql = "select * from `order`";
+        if ($iduser > 0) $sql .= " where user_id=" . $iduser ." and status <> -1";
+        $sql .= " order by id desc";
+        $listbill = pdo_query($sql);
+        return $listbill;
+    }
     function loadall_order_detail($id)
     {
         $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity,a.p_id, p_name, p_featured_photo  
@@ -167,6 +172,25 @@
         return $cart;
     }
 
+    function get_status($payment_id) {
+        $sql = "select status from  `order` where payment_id=" . $payment_id;
+        $status = pdo_query_one($sql);
+        return $status;
+    }
+
+    function huydon($payment_id)
+    {
+        $sql = "update `order` set status= -1 where payment_id=" . $payment_id;
+        pdo_execute($sql);
+    }
+    
+    function delete_order($payment_id) {
+        $sql1 = "delete from `order_detail` where payment_id=" . $payment_id;
+        pdo_execute($sql1);
+
+        $sql = "delete from `order` where payment_id=" . $payment_id;
+        pdo_execute($sql);
+    }
 
     function get_ttdh($n)
     {
@@ -184,8 +208,12 @@
                 $tt = "Đã giao hàng !";
                 break;
             case '4':
-                $tt = "Hoàn tất!";
+                $tt = "Đơn hàng đã hoàn thành";
                 break;
+            case '-1':
+                $tt = "Đơn hàng đã bị hủy";
+                break;
+
             default:
                 $tt = "Đơn hàng mới ";
                 break;

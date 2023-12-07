@@ -119,6 +119,19 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 header("location: index.php?act=listuser");
             }
             break;
+        case "xoabill":
+            if (isset($_GET['id'])) {
+                delete_order($_GET['id']);
+                header("location: index.php?act=listoders");
+            }
+            break;
+        case 'huydon':
+            if (isset($_GET['payment_id'])) {
+                $payment_id = $_GET['payment_id'];
+                huydon($payment_id);
+                echo "<script>window.location.href='index.php?act=listoders'</script>";
+            }
+            
             break;
         case "addproduct":
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {

@@ -133,7 +133,7 @@
             <!-- Tab Start -->
             <div class="col-md-12 text-center mb-40px" data-aos="fade-up" data-aos-delay="200">
                 <ul class="product-tab-nav nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-product-new-arrivals">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-product-new-arrivals">Sản phẩm nổi bật</a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-best-sellers">Sản
                             phẩm mới </a></li>
                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-sale-item">Mặt hàng

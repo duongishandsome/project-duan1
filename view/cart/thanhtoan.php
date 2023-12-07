@@ -190,7 +190,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input p-0 btn-rounded" type="radio"
                                                 name="payment_method" value="momo_atm" id="payment3">
-                                            <label class="form-check-label" for="payment3">Thanh toán online</label>
+                                            <label class="form-check-label" for="payment3">Thanh toán qua momo atm</label>
                                         </div>
                                     </div>
                                 </div>

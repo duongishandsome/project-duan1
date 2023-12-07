@@ -4,6 +4,10 @@
       <div class="col-sm-6">
         <h1 class="m-0">Quản lý đơn hàng</h1>
       </div>
+      <div class="col-sm-6">
+        <div class="float-sm-right">
+          <a href="index.php?act=listoders" class="btn btn-primary btn-md">Danh sách đơn hàng</a>
+        </div>
     </div>
   </div>
 </div>

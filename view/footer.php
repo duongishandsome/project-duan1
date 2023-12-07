@@ -315,6 +315,23 @@
         });
     }
 
+    function showConfirmCancle(href, event) {
+        event.preventDefault(); // Ngăn chặn điều hướng mặc định của thẻ a
+
+        Swal.fire({
+            title: 'Xác nhận',
+            text: 'Bạn có chắc chắn muốn hủy đơn không?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Có',
+            cancelButtonText: 'Không'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = href;
+            }
+        });
+    }
+
     $(document).ready(function() {
         $('#addToCartButton').click(function(event) {
             event.preventDefault();
