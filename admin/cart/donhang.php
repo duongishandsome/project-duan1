@@ -4,10 +4,6 @@
       <div class="col-sm-6">
         <h1 class="m-0">Quản lý đơn hàng</h1>
       </div>
-      <div class="col-sm-6">
-        <div class="float-sm-right">
-          <a href="index.php?act=listoders" class="btn btn-primary btn-md">Danh sách đơn hàng</a>
-        </div>
     </div>
   </div>
 </div>
@@ -21,6 +17,9 @@
           <thead>
             <thead>
               <tr>
+                <th>Khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
                 <th>Tên sản phẩm</th>
                 <th>Ảnh</th>
                 <th>Color</th>
@@ -38,12 +37,15 @@
                     extract($dh);
                     $hinh = "../upload/" . $p_featured_photo;
                     echo '<tr>
-                                    <td>' . $p_name . '</td>
-                                    <td><img style="height: 120px;width: 120px;" src="' . $hinh . '" alt=""></td>
-                                    <td>' . $color_name . '</td>
-                                    <td>' . $size_name . '</td>
-                                    <td>' . $price . '</td>
-                                    </tr>';
+                      <td>' . $receiver_name . '</td>
+                      <td>' . $receiver_phone . '</td> 
+                      <td>' . $receiver_address . '</td>  
+                      <td>' . $p_name . '</td>
+                      <td><img style="height: 120px;width: 120px;" src="' . $hinh . '" alt=""></td>
+                      <td>' . $color_name . '</td>
+                      <td>' . $size_name . '</td>
+                      <td>' . $price . '</td>
+                      </tr>';
                   }
                 }
                 ?>

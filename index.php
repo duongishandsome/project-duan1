@@ -368,11 +368,13 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     " . $where_clause . " 
                     ORDER BY p.p_id DESC";
             } else {
-                $sql = "SELECT * FROM product p
-                    LEFT JOIN product_size ps ON p.p_id = ps.p_id
-                    LEFT JOIN size s ON ps.size_id = s.size_id
-                    " . $where_clause . " 
-                    ORDER BY p.p_id DESC";
+                $sql = "SELECT p.*, GROUP_CONCAT(s.size_name) as sizes
+                FROM product p
+                LEFT JOIN product_size ps ON p.p_id = ps.p_id
+                LEFT JOIN size s ON ps.size_id = s.size_id
+                " . $where_clause . " 
+                GROUP BY p.p_id
+                ORDER BY p.p_id DESC";
             }
 
             $listsanpham = pdo_query($sql);

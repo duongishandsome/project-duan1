@@ -83,7 +83,6 @@
                             <i class="ion-android-star"></i>
                             <i class="ion-android-star"></i>
                         </div>
-                        <span class="read-review"><a class="reviews" href="#">Lượt bình luận(1)</a></span>
                     </div>
                     <div class="pricing-meta">
                         <ul>
@@ -156,16 +155,9 @@
 
             <div class="pro-details-policy">
                 <ul>
-                    <li><img src="assets/images/icons/policy.png" alt="" /><span>Chính sách bảo mật (Chỉnh
-                            sửa
-                            với mô-đun trấn an khách hàng)</span></li>
-                    <li><img src="assets/images/icons/policy-2.png" alt="" /><span>Chính sách giao hàng
-                            (Chỉnh
-                            sửa với mô-đun trấn an khách hàng)</span></li>
-                    <li><img src="assets/images/icons/policy-3.png" alt="" /><span>Chính sách hoàn trả
-                            (Chỉnh
-                            sửa với mô-đun trấn an khách hàng)
-                        </span></li>
+                    <li><img src="assets/images/icons/policy.png" alt="" /><span>Chính sách bảo mật</span></li>
+                    <li><img src="assets/images/icons/policy-2.png" alt="" /><span>Chính sách giao hàng</span></li>
+                    <li><img src="assets/images/icons/policy-3.png" alt="" /><span>Chính sách hoàn trả</span></li>
                 </ul>
             </div>
         </div>

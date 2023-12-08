@@ -143,14 +143,14 @@
     {
         $sql = "select * from `order`";
         if ($iduser > 0) $sql .= " where user_id=" . $iduser ." and status <> -1";
-        $sql .= " order by id desc";
+        $sql .= " order by id asc";
         $listbill = pdo_query($sql);
         return $listbill;
     }
     function loadall_order_detail($id)
     {
-        $sql = "SELECT a.id, a.payment_id, size_name, color_name, a.price, quantity,a.p_id, p_name, p_featured_photo  
-            FROM order_detail a join product  on a.p_id = product.p_id WHERE payment_id = $id";
+        $sql = "SELECT receiver_name,receiver_phone,receiver_address, a.id, a.payment_id, size_name, color_name, a.price, quantity,a.p_id, p_name, p_featured_photo  
+            FROM order_detail a join product  on a.p_id = product.p_id join `order` on a.payment_id= order.payment_id  WHERE a.payment_id = $id";
         $order = pdo_query($sql);
         return $order;
     }
