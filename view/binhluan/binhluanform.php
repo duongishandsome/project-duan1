@@ -39,13 +39,15 @@ $idpro = $_REQUEST['idpro'];
 </head>
 
 <body>
-  <div class="row" >
-    <div class="col-12 cmt-section"  id="commentSection"></div>
-    <div class="col-lg-12">
+  <div class="row">
+    <div class="col-12 cmt-section" id="commentSection"></div>
+    <?php if (isset($_SESSION['user-name'])) {
+    ?>
+      <div class="col-lg-12">
       <div class="ratting-form-wrapper pl-50">
         <h3 class="py-2">Viết bình luận</h3>
         <div class="ratting-form">
-          <form  id="commentForm" method="POST">
+          <form id="commentForm" method="POST">
             <input type="hidden" name="idpro" value="<?php echo $idpro ?>">
             <div class="row">
               <div class="col-md-12">
@@ -59,6 +61,8 @@ $idpro = $_REQUEST['idpro'];
         </div>
       </div>
     </div>
+    <?php } ?>
+    
 
   </div>
   <script src="./assets/js/jquery.min.js"></script>
@@ -85,7 +89,7 @@ $idpro = $_REQUEST['idpro'];
           url: './model/loadcomments.php',
           type: 'GET',
           data: {
-            p_id:<?php echo $idpro ?>,
+            p_id: <?php echo $idpro ?>,
           },
           success: function(response) {
             $('#commentSection').html(response);

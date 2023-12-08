@@ -340,7 +340,7 @@
                 type: 'POST',
                 data: $('#AddToCartForm').serialize(),
                 success: function(response) {
-                    if (response == 'error') {
+                    if (response.trim() == 'error') {
                         window.location.href = 'index.php?act=login';
 
                     } else {
@@ -369,7 +369,7 @@
                 type: 'POST',
                 data: form.serialize(),
                 success: function(response) {
-                    if (response == 'error') {
+                    if (response.trim() == 'error') {
                         window.location.href = 'index.php?act=login';
 
                     } else {
