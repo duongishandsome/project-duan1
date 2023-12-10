@@ -46,21 +46,21 @@
             $xoasp_td2 = '';
         }
     ?>
-     <thead class="cart-table">
-         <tr>
-             <th>STT</th>
-             <th>Ảnh</th>
-             <th>Tên sản phẩm</th>
-             <th>Giá</th>
-             <th>Màu</th>
-             <th>Size</th>
-             <th>Số lượng</th>
-             <th>Thành tiền</th>
-             <th><?php echo $xoasp_th ?></th>
-         </tr>
-     </thead>
-     <tbody>
-         <?php foreach ($_SESSION['cart'] as $cart) {
+ <thead class="cart-table">
+     <tr>
+         <th>STT</th>
+         <th>Ảnh</th>
+         <th>Tên sản phẩm</th>
+         <th>Giá</th>
+         <th>Màu</th>
+         <th>Size</th>
+         <th>Số lượng</th>
+         <th>Thành tiền</th>
+         <th><?php echo $xoasp_th ?></th>
+     </tr>
+ </thead>
+ <tbody>
+     <?php foreach ($_SESSION['cart'] as $cart) {
                 $hinh = $img_path . $cart['image'];
                 $tong = tongdonhang();
                 $i++;
@@ -70,28 +70,33 @@
                     $xoasp_td = '';
                 }
             ?>
-             <tr>
-                 <td><?php echo $i ?></td>
-                 <input type="hidden" value="<?php echo $cart['id']; ?>" />
-                 <td class="product-thumbnail">
-                     <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive" src="<?php echo $hinh ?>" alt="" /></a>
-                 </td>
-                 <td class="product-name"><a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
-                 <td class="product-price-cart"><span class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
-                 <td class="color"><?php echo $cart['color'] ?></td>
-                 <td class="size"><?php echo $cart['size'] ?></td>
-                 <td class="product-quantity">
-                     <div class="cart-plus-minus">
-                         <input class="cart-plus-minus-box quantity-change" required type="text" maxlength="1" onblur="validateInput(this);" name="qtybutton" value="<?php echo $cart['quantity'] ?>" />
-                     </div>
-                 </td>
-                 <td class="product-subtotal"><?php echo number_format($cart['total_price'], 0, ',', '.')  ?></td>
-                 <td class="product-remove">
-                     <a href="<?php echo $xoasp_td; ?>" onclick="showConfirmationDialog(this.href, event)"><i class="icon-close"></i></a>
-                 </td>
-             </tr>
-         <?php } ?>
-     </tbody>
+     <tr>
+         <td><?php echo $i ?></td>
+         <input type="hidden" value="<?php echo $cart['id']; ?>" />
+         <td class="product-thumbnail">
+             <a href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><img class="img-responsive"
+                     src="<?php echo $hinh ?>" alt="" /></a>
+         </td>
+         <td class="product-name"><a
+                 href="index.php?act=sanphamct&idsp=<?php echo $cart['id']; ?>"><?php echo $cart['name'] ?></a></td>
+         <td class="product-price-cart"><span
+                 class="amount"><?php echo number_format($cart['price'], 0, ',', '.')  ?></span></td>
+         <td class="color"><?php echo $cart['color'] ?></td>
+         <td class="size"><?php echo $cart['size'] ?></td>
+         <td class="product-quantity">
+             <div class="cart-plus-minus">
+                 <input class="cart-plus-minus-box quantity-change" required type="text" maxlength="1"
+                     onblur="validateInput(this);" name="qtybutton" value="<?php echo $cart['quantity'] ?>" />
+             </div>
+         </td>
+         <td class="product-subtotal"><?php echo number_format($cart['total_price'], 0, ',', '.')  ?></td>
+         <td class="product-remove">
+             <a href="<?php echo $xoasp_td; ?>" onclick="showConfirmationDialog(this.href, event)"><i
+                     class="icon-close"></i></a>
+         </td>
+     </tr>
+     <?php } ?>
+ </tbody>
  <?php
     }
 
@@ -196,7 +201,7 @@
     {
         switch ($n) {
             case '0':
-                $tt = "Đơn hàng mới !";
+                $tt = "Chờ xác nhận !";
                 break;
             case '1':
                 $tt = "Đang xử lý !";
@@ -215,7 +220,7 @@
                 break;
 
             default:
-                $tt = "Đơn hàng mới ";
+                $tt = "Chờ xác nhận ";
                 break;
         }
         return $tt;

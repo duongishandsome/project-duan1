@@ -5,13 +5,13 @@
             <div class="col-12">
                 <div class="row breadcrumb_box  align-items-center">
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
-                        <h2 class="breadcrumb-title">Shop</h2>
+                        <h2 class="breadcrumb-title">Hóa đơn</h2>
                     </div>
                     <div class="col-lg-6  col-md-6 col-sm-12">
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list text-center text-md-end">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                            <li class="breadcrumb-item active">Cart</li>
+                            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">hóa đơn</li>
                         </ul>
                         <!-- breadcrumb-list end -->
                     </div>
@@ -59,7 +59,8 @@
                     <ul>
                         <li>Mã đơn hàng : <?php echo $payment_id ?></li>
                         <li>Ngày đặt hàng : <?php echo $payment_date ?></li>
-                        <li>Phương thức thanh toán : <?php echo $payment_method == "cash" ? "Tiền mặt" : 'Momo ATM'  ?></li>
+                        <li>Phương thức thanh toán : <?php echo $payment_method == "cash" ? "Tiền mặt" : 'Momo ATM'  ?>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -94,25 +95,29 @@
                                         $tongtien += $billct['price'];
 
                                     ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $i ?></td>
-                                                <td class="product-thumbnail">
-                                                    <a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><img class="img-responsive ml-15px" src="<?php echo $hinh ?>" alt="" /></a>
-                                                </td>
-                                                <td class="product-name"><a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><?php echo $p_name ?></a>
-                                                </td>
-                                                <td class="product-price-cart"><span class="amount"><?php echo $price ?></span></td>
-                                                <td><?php echo $color_name ?></td>
-                                                <td><?php echo $size_name ?></td>
-                                                <td class="product-quantity">
-                                                    <span><?php echo $quantity ?></span>
-                                                </td>
-                                                <td class="product-subtotal">
-                                                    <?php echo number_format($price * $quantity, 0, ',', '.') ?></td>
-                                            </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $i ?></td>
+                                            <td class="product-thumbnail">
+                                                <a href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><img
+                                                        class="img-responsive ml-15px" src="<?php echo $hinh ?>"
+                                                        alt="" /></a>
+                                            </td>
+                                            <td class="product-name"><a
+                                                    href="index.php?act=ctdh&id=<?php echo $payment_id; ?>"><?php echo $p_name ?></a>
+                                            </td>
+                                            <td class="product-price-cart"><span
+                                                    class="amount"><?php echo $price ?></span></td>
+                                            <td><?php echo $color_name ?></td>
+                                            <td><?php echo $size_name ?></td>
+                                            <td class="product-quantity">
+                                                <span><?php echo $quantity ?></span>
+                                            </td>
+                                            <td class="product-subtotal">
+                                                <?php echo number_format($price * $quantity, 0, ',', '.') ?></td>
+                                        </tr>
 
-                                        </tbody>
+                                    </tbody>
                                     <?php } ?>
                                     <!-- <tr>
                                         <td></td>

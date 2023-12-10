@@ -5,13 +5,13 @@
             <div class="col-12">
                 <div class="row breadcrumb_box  align-items-center">
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
-                        <h2 class="breadcrumb-title">Shop</h2>
+                        <h2 class="breadcrumb-title">Quên mật khẩu</h2>
                     </div>
                     <div class="col-lg-6  col-md-6 col-sm-12">
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list text-center text-md-end">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Login</li>
+                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Quên mật khẩu</li>
                         </ul>
                         <!-- breadcrumb-list end -->
                     </div>
@@ -41,7 +41,7 @@
                                             <div class="dangky col-lg-3 my-3">
                                                 <input type="submit" value="Gửi" name="guiemail">
                                             </div>
-                                            <a href="index.php?act=login">Hủy bỏ</a>
+                                            <a href="index.php?act=login">Quay lại</a>
                                         </div>
                                     </form>
                                     <p class="thongbao" style="color: red;">

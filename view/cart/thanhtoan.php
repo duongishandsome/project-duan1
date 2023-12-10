@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="row breadcrumb_box  align-items-center">
                         <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-start">
-                            <h2 class="breadcrumb-title">Giỏ hàng</h2>
+                            <h2 class="breadcrumb-title">Thanh toán</h2>
                         </div>
                         <div class="col-lg-6  col-md-6 col-sm-12">
                             <!-- breadcrumb-list start -->
@@ -190,7 +190,8 @@
                                         <div class="form-check">
                                             <input class="form-check-input p-0 btn-rounded" type="radio"
                                                 name="payment_method" value="momo_atm" id="payment3">
-                                            <label class="form-check-label" for="payment3">Thanh toán qua momo atm</label>
+                                            <label class="form-check-label" for="payment3">Thanh toán qua momo
+                                                atm</label>
                                         </div>
                                     </div>
                                 </div>

@@ -1,10 +1,5 @@
 <?php
 session_start();
-// Tạo cookie để lưu trữ URL của trang trước đó
-if (empty($_SESSION['user-name'])) {
-    if (isset($_SERVER['HTTP_REFERER']))
-        setcookie('previous_page', $_SERVER['HTTP_REFERER'], time() + 3600);
-}
 include "model/pdo.php";
 include "model/taikhoanuser.php";
 include "model/danhmuc.php";
@@ -58,11 +53,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                                 if ($checkuser['role_id'] == 1) {
                                     echo "<script>window.location.href='./admin/index.php '</script>";
                                 } else {
-                                    // Nếu người dùng tải lại trang
-                                    if (isset($_COOKIE['previous_page'])) {
-                                        // Chuyển hướng người dùng trở lại trang trước đó
-                                        echo "<script>window.location.href='" . $_COOKIE['previous_page'] . "'</script>";                                        // header('Location: ' . $_COOKIE['previous_page']);
-                                    }
+                                    echo "<script>window.location.href='index.php '</script>";
                                 }
                             }
                         } else {
@@ -227,7 +218,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         case 'huydon':
             $payment_id = $_GET['payment_id'];
             huydon($payment_id );
-            echo "<script>window.location.href='index.php'</script>";
+            echo "<script>window.location.href='index.php?act=trangthaidon'</script>";
             break;
         case 'billcomfirm':
             if (isset($_POST['dongydathang'])) {

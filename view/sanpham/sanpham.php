@@ -35,7 +35,7 @@
                 <!-- Shop Top Area Start -->
                 <div class="shop-top-bar d-flex p-2">
                     <!-- Left Side start -->
-                    <p>Cửa hàng có : <?php echo $count_sp; ?> sản phẩm.</p>
+                    <p>Sản phẩm của cửa hàng</p>
                     <!-- Left Side End -->
                     <!-- Right Side Start -->
                     <div class="select-shoing-wrap d-flex align-items-center">
@@ -86,12 +86,13 @@
                                                 class="icon-refresh"></i></a>
                                     </div> -->
                                     <form class="AddToCartFormItem"" method=" post">
-                                    <input type="hidden" name="id" value="<?php echo $p_id ?>">
-                                    <input type="hidden" name="name" value="<?php echo $p_name ?>">
-                                    <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
-                                    <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
-                                    <button title="Add To Cart" type="submit" name="themcart" class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
-                                </form>
+                                        <input type="hidden" name="id" value="<?php echo $p_id ?>">
+                                        <input type="hidden" name="name" value="<?php echo $p_name ?>">
+                                        <input type="hidden" name="img" value="<?php echo $p_featured_photo ?>">
+                                        <input type="hidden" name="price" value="<?php echo $p_current_price ?>">
+                                        <button title="Add To Cart" type="submit" name="themcart"
+                                            class="addToCartButtonItem add-to-cart">Thêm vào giỏ hàng</button>
+                                    </form>
                                 </div>
                                 <div class="content">
                                     <h5 class="title"><a
